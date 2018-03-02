@@ -1,13 +1,14 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="description" content="">
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
@@ -16,10 +17,17 @@
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="theme-color" content="#2E3192">
+    <link rel="icon" sizes="32x32" href="favicon.png">
 </head>
 
 <body>
     <style type="text/css">
+    body {
+        font-family: Ubuntu;
+    }
+
     .chip {
         height: 22px;
         color: #4e4e4e;
@@ -81,47 +89,111 @@
     input[type=datetime]:not(.browser-default):focus:not([readonly]),
     input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
     input[type=tel]:not(.browser-default):focus:not([readonly]),
-    input[type=number]:not(.browser-default):focus:not([readonly]),
+    input[type=number]:not(.browser-default):focus:not([readonly]),+,
     input[type=search]:not(.browser-default):focus:not([readonly]),
     textarea.materialize-textarea:focus:not([readonly]) {
         border-bottom: 1px solid #2E3192;
         -webkit-box-shadow: 0 1px 0 0 #2E3192;
         box-shadow: 0 1px 0 0 #2E3192;
     }
+
+    .page-footer {
+        background: linear-gradient(-45deg, #1BFFFF, #2E3192);
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    #searchFloat {
+        display: none;
+    }
     </style>
-    <div class="col s12">
-        <div class="card-panel" id="titleCard">
-            <div class="row valign-wrapper" id="carRow">
-                <div class="col l1 center-align">
-                    <span class="white-text" style="font-size: 42px;"><i id="tadaIcon" class="fas fa-check-circle"></i></span>
-                </div>
-                <div class="col l11">
-                    <span class="white-text">A curated list of awesome libraries, frameworks, Public APIs &amp; resources</span>
+    <div class="fixed-action-btn" id="searchFloat">
+        <a class="btn-floating btn-large white" id="searchFloatBtn">
+    		<i style="color: grey" class="fas fa-search"></i>
+  		</a>
+    </div>
+    <header>
+        <div class="col s12">
+            <div class="card-panel" id="titleCard">
+                <div class="row valign-wrapper" id="carRow">
+                    <div class="col l1 center-align">
+                        <span class="white-text" style="font-size: 42px;"><i id="tadaIcon" class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="col l11">
+                        <span class="white-text">A curated list of awesome libraries, frameworks, Public APIs &amp; resources</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="input-field col s12">
-            <i class="fas fa-search prefix"></i>
-            <input id="filter" type="text" placeholder="Search">
-            <div id="noResDiv" style="width: 100%; text-align: center; display: none;">
-                <span style="color: #c3c3c3; font-size: 38px;"><i class="far fa-frown"></i>&nbsp; &nbsp; I found nothing!</span>
+    </header>
+    <main>
+        <div class="container">
+            <div class="input-field col s12">
+                <i class="fas fa-search prefix"></i>
+                <input id="filter" type="text" placeholder="Search">
+                <div id="ajaxLoader" style="width: 100%; text-align: center; display: none;">
+                    <i class="fas fa-circle-notch fa-spin" style="color: grey; font-size: 18px;"></i>
+                </div>
+                <div id="noResDiv" style="width: 100%; text-align: center; display: none;">
+                    <span style="color: #c3c3c3; font-size: 38px;"><i class="far fa-frown"></i>&nbsp; &nbsp; I found nothing!</span>
+                </div>
+            </div>
+            <div id="users">
+                <ul class="list collection" id="libList">
+                    <li class="collection-item">
+                        <div style="margin-bottom: 8px;"><span><a href="https://jsonbin.io/" target="_blank">JSONBin</a></span></div>
+                        <div><span>A free Json hosting service, create &amp; query static APIs on the go</span></div>
+                        <div><span class="chip">JSON</span><span class="chip">API</span></div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div id="users">
-            <ul class="list collection" id="libList">
-                <li class="collection-item">
-                    <div style="margin-bottom: 8px;"><span><a href="https://jsonbin.io/" target="_blank">JSONBin</a></span></div>
-                    <div><span>A free Json hosting service, create &amp; query static APIs on the go</span></div>
-                    <div><span class="chip">JSON</span><span class="chip">API</span></div>
-                </li>
-            </ul>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Disclaimer</h5>
+                    <p class="grey-text text-lighten-4">I do not own any of these libraries, I have just collected them for practising, and educational purposes</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">What I used to prepare this page</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Materializecss</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Jquery</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Font Awesome</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Animate.css</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <i class="fas fa-code"></i> by
+                <a class="grey-text text-lighten-4" href="https://www.github.com/fayazara">Fayaz</a>
+            </div>
+        </div>
+    </footer>
     <script>
     $(document).ready(function() {
 
+        $(document).ajaxStart(function() {
+            $("#ajaxLoader").fadeIn();
+            console.log("Triggered ajaxStart handler.");
+        });
+
+        $(document).ajaxStop(function() {
+            $("#ajaxLoader").fadeOut();
+            console.log("Triggered ajaxStop handler.");
+        });
         getData();
         setInterval(function() {
             $("#tadaIcon").addClass("animated tada");
@@ -148,7 +220,7 @@
 
         function getData() {
             var i, j;
-            $.getJSON('http://api.jsonbin.io/b/5a98371aa121bc097fe76892', function(data) {
+            $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892', function(data) {
                 for (i = 0; i < data.length; i++) {
                     var uniTag = data[i].tags.split(",");
                     var libhtml = '<li class="collection-item">' +
@@ -157,11 +229,24 @@
                     for (j = 0; j < uniTag.length; j++) {
                         libhtml = libhtml + '<span class="chip">' + uniTag[j] + '</span>'
                     }
-
                     $("#libList").append(libhtml);
                 }
             });
         }
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 150) {
+                $("#searchFloat").fadeIn();
+            } else {
+                $("#searchFloat").fadeOut();
+            }
+        });
+
+        $("#searchFloatBtn").click(function(event) {
+            event.preventDefault();
+            jQuery('html,body').animate({ scrollTop: 0 }, 650);
+            $("#filter").focus();
+        });
     });
     </script>
 </body>
