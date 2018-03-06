@@ -89,7 +89,8 @@
     input[type=datetime]:not(.browser-default):focus:not([readonly]),
     input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
     input[type=tel]:not(.browser-default):focus:not([readonly]),
-    input[type=number]:not(.browser-default):focus:not([readonly]),+,
+    input[type=number]:not(.browser-default):focus:not([readonly]),
+    +,
     input[type=search]:not(.browser-default):focus:not([readonly]),
     textarea.materialize-textarea:focus:not([readonly]) {
         border-bottom: 1px solid #2E3192;
@@ -218,6 +219,7 @@
             }
         });
 
+
         function getData() {
             var i, j;
             $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892', function(data) {
@@ -227,7 +229,7 @@
                         '<div style="margin-bottom: 8px;"><span><a href="' + data[i].url + '" target="_blank">' + data[i].Library + '</a></span></div>' +
                         '<div><span>' + data[i].description + '</span></div><div>';
                     for (j = 0; j < uniTag.length; j++) {
-                        libhtml = libhtml + '<span class="chip">' + uniTag[j] + '</span>'
+                        libhtml = libhtml + '<span class="chip" id="' + uniTag[j] + '">' + uniTag[j] + '</span>'
                     }
                     $("#libList").append(libhtml);
                 }
@@ -235,7 +237,7 @@
         }
 
         $(window).scroll(function() {
-            if ($(window).scrollTop() > 150) {
+            if ($(window).scrollTop() > 100) {
                 $("#searchFloat").fadeIn();
             } else {
                 $("#searchFloat").fadeOut();
@@ -245,7 +247,10 @@
         $("#searchFloatBtn").click(function(event) {
             event.preventDefault();
             jQuery('html,body').animate({ scrollTop: 0 }, 650);
-            $("#filter").focus();
+            setTimeout(function() {
+                $("#filter").focus();
+            }, 850);
+            
         });
     });
     </script>
