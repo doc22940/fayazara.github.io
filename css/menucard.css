@@ -47,4 +47,11 @@ body {
     nav .brand-logo {
         left: 30% !important;
     }
+    #call_icon {
+        font-size: 14px;
+    }
+
+    #call_num {
+        font-size: 14px;
+    }
 }
