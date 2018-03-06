@@ -32,3 +32,18 @@
 body {
     font-family: Ubuntu;
 }
+
+#call_icon {
+    font-size: 18px;
+}
+
+#call_num {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 992px) nav .brand-logo {
+    left: 30%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
