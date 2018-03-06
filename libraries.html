@@ -6,9 +6,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="description" content="">
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
@@ -19,103 +19,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <meta name="theme-color" content="#2E3192">
-    <link rel="icon" sizes="32x32" href="favicon.png">
+    <link rel="icon" sizes="32x32" href="images/favicon.png">
 </head>
 
 <body>
-    <style type="text/css">
-    body {
-        font-family: Ubuntu;
-    }
-
-    .chip {
-        height: 22px;
-        color: #4e4e4e;
-        font-size: 12px;
-        line-height: 22px;
-        background-color: #b9b9b9;
-        margin-top: 5px;
-    }
-
-    .collection {
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-    }
-
-    .collection .collection-item {
-        border-bottom: 2px solid #e0e0e0;
-    }
-
-    .input-field .prefix {
-        font-size: 1.5rem;
-        top: 1rem;
-    }
-
-    .row {
-        margin-bottom: 0px;
-    }
-
-    #titleCard {
-        background: linear-gradient(-45deg, #1BFFFF, #2E3192);
-        margin: 0px;
-        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
-        border-radius: 0px;
-    }
-    /* Scrollbar Styling */
-
-     ::-webkit-scrollbar {
-        width: 6px;
-    }
-
-     ::-webkit-scrollbar-track {
-        background-color: #ebebeb;
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-    }
-
-     ::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 4px;
-        border-radius: 4px;
-        background: #adadad;
-    }
-
-    input:not([type]):focus:not([readonly]),
-    input[type=text]:not(.browser-default):focus:not([readonly]),
-    input[type=password]:not(.browser-default):focus:not([readonly]),
-    input[type=email]:not(.browser-default):focus:not([readonly]),
-    input[type=url]:not(.browser-default):focus:not([readonly]),
-    input[type=time]:not(.browser-default):focus:not([readonly]),
-    input[type=date]:not(.browser-default):focus:not([readonly]),
-    input[type=datetime]:not(.browser-default):focus:not([readonly]),
-    input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
-    input[type=tel]:not(.browser-default):focus:not([readonly]),
-    input[type=number]:not(.browser-default):focus:not([readonly]),
-    +,
-    input[type=search]:not(.browser-default):focus:not([readonly]),
-    textarea.materialize-textarea:focus:not([readonly]) {
-        border-bottom: 1px solid #2E3192;
-        -webkit-box-shadow: 0 1px 0 0 #2E3192;
-        box-shadow: 0 1px 0 0 #2E3192;
-    }
-
-    .page-footer {
-        background: linear-gradient(-45deg, #1BFFFF, #2E3192);
-    }
-
-    body {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-    }
-
-    main {
-        flex: 1 0 auto;
-    }
-
-    #searchFloat {
-        display: none;
-    }
-    </style>
+    <link rel="stylesheet" href="css/libraries_css.css">
     <div class="fixed-action-btn" id="searchFloat">
         <a class="btn-floating btn-large white" id="searchFloatBtn">
     		<i style="color: grey" class="fas fa-search"></i>
@@ -183,77 +91,7 @@
             </div>
         </div>
     </footer>
-    <script>
-    $(document).ready(function() {
-
-        $(document).ajaxStart(function() {
-            $("#ajaxLoader").fadeIn();
-            console.log("Triggered ajaxStart handler.");
-        });
-
-        $(document).ajaxStop(function() {
-            $("#ajaxLoader").fadeOut();
-            console.log("Triggered ajaxStop handler.");
-        });
-        getData();
-        setInterval(function() {
-            $("#tadaIcon").addClass("animated tada");
-            setTimeout(function() {
-                $("#tadaIcon").removeClass("animated tada");
-            }, 2000);
-        }, 3000);
-        $("#filter").keyup(function() {
-            $("#noResDiv").fadeOut("fast");
-            var filter = $(this).val(),
-                count = 0;
-            $("#users ul li").each(function() {
-                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-                    $(this).fadeOut();
-                } else {
-                    $(this).show();
-                    count++;
-                }
-            });
-            if (count == 0) {
-                setTimeout(function() { $("#noResDiv").fadeIn("fast"); }, 1000);
-            }
-        });
-
-
-        function getData() {
-            var i, j;
-            $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892', function(data) {
-                for (i = 0; i < data.length; i++) {
-                    var uniTag = data[i].tags.split(",");
-                    var libhtml = '<li class="collection-item">' +
-                        '<div style="margin-bottom: 8px;"><span><a href="' + data[i].url + '" target="_blank">' + data[i].Library + '</a></span></div>' +
-                        '<div><span>' + data[i].description + '</span></div><div>';
-                    for (j = 0; j < uniTag.length; j++) {
-                        libhtml = libhtml + '<span class="chip" id="' + uniTag[j] + '">' + uniTag[j] + '</span>'
-                    }
-                    $("#libList").append(libhtml);
-                }
-            });
-        }
-
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 100) {
-                $("#searchFloat").fadeIn();
-            } else {
-                $("#searchFloat").fadeOut();
-            }
-        });
-
-        $("#searchFloatBtn").click(function(event) {
-            event.preventDefault();
-            jQuery('html,body').animate({ scrollTop: 0 }, 650);
-            setTimeout(function() {
-                $("#filter").focus();
-            }, 850);
-            
-        });
-    });
-    </script>
+    <script src="js/libraries_js.js"></script>
 </body>
 
 </html>
