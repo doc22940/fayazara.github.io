@@ -19,12 +19,13 @@
     <link rel="icon" sizes="32x32" href="images/favicon.png">
 </head>
 
-<body>    
+<body>
+    <link rel="stylesheet" href="css/menucard.css">
     <header>
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper">
-                    <img id="foodel_icon" style="width: 32px; padding-top: 15px; margin-left: 35px;" src="images/sc.svg"><a href="#!" class="brand-logo"><span style="margin-left: 10px;">Foodel</span></a>
+                    <img id="foodel_icon" src="images/sc.svg"><a href="#!" class="brand-logo"><span id="foodel_text">Foodel</span></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="sass.html">Sass</a></li>
                         <li><a href="badges.html">Components</a></li>
@@ -34,7 +35,7 @@
         </div>
     </header>
     <main>
-        <div class="container" style="padding-top: 16px;">
+        <div class="container">
             <div class="row">
                 <div class="col l4 m6 s12">
                     <div class="card">
@@ -86,18 +87,6 @@
     </main>
     <footer>
     </footer>
-    <script>
-    setInterval(function() {
-        $("#foodel_icon").addClass("animated tada");
-        setTimeout(function() {
-            $("#foodel_icon").removeClass("animated tada");
-        }, 2000);
-    }, 3000);
-    $(document).ready(function() {
-
-
-    });
-    </script>
+    <script src="js/menucard.js"></script>
 </body>
-
 </html>
