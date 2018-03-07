@@ -32,11 +32,9 @@ $(document).ready(function() {
             setTimeout(function() { $("#noResDiv").fadeIn("fast"); }, 1000);
         }
     });
-
-
     function getData() {
         var i, j;
-        $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892', function(data) {
+        $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892/3', function(data) {
             for (i = 0; i < data.length; i++) {
                 var uniTag = data[i].tags.split(",");
                 var libhtml = '<li class="collection-item">' +
