@@ -43,7 +43,11 @@ body {
     font-size: 18px;
 }
 
-@media only screen and (max-width: 992px) {    
+@media only screen and (max-width: 992px) {
+
+    nav .brand-logo {
+        left: 12%;
+    }
     #call_icon {
         font-size: 14px;
     }
@@ -52,7 +56,7 @@ body {
         font-size: 14px;
     }
 }
-s
+
 body {
     display: flex;
     min-height: 100vh;
@@ -62,6 +66,7 @@ body {
 main {
     flex: 1 0 auto;
 }
+
 
 
 
