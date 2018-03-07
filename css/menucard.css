@@ -55,3 +55,50 @@ body {
         font-size: 14px;
     }
 }
+s
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+
+/* Scrollbar Styling */
+
+ ::-webkit-scrollbar {
+    width: 6px;
+}
+
+ ::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: #adadad;
+}
+
+#titleCard {
+    background-color: #ee6e73 !important;
+    margin: 0px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+}
+
+.row {
+    margin-bottom: 0px;
+}
+
+#mapDiv iframe {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 8px;
+    margin-bottom: 26px;
+}
