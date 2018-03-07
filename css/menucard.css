@@ -43,10 +43,7 @@ body {
     font-size: 18px;
 }
 
-@media only screen and (max-width: 992px) {
-    nav .brand-logo {
-        left: 30% !important;
-    }
+@media only screen and (max-width: 992px) {    
     #call_icon {
         font-size: 14px;
     }
