@@ -51,9 +51,15 @@
     });
 
     function getData() {
+    	var author;
         $.getJSON('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', function(data) {
             $("#quoteMsg").text(data.quoteText);
-            $("#author").text(data.quoteAuthor);
+            if(data.quoteAuthor == ""){
+            	author = "Anonymous";
+            } else {
+            	author = data.quoteAuthor;
+            }
+            $("#author").text(author);
         });
     }
     //https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en https://source.unsplash.com/1600x900/?wanderlust text-shadow: 6px 6px 19px rgba(150, 150, 150, 1);
