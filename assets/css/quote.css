@@ -5,6 +5,8 @@
 
 
 
+
+
 /*
 	Identity by HTML5 UP
 	html5up.net | @ajlkn
@@ -151,6 +153,8 @@ body {
 
 
 
+
+
 /* Box Model */
 
 *,
@@ -160,6 +164,8 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
 
 
 
@@ -231,6 +237,8 @@ body:after {
 body.is-loading:after {
     opacity: 1;
 }
+
+
 
 
 
@@ -377,6 +385,8 @@ hr {
     border-bottom: solid 1px #c8cccf;
     margin: 3em 0;
 }
+
+
 
 
 
@@ -583,6 +593,8 @@ input[type="radio"]+label:before {
 
 
 
+
+
 /* Icon */
 
 .icon {
@@ -603,6 +615,8 @@ input[type="radio"]+label:before {
 .icon>.label {
     display: none;
 }
+
+
 
 
 
@@ -739,6 +753,10 @@ dl dd {
     margin-left: 1.5em;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 
 
@@ -842,6 +860,8 @@ button:disabled,
 
 
 
+
+
 /* Main */
 
 #main {
@@ -866,7 +886,7 @@ button:disabled,
     -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
     -ms-transition: opacity 1s ease, -ms-transform 1s ease;
     transition: opacity 1s ease, transform 1s ease;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 #main .avatar {
@@ -919,6 +939,8 @@ body.is-loading #main {
 
 
 
+
+
 /* Footer */
 
 #footer {
@@ -950,6 +972,8 @@ body.is-loading #main {
 #footer .copyright li:first-child {
     border-left: 0;
 }
+
+
 
 
 
