@@ -4,6 +4,7 @@
 
 
 
+
 /*
 	Identity by HTML5 UP
 	html5up.net | @ajlkn
@@ -149,6 +150,7 @@ body {
 
 
 
+
 /* Box Model */
 
 *,
@@ -158,6 +160,7 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 
 
 
@@ -228,6 +231,7 @@ body:after {
 body.is-loading:after {
     opacity: 1;
 }
+
 
 
 
@@ -310,6 +314,7 @@ h6 {
     color: #848484;
     line-height: 1.5;
     margin: 0 0 0.75em 0;
+    font-weight: bold;
 }
 
 h1 a,
@@ -372,6 +377,7 @@ hr {
     border-bottom: solid 1px #c8cccf;
     margin: 3em 0;
 }
+
 
 
 
@@ -576,6 +582,7 @@ input[type="radio"]+label:before {
 
 
 
+
 /* Icon */
 
 .icon {
@@ -596,6 +603,7 @@ input[type="radio"]+label:before {
 .icon>.label {
     display: none;
 }
+
 
 
 
@@ -733,6 +741,7 @@ dl dd {
 
 
 
+
 /* Button */
 
 input[type="submit"],
@@ -832,6 +841,7 @@ button:disabled,
 
 
 
+
 /* Main */
 
 #main {
@@ -907,6 +917,7 @@ body.is-loading #main {
 
 
 
+
 /* Footer */
 
 #footer {
@@ -938,6 +949,7 @@ body.is-loading #main {
 #footer .copyright li:first-child {
     border-left: 0;
 }
+
 
 
 
@@ -989,4 +1001,3 @@ body.is-loading #main {
 body.is-ie #wrapper {
     height: 100%;
 }
-
