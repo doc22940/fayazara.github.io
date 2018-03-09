@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>The Quote Machine</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/quote.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <meta name="theme-color" content="#98D1DF">
+</head>
+
+<body class="is-loading">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <section id="main">
+            <header>
+                <h1 id="quoteMsg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h1>
+                <p id="author">Anonymous</p>
+            </header>
+            <footer>
+                <ul class="icons">
+                    <!--<li><a href="#" class="fa-twitter">Twitter</a></li>-->
+                    <li id="nextQuote" style="cursor: pointer;"><a class="fa-chevron-right">Next</a></li>
+                </ul>
+            </footer>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            
+        </footer>
+    </div>
+    <!-- Scripts -->
+    <!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+    <script>
+    if ('addEventListener' in window) {
+        window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+        document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+    }
+    $(document).ready(function() {
+        getData();
+        $("#nextQuote").click(function() {
+            getData();
+        });
+    });
+
+    function getData() {
+        $.getJSON('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?', function(data) {
+            $("#quoteMsg").html('<i class="fa fa-quote-left quteIcon" aria-hidden="true"></i> ' +data.quoteText);
+            $("#author").text(data.quoteAuthor);
+        });
+    }
+    //https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en https://source.unsplash.com/1600x900/?wanderlust text-shadow: 6px 6px 19px rgba(150, 150, 150, 1);
+    </script>
+</body>
+
+</html>
