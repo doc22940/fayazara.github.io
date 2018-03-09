@@ -243,7 +243,7 @@ textarea {
     font-weight: 300;
     line-height: 2;
     letter-spacing: 0.2em;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 @media screen and (max-width: 1680px) {
@@ -990,7 +990,3 @@ body.is-ie #wrapper {
     height: 100%;
 }
 
-.quteIcon {
-    color: #ffffff;
-    text-shadow: 1.25px 0px 0px #c8cccf, 1.75px 1px 0px #c8cccf, 0px 2.25px 4px #c8cccf, 0px -0.25px 3px #c8cccf;
-}
