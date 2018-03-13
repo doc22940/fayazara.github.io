@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+
+<body style="font-family: Ubuntu;">
+    <style type="text/css">
+    #navcard {
+        margin: 0;
+        border-radius: 0px;
+    }
+
+    .row .col {
+        padding: 0px;
+    }
+
+    #navcard {
+        -webkit-box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .card-left {
+        background-color: #5cdb95;
+    }
+
+    .card-right {
+        background-color: #05386b;
+    }
+
+    .row {
+        margin-bottom: 0px;
+    }
+
+     ::-webkit-scrollbar {
+        display: none;
+    }
+
+    #qrcard {
+        box-shadow: 0 0px 56px 0 rgba(0, 0, 0, 0.14), 0 23px 62px -60px rgba(0, 0, 0, 0.12), 0 8px 25px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 25px;
+    }
+    </style>
+    <div class="row">
+        <div class="col s6 m6 l6">
+            <div class="card-panel card-left" id="navcard">
+                <span style="color: #05386b;">
+                    <i class="fas fa-qrcode"></i> myqr</span>
+            </div>
+        </div>
+        <div class="col s6 m6 l6">
+            <div class="card-panel card-right" id="navcard">
+                <span style="color: #5cdb95;">
+                    QR code generator</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="container" style="padding-top: 22px;">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea2" class="materialize-textarea" data-length="60" maxlength="60"></textarea>
+                        <label for="textarea2">Message</label>
+                    </div>
+                </div>
+                <div style="justify-content: center;">
+                    <div class="row" style="padding-top: 22px;">
+                        <div class="card-panel" style="width: 300px; height: 300px; margin: 0 auto;" id="qrcard">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('input#input_text, textarea#textarea2').characterCounter();
+    });
+    </script>
+</body>
+
+</html>
