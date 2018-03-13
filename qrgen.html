@@ -65,7 +65,6 @@
         -moz-transition: font-size .5s ease;
         -o-transition: font-size .5s ease;
         transition: font-size .5s ease;
-
         cursor: pointer;
     }
 
@@ -103,7 +102,7 @@
                 <div style="justify-content: center;">
                     <div class="row" style="padding-top: 22px;">
                         <div class="card-panel" style="width: 300px; height: 300px; margin: 0 auto;" id="qrcard">
-                            <img id="qrimg" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello asdsad asdasd">
+                            <img id="qrimg" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello">
                         </div>
                     </div>
                 </div>
@@ -116,9 +115,11 @@
                                 </span>
                             </div>
                             <div class="center">
-                                <span style="font-size: 22px;"><i class="fab fa-whatsapp"></i>&nbsp;
-                                <i class="fab fa-facebook-square"></i>&nbsp;
-                                <i class="fab fa-twitter-square"></i></span>
+                                <span style="font-size: 22px;">
+                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="wa_share" class="fab fa-whatsapp"></i></a>&nbsp;
+                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="fb_share" class="fab fa-facebook-square"></i></a>&nbsp;
+                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="tw_share" class="fab fa-twitter-square"></i></a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -128,10 +129,14 @@
     </div>
     <script type="text/javascript">
     $(document).ready(function() {
+        var msg;
         $('input#input_text, textarea#textarea2').characterCounter();
         $("#submit").click(function() {
-            var msg = $("#qrtext").val();
+            msg = $("#qrtext").val();
             $("#qrimg").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
+            $("#wa_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
+            $("#fb_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
+            $("#tw_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
         });
     });
     </script>
