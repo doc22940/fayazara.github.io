@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#05386b">
+
 </head>
 
 <body style="font-family: Ubuntu;">
@@ -134,7 +136,7 @@
             qrurl = encodeURI(api_url);
             console.log(msg);
             $("#qrimg").attr("src", qrurl);
-            $("#wa_share").attr("href", "whatsapp://send?text=" + qrurl);
+            $("#wa_share").attr("href", "whatsapp://send?text=" + api_url);
         });
     });
     </script>
