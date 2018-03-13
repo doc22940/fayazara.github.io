@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>myqr - A simple QR code generator</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -15,6 +15,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 </head>
 
 <body style="font-family: Ubuntu;">
@@ -94,6 +97,8 @@
                     <div class="input-field col s11">
                         <input id="qrtext" type="text" maxlength="60" data-length="60">
                         <label class="active" for="qrtext">Message</label>
+
+                        <input type="hidden" value="Enter a message" id="foo">
                     </div>
                     <div class="col s1 center">
                         <i id="submit" class="fas fa-arrow-circle-right"></i>
@@ -109,16 +114,10 @@
                 <div style="justify-content: center;">
                     <div class="row" style="padding-top: 22px;">
                         <div class="card-panel center" style="width: 300px; margin: 0 auto;" id="qrcard">
-                            <div class="left">
-                                <span style="font-size: 22px; color: #cac9c9;">
-                                    <i class="fas fa-share-alt"></i>
-                                </span>
-                            </div>
                             <div class="center">
-                                <span style="font-size: 22px;">
-                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="wa_share" class="fab fa-whatsapp"></i></a>&nbsp;
-                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="fb_share" class="fab fa-facebook-square"></i></a>&nbsp;
-                                    <a style="text-decoration: none;" href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hello"><i id="tw_share" class="fab fa-twitter-square"></i></a>
+                                <span style="font-size: 16px;">
+                                    <a id="wa_share" style="text-decoration: none;" href="" target="_blank"><i class="fab fa-whatsapp"></i> Share on Whatsapp</a><br>
+                                    <a class="waves-effect waves-teal btn-flat" id="copyUrl" data-clipboard-target="#foo" style="text-decoration: none;" target="_blank"><i class="far fa-copy"></i></i> Copy URL</a>
                                 </span>
                             </div>
                         </div>
@@ -130,13 +129,13 @@
     <script type="text/javascript">
     $(document).ready(function() {
         var msg;
-        $('input#input_text, textarea#textarea2').characterCounter();
+        $('input#qrtext, textarea#textarea2').characterCounter();
         $("#submit").click(function() {
-            msg = $("#qrtext").val();
+            msg = $("#qrtext").val().trim();
+            console.log(msg);
             $("#qrimg").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
-            $("#wa_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
-            $("#fb_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
-            $("#tw_share").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
+            $("#wa_share").attr("href", "whatsapp://send?text=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
+            $("#foo").val("https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);
         });
     });
     </script>
