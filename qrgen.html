@@ -114,7 +114,7 @@
                         <div class="card-panel center" style="width: 300px; margin: 0 auto;" id="qrcard">
                             <div class="center">
                                 <span style="font-size: 16px;">
-                                    <a class="waves-effect waves-teal btn-flat" id="wa_share" style="text-decoration: none;" target="_blank"><i class="fab fa-whatsapp"></i> Share on Whatsapp</a>
+                                    <a class="waves-effect waves-teal btn-flat" id="wa_share" style="text-decoration: none;"><i class="fab fa-whatsapp"></i> Share on Whatsapp</a>
                                 </span>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
             qrurl = encodeURI(api_url);
             console.log(msg);
             $("#qrimg").attr("src", qrurl);
-            $("#wa_share").attr("href", "whatsapp://send?text=https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + msg);           
+            $("#wa_share").attr("href", qurl);
         });
     });
     </script>
