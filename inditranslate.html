@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>indiTranslator - a quick translator for Indians</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- jQuery library -->
@@ -32,13 +32,17 @@
         margin-left: 0.5rem !important;
         margin-right: 0.5rem !important;
     }
+
+    .content {
+        min-height: calc(100vh - 120px);
+    }
     </style>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">indiTranslatoर</a>
+            <a class="navbar-item" href="https://fayazara.github.io/inditranslate.html">indiTranslatoर</a>
         </div>
     </nav>
-    <div class="container is-fluid">
+    <div class="container is-fluid content">
         <div class="columns">
             <div class="column">
                 <div class="field">
@@ -46,6 +50,7 @@
                     <div class="control">
                         <textarea class="textarea" id="input"></textarea>
                     </div>
+                    <span style="color: red; visibility: hidden;" id="errMsg">Enter something to translate!</span>
                 </div>
             </div>
             <div class="column">
@@ -73,18 +78,33 @@
             <button class="button langBtn" value="ur">Urdu</button>
         </div>
     </div>
+    <footer>
+        <div style="text-align: center;">
+            <span>indiTranslatoर by <a href="https://fayazara.github.io">Fayaz Ahmed</a></span>
+            <br>
+            <span><a href="http://translate.yandex.com/.">Powered by Yandex.Translate</a></span>
+        </div>
+    </footer>
     <script type="text/javascript">
     $(document).ready(function() {
         $(".langBtn").click(function() {
             var lanId = $(this).val();
             var lang = $(this).text();
             var input = $("#input").val();
-            var encInput = encodeURI(input);
-            $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180314T082355Z.e2431c209bbaa790.8cfa0df7a4fe55941861d31af6c0495a4f3089f7&text=" + encInput + "&lang=" + lanId + "&callback=?", function(result) {
-                console.log(result.text);
-                $("#selLang").text(lang);
-                $("#trnTxt").val(result.text);
-            });
+            if (input == "" || input == null) {
+                $("#errMsg").css("visibility", "visible");
+                setTimeout(function() {
+                    $("#errMsg").css("visibility", "hidden");
+                }, 2000);
+            } else {
+                var encInput = encodeURI(input);
+                $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180314T082355Z.e2431c209bbaa790.8cfa0df7a4fe55941861d31af6c0495a4f3089f7&text=" + encInput + "&lang=" + lanId + "&callback=?", function(result) {
+                    console.log(result.text);
+                    $("#selLang").text(lang);
+                    $("#trnTxt").val(result.text);
+                });
+            }
+
         });
     });
     </script>
