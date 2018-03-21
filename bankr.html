@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Test</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -93,7 +93,6 @@
         });
 
         $("#stateGo").click(function() {
-            console.log("ASSAAS");
             state = $("#stateIn-flexdatalist").val();
             $("main").append(districtTemplate);
             $('#districtIn').flexdatalist({
@@ -103,11 +102,43 @@
                 searchIn: 'DISTRICT',
                 data: 'https://api.fayazahmed.com/bankr.php?function=getDistrictforState&bank=' + encodeURI(bank) + "&state=" + encodeURI(state)
             })
-            console.log(encodeURI(state));
         });
-
     });
     </script>
 </body>
 
 </html>
+<script type="text/javascript">
+jQuery(document).on("click", "#createCk", function() {
+    // console.log("cookie added");
+    // document.cookie = 'talkto=true';
+
+    setCookie("talkto", "true");
+
+    function setCookie(cname, cvalue) {
+        document.cookie = cname + "=" + cvalue + ";";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        var user = getCookie("talkto");
+        if (user != "") {
+            console.log("cookie exists");
+        }
+    }
+});
+</script>
