@@ -1,0 +1,234 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <style type="text/css">
+    .chip {
+        border-radius: 5px;
+    }
+
+    .row {
+        margin-bottom: 0px;
+    }
+
+    .input-field {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col l4 s12">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <span class="card-title">Todo</span>
+                    </div>
+                    <div class="example">
+                        <ul id="todoContent" class="sortable">
+                        </ul>
+                    </div>
+                    <div class="row center" id="todoIn" style="display: none;">
+                        <div class="input-field col s12" style="padding-left: 25px; padding-right: 25px;">
+                            <input placeholder="Todo text" id="todoText" type="text">
+                            <label for="todoText">Hit Enter to Save</label>
+                            <span id="err" style="color: red; visibility: hidden;">asd</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" id="todoBtn" class="waves-effect waves-light btn">Add a card</a>
+                        <a href="#" style="visibility: hidden;" id="closeTodoInput" class="waves-effect waves-light btn"><i class="material-icons">close</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 s12">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <span class="card-title">In Progress</span>
+                    </div>
+                    <div class="example">
+                        <ul id="progressContent" class="sortable">
+                        </ul>
+                    </div>
+                    <div class="row center" id="progressIn" style="display: none;">
+                        <div class="input-field col s12" style="padding-left: 25px; padding-right: 25px;">
+                            <input placeholder="Progress text" id="progressText" type="text">
+                            <label for="progressText">Hit Enter to Save</label>
+                            <span id="errP" style="color: red; visibility: hidden;">asd</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" id="progressBtn" class="waves-effect waves-light btn">Add a card</a>
+                        <a href="#" style="visibility: hidden;" id="closeProgressInput" class="waves-effect waves-light btn"><i class="material-icons">close</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l4 s12">
+                <div class="card">
+                    <div class="card-content grey-text">
+                        <span class="card-title">Done</span>
+                    </div>
+                    <div class="example">
+                        <ul id="doneContent" class="sortable">
+                        </ul>
+                    </div>
+                    <div class="row center" id="doneIn" style="display: none;">
+                        <div class="input-field col s12" style="padding-left: 25px; padding-right: 25px;">
+                            <input placeholder="done text" id="doneText" type="text">
+                            <label for="doneText">Hit Enter to Save</label>
+                            <span id="errD" style="color: red; visibility: hidden;">asd</span>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" id="doneBtn" class="waves-effect waves-light btn">Add a card</a>
+                        <a href="#" style="visibility: hidden;" id="closeDoneInput" class="waves-effect waves-light btn"><i class="material-icons">close</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(function() {
+            var oldList, newList, item;
+            $('.sortable').sortable({
+                start: function(event, ui) {
+                    item = ui.item;
+                    newList = oldList = ui.item.parent().parent();
+                },
+                stop: function(event, ui) {},
+                change: function(event, ui) {
+                    if (ui.sender) newList = ui.placeholder.parent().parent();
+                },
+                dropOnEmpty: true,
+                connectWith: ".sortable"
+            }).disableSelection();
+        });
+
+        $("#todoBtn").click(function() {
+            console.log("clicked");
+            $("#todoIn").css("display", "initial");
+            $("#closeTodoInput").css("visibility", "visible");
+            $("#todoText").focus();
+            $('#todoIn').keypress(function(event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    var taskVal;
+                    taskVal = $("#todoText").val();
+                    if (taskVal == "") {
+                        $("#err").text("Enter Something");
+                        $("#err").css("visibility", "visible");
+                    } else {
+                        var todoCard = '<li><div class="row center todoRow" draggable="true" style="cursor: move;">' +
+                            '<div class="chip">' +
+                            '<span id="taskTxt">' + taskVal + '</span>' +
+                            '<i class="close material-icons">close</i>' +
+                            '</div>' +
+                            '</div></li>';
+                        $("#todoContent").append(todoCard);
+                        $("#todoText").val("");
+                        $("#err").css("visibility", "hidden");
+                    }
+                }
+            });
+        });
+
+        $("#closeTodoInput").click(function() {
+            $("#todoIn").css("display", "none");
+            $("#closeTodoInput").css("visibility", "hidden");
+            taskVal = "";
+            todoCard = "";
+        });
+
+        $("#progressBtn").click(function() {
+            console.log("clicked");
+            $("#progressIn").css("display", "initial");
+            $("#closeProgressInput").css("visibility", "visible");
+            $("#progressText").focus();
+            $('#progressIn').keypress(function(event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    var taskPVal;
+                    taskPVal = $("#progressText").val();
+                    if (taskPVal == "") {
+                        $("#errP").text("Enter Something");
+                        $("#errP").css("visibility", "visible");
+                    } else {
+                        var progressCard = '<li><div class="row center todoRow" draggable="true" style="cursor: move;">' +
+                            '<div class="chip">' +
+                            '<span id="taskTxt">' + taskPVal + '</span>' +
+                            '<i class="close material-icons">close</i>' +
+                            '</div>' +
+                            '</div></li>';
+                        $("#progressContent").append(progressCard);
+                        $("#progressText").val("");
+                        $("#errP").css("visibility", "hidden");
+                    }
+                }
+            });
+        });
+        $("#closeProgressInput").click(function() {
+            $("#progressIn").css("display", "none");
+            $("#closeProgressInput").css("visibility", "hidden");
+            taskPVal = "";
+            progressCard = "";
+        });
+
+        $("#doneBtn").click(function() {
+            console.log("clicked");
+            $("#doneIn").css("display", "initial");
+            $("#closeDoneInput").css("visibility", "visible");
+            $("#doneText").focus();
+            $('#doneIn').keypress(function(event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') {
+                    var taskDVal;
+                    taskDVal = $("#doneText").val();
+                    if (taskDVal == "") {
+                        $("#errD").text("Enter Something");
+                        $("#errD").css("visibility", "visible");
+                    } else {
+                        var doneCard = '<li><div class="row center" draggable="true" style="cursor: move;">' +
+                            '<div class="chip">' +
+                            '<span id="taskTxt">' + taskDVal + '</span>' +
+                            '<i class="close material-icons">close</i>' +
+                            '</div>' +
+                            '</div></li>';
+                        $("#doneContent").append(doneCard);
+                        $("#doneText").val("");
+                        $("#errD").css("visibility", "hidden");
+                    }
+                }
+            });
+        });
+        $("#closedoneInput").click(function() {
+            $("#doneIn").css("display", "none");
+            $("#closeDoneInput").css("visibility", "hidden");
+            taskPVal = "";
+            doneCard = "";
+        });
+
+        $("i.close").click(function() {
+            console.log("close clicked");
+            $(".close").closest("li").css("display", "none");
+        });
+
+    });
+    </script>
+</body>
+
+</html>

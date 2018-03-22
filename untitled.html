@@ -1,0 +1,56 @@
+<div class="col l4 s12">
+    <div class="card">
+        <div class="card-content grey-text">
+            <span class="card-title">Done</span>
+        </div>
+        <div id="doneContent">
+        </div>
+        <div class="row center" id="doneIn" style="display: none;">
+            <div class="input-field col s12" style="padding-left: 25px; padding-right: 25px;">
+                <input placeholder="done text" id="doneText" type="text">
+                <span id="err" style="color: red; visibility: hidden;">asd</span>
+            </div>
+        </div>
+        <div class="card-action">
+            <a href="#" id="doneBtn" class="waves-effect waves-light btn">Add a card</a>
+            <a href="#" style="visibility: hidden;" id="closeDoneInput" class="waves-effect waves-light btn"><i class="material-icons">close</i></a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#doneBtn").click(function() {
+        console.log("clicked");
+        $("#doneIn").css("display", "initial");
+        $("#closedoneInput").css("visibility", "visible");
+        $('#doneIn').keypress(function(event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                var taskPVal;
+                taskVal = $("#doneText").val();
+                if (taskPVal == "") {
+                    $("#err").text("Enter Something");
+                    $("#err").css("visibility", "visible");
+                } else {
+                    var doneCard = '<div class="row center">' +
+                        '<div class="chip">' +
+                        '<span id="taskTxt">' + taskPVal + '</span>' +
+                        '<i class="close material-icons">close</i>' +
+                        '</div>' +
+                        '</div>';
+                    $("#doneContent").append(doneCard);
+                    $("#doneText").val("");
+                    $("#errP").css("visibility", "hidden");
+                }
+
+            }
+        });
+    });
+    $("#closedoneInput").click(function() {
+        $("#doneIn").css("display", "none");
+        $("#closeDoneInput").css("visibility", "hidden");
+        taskPVal = "";
+        doneCard = "";
+    });
+});
+</script>

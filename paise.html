@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4db6ac">
+</head>
+
+<body style="font-family: Montserrat;">
+    <style type="text/css">
+    .card .card-content {
+        padding: 10px 12px 24px 24px;
+    }
+
+    .card .card-action {
+        position: relative;
+        border-top: 2px solid rgba(98, 101, 107, 0.2);
+        padding: 16px 24px;
+    }
+
+    .row .col {
+        padding: 0px;
+    }
+
+    .card {
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    .collection {
+        border-radius: 6px;
+        border: 2px solid #e0e0e0;
+    }
+
+    .collection .collection-item {
+        border-bottom: 2px solid #e0e0e0;
+        padding: 20px 20px;
+    }
+
+    .collection .collection-item.avatar .secondary-content {
+        top: 30px;
+    }
+
+    .modal {
+        max-height: 75%;
+    }
+
+    .categoryHover {
+        transition: background-color 0.5s ease;
+        border-radius: 5px;
+    }
+
+    .categoryHover:hover {
+        background-color: #4db6ac;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .spacedIcon {
+        width: 5.333333% !important;
+    }
+
+    .collection .collection-item.avatar {
+        padding-left: 22px;
+    }
+
+    .spacedText {
+        padding-left: 35px !important;
+    }
+    </style>
+    <div class="row">
+        <div class="col s12 m12 l12" style="position: fixed; z-index: 998;">
+            <div class="card teal lighten-2">
+                <div class="card-content white-text">
+                    <div class="right-align"><i class="fas fa-cog" style="font-size: 18px;"></i></div>
+                    <span class="card-title"><i class="fas fa-rupee-sign"></i><span style="font-weight: bold"> 24000</span></span>
+                    <p>Left with you</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="white-text">Udhar</a>
+                    <a href="#" class="white-text">Vasooli</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 160px;">
+        <div style="padding-left: 10px; padding-right: 10px;">
+            <ul class="collection" id="dataContainer">
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/burger.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 800</span><span> - <b>Food</b></span>
+                            <p>Lunch at Mcdonald's</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/boy.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 155</span><span> - <b>Personal</b></span>
+                            <p>Haircut</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/bag.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 1000</span><span> - <b>Shopping</b></span>
+                            <p>Purchased Tshirts at forum</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/groceries.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 10</span><span> - <b>Groceries</b></span>
+                            <p>Tomatoes</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/taxi.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 285</span><span> - <b>Transport</b></span>
+                            <p>Taxi to work</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="collection-item avatar">
+                    <div class="col s12">
+                        <div class="col s1 spacedIcon">
+                            <img src="https://fayazahmed.com/images/invoice.svg" height="42px" width="42px">
+                        </div>
+                        <div class="col s11 spacedText">
+                            <i class="fas fa-rupee-sign"></i><span class="title"> 349</span><span> - <b>Bills</b></span>
+                            <p>Recharged my mobile</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+    <i class="fas fa-pencil-alt" style="font-size: 20px; margin-top: 18px;"></i>
+  </a>
+        <ul>
+            <li><a href="#modal1" class="btn-floating green modal-trigger"><i class="fas fa-minus"></i></a></li>
+            <li><a href="#modal2" class="btn-floating blue modal-trigger"><i class="fas fa-plus"></i></a></li>
+            <li><a href="#modal3" class="btn-floating green modal-trigger"><i class="fas fa-arrow-right"></i></a></li>
+            <li><a href="#modal4" class="btn-floating green modal-trigger"><i class="fas fa-arrow-left"></i></a></li>
+        </ul>
+    </div>
+    <!-- Modal Structure -->
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal" style="top: 0%;">
+        <div class="modal-content" id="modalSpent">
+            <h4>Spent on</h4>
+            <div class="row col s12">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-food-main-category">
+                    <img src="https://fayazahmed.com/images/burger.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Food</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-groceries-main-category">
+                    <img src="https://fayazahmed.com/images/groceries.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Groceries</p>
+                </div>
+            </div>
+            <div class="row col s12" style="text-align: center;">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-transport-main-category">
+                    <img src="https://fayazahmed.com/images/taxi.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Transport</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-spent-bills-main-category">
+                    <img src="https://fayazahmed.com/images/invoice.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Bills</p>
+                </div>
+            </div>
+            <div class="row col s12" style="text-align: center;">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-shopping-main-category">
+                    <img src="https://fayazahmed.com/images/bag.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Shopping</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="click" id="spent-personal-main-category">
+                    <img src="https://fayazahmed.com/images/boy.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Personal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal2" class="modal" style="top: 0%;">
+        <div class="modal-content" id="modalReceived">
+            <h4>Received money</h4>
+            <div class="row col s12">
+                <div class="col s6 categoryHover" style="text-align: center;" id="received-salary">
+                    <img src="https://fayazahmed.com/images/salary.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Salary</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="received-atm">
+                    <img src="https://fayazahmed.com/images/atm.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Atm</p>
+                </div>
+            </div>
+            <div class="row col s12" style="text-align: center;">
+                <div class="col s6 categoryHover" style="text-align: center;" id="received-gift">
+                    <img src="https://fayazahmed.com/images/gift.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Gift</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="received-loan">
+                    <img src="https://fayazahmed.com/images/loan.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Loan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal3" class="modal" style="top: 0%;">
+        <div class="modal-content" id="modalTest">
+            <h4>Spent on</h4>
+            <div class="row col s12">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-food-test-category">
+                    <img src="https://fayazahmed.com/images/burger.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Food</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-groceries-test-category">
+                    <img src="https://fayazahmed.com/images/groceries.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Groceries</p>
+                </div>
+            </div>
+            <div class="row col s12" style="text-align: center;">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-transport-test-category">
+                    <img src="https://fayazahmed.com/images/taxi.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Transport</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-spent-bills-test-category">
+                    <img src="https://fayazahmed.com/images/invoice.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Bills</p>
+                </div>
+            </div>
+            <div class="row col s12" style="text-align: center;">
+                <div class="col s6 categoryHover" style="text-align: center;" id="spent-shopping-test-category">
+                    <img src="https://fayazahmed.com/images/bag.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Shopping</p>
+                </div>
+                <div class="col s6 categoryHover" style="text-align: center;" id="click" id="spent-personal-test-category">
+                    <img src="https://fayazahmed.com/images/boy.svg" style="height: 30%; width: 30%; padding-top: 10px;">
+                    <p>Personal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal4" class="modal" style="top: 0%;">
+        <div class="modal-content" id="modalTestImput">
+            <h5>Spent on Food</h5>
+            <div class="container">
+                <div class="input-field col s12 m12 l12" style="margin-bottom: 10px;">
+                    <select class="icons">
+                        <option value="" disabled selected>Choose category</option>
+                        <option value="" data-icon="https://fayazahmed.com/images/eating-out.svg">Eating out</option>
+                        <option value="" data-icon="https://fayazahmed.com/images/home-delivery.svg">Home Delivery</option>
+                        <option value="" data-icon="https://fayazahmed.com/images/beer.svg">Drinking</option>
+                        <option value="" data-icon="https://fayazahmed.com/images/others.svg">Others</option>
+                    </select>
+                </div>
+                <div class="input-field s12 m12 l12" style="margin-bottom: 10px;">
+                    <input id="amount" type="text" class="validate">
+                    <label for="amount">Amount</label>
+                </div>
+                <div class="input-field s12 m12 l12" style="margin-bottom: 10px;">
+                    <input id="note" type="text" class="validate">
+                    <label for="note">Note</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="waves-effect waves-green btn-flat">Save</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.fixed-action-btn').floatingActionButton();
+        $('.tooltipped').tooltip();
+        $('.modal').modal();
+        $('select').select();
+
+        $("#spent-food-test-category").click(function() {
+
+            $('#modal3').modal('close');
+            $('#modal4').modal('open');
+        });
+    });
+    </script>
+</body>
+
+</html>

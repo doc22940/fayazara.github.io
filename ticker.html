@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cryptick</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Font Awesome 5 -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="theme-color" content="#00b9d8">
+</head>
+
+<body style="font-family: Montserrat;">
+    
+    <style type="text/css">
+
+    .card {
+        border-radius: 5px;
+    }
+
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+        color: #00b9d8;
+        margin-right: 14px;
+    }
+
+    .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+        color: #8895c7;
+    }
+
+    nav {
+        color: #fff;
+        background-color: #00b9d8;
+    }
+
+    .detailsCard {
+        margin-bottom: 8px !important;
+    }
+
+    .card .card-title {
+        font-weight: bold;
+    }
+
+    .card .card-content {
+        padding: 16px 24px 16px 24px;
+        border-radius: 0 0 2px 2px;
+    }
+
+    .card .card-action {
+        border-top: 2px solid rgba(160, 160, 160, 0.2);
+    }
+    
+    .card .card-title {
+        font-size: 18px;
+    }
+    </style>
+
+
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="#" class="brand-logo">Cryptick</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="sass.html">CSS</a></li>
+                    <li><a href="badges.html">Jquery</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-content">
+            <div class="container">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a href="#test1" class="active">Koinex</a></li>
+                    <li class="tab"><a href="#test2">Coinome</a></li>
+                    <li class="tab"><a href="#test3">BitBNS</a></li>
+                    <li class="tab"><a href="#test4">Zebpay</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html">CSS</a></li>
+        <li><a href="badges.html">Jquery</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+    </ul>
+    <div class="container" style="padding-top: 16px;">
+        <div id="test1" class="col s12">
+            <!-- XRP -->
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content" style="color: #585858">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="detailsCard col l12">
+                                    <div class="col l1" style="text-align: center;">
+                                        <img src="https://github.com/cjdowner/cryptocurrency-icons/blob/master/32/icon/xrp.png?raw=true">
+                                    </div>
+                                    <div class="col l11">
+                                        <span class="card-title" id="xrp_cur_price">Ripple ₹</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Highest Bid ₹</span><span id="xrp_highest_bid" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Lowest Ask ₹</span><span id="xrp_lowest_ask" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Last Traded Price ₹</span><span id="xrp_last_traded_price" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Max 24hr ₹</span><span id="xrp_max" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Min 24Hr ₹</span><span id="xrp_min" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Volume last 24hr</span><span id="xrp_volume" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BTC -->
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content" style="color: #585858">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="detailsCard col l12">
+                                    <div class="col l1" style="text-align: center;">
+                                        <img src="https://github.com/cjdowner/cryptocurrency-icons/blob/master/32/icon/btc.png?raw=true">
+                                    </div>
+                                    <div class="col l11">
+                                        <span class="card-title" id="btc_cur_price">Bitcoin ₹</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Highest Bid ₹</span><span id="btc_highest_bid" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Lowest Ask ₹</span><span id="btc_lowest_ask" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Last Traded Price ₹</span><span id="btc_last_traded_price" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Max 24hr ₹</span><span id="btc_max" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Min 24Hr ₹</span><span id="btc_min" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Volume last 24hr</span><span id="btc_volume" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ETH -->
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content" style="color: #585858">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="detailsCard col l12">
+                                    <div class="col l1" style="text-align: center;">
+                                        <img src="https://github.com/cjdowner/cryptocurrency-icons/blob/master/32/icon/eth.png?raw=true">
+                                    </div>
+                                    <div class="col l11">
+                                        <span class="card-title" id="eth_cur_price">Ethereum ₹</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Highest Bid ₹</span><span id="eth_highest_bid" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Lowest Ask ₹</span><span id="eth_lowest_ask" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Last Traded Price ₹</span><span id="eth_last_traded_price" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Max 24hr ₹</span><span id="eth_max" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Min 24Hr ₹</span><span id="eth_min" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Volume last 24hr</span><span id="eth_volume" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ltc -->
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content" style="color: #585858">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="detailsCard col l12">
+                                    <div class="col l1" style="text-align: center;">
+                                        <img src="https://github.com/cjdowner/cryptocurrency-icons/blob/master/32/icon/ltc.png?raw=true">
+                                    </div>
+                                    <div class="col l11">
+                                        <span class="card-title" id="ltc_cur_price">Litecoin ₹</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Highest Bid ₹</span><span id="ltc_highest_bid" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Lowest Ask ₹</span><span id="ltc_lowest_ask" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Last Traded Price ₹</span><span id="ltc_last_traded_price" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Max 24hr ₹</span><span id="ltc_max" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Min 24Hr ₹</span><span id="ltc_min" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Volume last 24hr</span><span id="ltc_volume" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- bch -->
+            <div class="row" style="margin-bottom: 0px;">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content" style="color: #585858">
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="detailsCard col l12">
+                                    <div class="col l1" style="text-align: center;">
+                                        <img src="https://github.com/cjdowner/cryptocurrency-icons/blob/master/32/icon/bch.png?raw=true">
+                                    </div>
+                                    <div class="col l11">
+                                        <span class="card-title" id="bch_cur_price">Bitcoin Cash ₹</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0px;">
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Highest Bid ₹</span><span id="bch_highest_bid" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Lowest Ask ₹</span><span id="bch_lowest_ask" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Last Traded Price ₹</span><span id="bch_last_traded_price" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                                <div class="col s12 l6">
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Max 24hr ₹</span><span id="bch_max" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-up"></i>&nbsp;
+                                        <span>Min 24Hr ₹</span><span id="bch_min" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                    <div class="col s12">
+                                        <i class="fas fa-arrow-circle-down"></i>&nbsp;
+                                        <span>Volume last 24hr</span><span id="bch_volume" style="color: #ff0000"> 00.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                            <a href="#" style="font-size: 13px;">This is a link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.tabs').tabs();
+        $('.sidenav').sidenav();
+
+        $.getJSON('https://koinex.in/api/ticker', function(data) {
+            
+            //current prices
+            $("#bch_cur_price").text("Bitcoin Cash ₹" + data.prices.BCH);
+            $("#xrp_cur_price").text("Ripple ₹" + data.prices.XRP);
+            $("#eth_cur_price").text("Ethereum ₹" + data.prices.ETH);
+            $("#ltc_cur_price").text("Litecoin ₹" + data.prices.LTC);
+            $("#btc_cur_price").text("Bitcoin ₹" + data.prices.BTC);
+
+
+            //XRP
+            $("#xrp_highest_bid").text(" " + data.stats.XRP.highest_bid);
+            $("#xrp_lowest_ask").text(" " + data.stats.XRP.lowest_ask);
+            $("#xrp_last_traded_price").text(" " + data.stats.XRP.last_traded_price);
+            $("#xrp_max").text(" " + data.stats.XRP.max_24hrs);
+            $("#xrp_min").text(" " + data.stats.XRP.min_24hrs);
+            $("#xrp_volume").text(" " + data.stats.XRP.vol_24hrs);
+
+            //btc
+            $("#btc_highest_bid").text(" " + data.stats.BTC.highest_bid);
+            $("#btc_lowest_ask").text(" " + data.stats.BTC.lowest_ask);
+            $("#btc_last_traded_price").text(" " + data.stats.BTC.last_traded_price);
+            $("#btc_max").text(" " + data.stats.BTC.max_24hrs);
+            $("#btc_min").text(" " + data.stats.BTC.min_24hrs);
+            $("#btc_volume").text(" " + data.stats.BTC.vol_24hrs);
+
+            //eth
+            $("#eth_highest_bid").text(" " + data.stats.ETH.highest_bid);
+            $("#eth_lowest_ask").text(" " + data.stats.ETH.lowest_ask);
+            $("#eth_last_traded_price").text(" " + data.stats.ETH.last_traded_price);
+            $("#eth_max").text(" " + data.stats.ETH.max_24hrs);
+            $("#eth_min").text(" " + data.stats.ETH.min_24hrs);
+            $("#eth_volume").text(" " + data.stats.ETH.vol_24hrs);
+
+            //ltc
+            $("#ltc_highest_bid").text(" " + data.stats.LTC.highest_bid);
+            $("#ltc_lowest_ask").text(" " + data.stats.LTC.lowest_ask);
+            $("#ltc_last_traded_price").text(" " + data.stats.LTC.last_traded_price);
+            $("#ltc_max").text(" " + data.stats.LTC.max_24hrs);
+            $("#ltc_min").text(" " + data.stats.LTC.min_24hrs);
+            $("#ltc_volume").text(" " + data.stats.LTC.vol_24hrs);
+
+            //bch
+            $("#bch_highest_bid").text(" " + data.stats.BCH.highest_bid);
+            $("#bch_lowest_ask").text(" " + data.stats.BCH.lowest_ask);
+            $("#bch_last_traded_price").text(" " + data.stats.BCH.last_traded_price);
+            $("#bch_max").text(" " + data.stats.BCH.max_24hrs);
+            $("#bch_min").text(" " + data.stats.BCH.min_24hrs);
+            $("#bch_volume").text(" " + data.stats.BCH.vol_24hrs);
+        });
+        
+        $.getJSON('https://bitbns.com/order/getTickerAll', function(data) {
+            alert(data);
+            
+        });
+    });
+    </script>
+</body>
+
+</html>
