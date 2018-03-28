@@ -69,14 +69,14 @@
         margin: 0;
     }
     </style>
-    <div class="container" style="padding-top: 18px;">
+    <div class="container" style="padding-top: 18px; padding-bottom: 22px;">
         <div class="card">
             <div class="card-header">
                 <img src="https://2o42f91vxth73xagf92zhot2-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/Logo-FIne.png" alt="Truweight" style="width: 90px;">
             </div>
             <div class="card-body" style="padding: 0.8rem;">
                 <div>
-                    <p style="padding: 16px; border-radius: 6px; background-color: #dedddd;">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
+                    <p style="padding: 16px; border-radius: 5px; background-color: #f7f6f6;">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
                     <div id="inpGrp" style="padding-left: 10px; padding-right: 10px;">
                         <div id="step1Section">
                             <div class="input-group" id="weightInputOutline">
@@ -183,7 +183,7 @@
                         </select>
                     </div>
                     <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="cookingError">Error</span>
-                    <div class="row" style="padding-left: 10px; padding-right: 10px; padding-top: 12px;">
+                    <div class="row" style="padding-left: 10px; padding-right: 10px;">
                         <p>Do you have any diseases / health issues?</p>
                     </div>
                     <div class="row">
@@ -295,7 +295,7 @@
                     </div>
                     <span style="visibility: hidden; color: red; font-size: 12px;" id="cityError">Error</span>
                     <div class="input-group" id="addressInputOutline">
-                        <textarea class="form-control" rows="2" id="comment" style="resize: none;" placeholder="Enter your address"></textarea>
+                        <textarea class="form-control" rows="2" id="addressInput" style="resize: none;" placeholder="Enter your address"></textarea>
                     </div>
                     <span style="visibility: hidden; color: red; font-size: 12px;" id="addressError">Error</span>
                     <div class="input-group" id="pincodeInputOutline">
@@ -329,7 +329,7 @@
                           <i style="color: #f18181" class="fas fa-exclamation-circle"></i> 
                           Sorry, the selected slot is not available.
                         </h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body text-center">
@@ -525,21 +525,18 @@
                 var intResult = parseFloat(result);
 
                 if (intResult >= 30) {
-                    $("#bmiMsg").html("This is a bit alarming state. With this high BMI, we highly recommend you take steps to reduce your weight NOW. You are already 80% more likely to develop the risk of coronary heart disease, diabetes, BP, Hypertension etc in future. The good news is it’s possible to reverse the weight scale. If you are looking to lose weight like 12000+ customers of ours, schedule a detailed weightloss consultation from our Weightloss Experts, NOW.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
-                } else
-                if (intResult < 30 && intResult >= 25) {
-                    $("#bmiMsg").html("WATCH OUT! The scale is tilting towards the dreaded OBESE category, which is the genesis of heart diseases, diabetes, BP etc. Start now, start small, and tilt your weight scale back to NORMAL. Our weightloss experts can give you a detailed weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
-                } else
-                if (intResult < 25 && intResult >= 23) {
-                    $("#bmiMsg").html("Well, it’s a bit on the higher side. The tricky part is a little bit more, and you will be in the dreaded “Obese” Category, which is the genesis of heart diseases, diabetes, BP etc. Don’t worry, our weightloss experts can give you a weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                    $("#bmiMsg").html("This is a bit alarming state <i class='fas fa-exclamation-circle' style='color: red;'></i>. With this high BMI, we highly recommend you take steps to reduce your weight NOW. You are already 80% more likely to develop the risk of coronary heart disease, diabetes, BP, Hypertension etc in future. The good news is it’s possible to reverse the weight scale. If you are looking to lose weight like 12000+ customers of ours, schedule a detailed weightloss consultation from our Weightloss Experts, NOW.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                } else if (intResult < 30 && intResult >= 25) {
+                    $("#bmiMsg").html("WATCH OUT! The scale is tilting towards the dreaded OBESE category, which is the genesis of heart diseases, diabetes, BP etc. Start now, start small, and tilt your weight scale back to NORMAL. Our weightloss experts can give you a detailed weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                } else if (intResult < 25 && intResult >= 23) {
+                    $("#bmiMsg").html("Well, it’s a bit on the higher side. The tricky part is a little bit more, and you will be in the dreaded “Obese” Category, which is the genesis of heart diseases, diabetes, BP etc. Don’t worry, our weightloss experts can give you a weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
 
-                } else
-                if (intResult <= 23 && intResult >= 18.5) {
+                } else if (intResult <= 23 && intResult >= 18.5) {
                     $("#bmiMsg").html("<p>Congratulations! You have a healthy weight for your height. Maintaining this weight is the important part, not just now, but for a disease free future. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
-                } else
-                if (intResult < 18.5) {
+                } else if (intResult < 18.5) {
                     $("#bmiMsg").html("<p>You seem to be underweight for your height. It's important to aim at keeping within your healthy weight range. Being in the healthy weight range will improve your body's ability to fight infection or illness. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
                 }
+
                 if (genderVal == "male" && intResult >= 23) {
                     if (feet == 4) {
                         var IBW = 50;
@@ -555,6 +552,7 @@
                     }
                     var NTL = (weightVal - IBW) + 2;
                     $(".needToLoss").text(NTL.toFixed(1));
+
                 } else if (genderVal == "female" && intResult >= 23) {
                     if (feet == 4) {
                         var IBW = 45.5;
@@ -570,6 +568,7 @@
                     }
                     var NTL = (weightVal - IBW) + 2;
                     $(".needToLoss").text(NTL.toFixed(1));
+
                 }
                 if (genderVal == "male" && weightVal < 50) {
                     $(".ntlText").css("display", "none");
@@ -577,6 +576,16 @@
                 if (genderVal == "female" && weightVal < 45) {
                     $(".ntlText").css("display", "none");
                 }
+
+                var data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_height","Value":"' + heightVal + '"},{"Attribute":"mx_Weight_in_kg","Value":"' + weightVal + '"},{"Attribute":"mx_gender","Value":"' + genderVal + '"},{"Attribute":"mx_bmi","Value":"' + result + '"},{"Attribute":"mx_Age","Value":"' + ageVal + '"}]';
+                console.log(data);
+
+                $.ajax({
+                    //url: '//heroku.truweight.in/post_leads_to_ls',
+                    url: "/nw",
+                    type: 'post',
+                    data: data
+                });
                 $("#step1Section").css("display", "none");
                 $("#step2Section").fadeIn();
                 selectGauge.set(intResult);
@@ -586,6 +595,7 @@
                 $("#step2Submit").css("display", "initial");
             }
         });
+
         $("#backStep1").click(function() {
             $("#step2Section").css("display", "none");
             $("#step1Section").fadeIn("slow");
@@ -626,11 +636,29 @@
                     $("#medicalError").css("visibility", "hidden");
                 }, 2000);
             } else {
+
+                var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"}]';
+                console.log(m_data);
+                $.ajax({
+                    //url: '//heroku.truweight.in/post_leads_to_ls',
+                    url: "/nw3",
+                    type: 'post',
+                    data: m_data
+                });
+
                 $("#step3Section").css("display", "none");
                 $("#step4Section").fadeIn("slow");
                 $("#step4Submit").css("display", "initial");
                 $("#step3Submit").css("display", "none");
             }
+        });
+
+        $("#step4Submit").click(function() {
+            var dateVal = $("#dateVal").val();
+            var timeVal = $('#timeInput').find(":selected").val();
+            var cityVal = $('#cityVal').find(":selected").val();
+            var addressVal = $("#addressInput").val();
+            var pincodeVal = $("#pincodeInput").val();
         });
     });
     </script>
