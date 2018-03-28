@@ -1,0 +1,639 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- FA5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <script src="https://truweight.in/wp-content/themes/healthcoach/page-templates/BMI/gauge.js"></script>
+    <link rel="stylesheet" href="https://truweight.in/wp-content/themes/healthcoach/page-templates/BMI/odometer.css" />
+    <script src="https://truweight.in/wp-content/themes/healthcoach/page-templates/BMI/odometer.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+    <style type="text/css">
+    input[type=checkbox],
+    input[type=radio] {
+        width: 17px;
+        height: 17px;
+    }
+
+    body {
+        font-family: Ubuntu;
+    }
+
+    .errorBorder {
+        border-color: #f30a0a;
+        box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+    }
+
+    .card {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    .btn {
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    }
+
+    .btn:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .modal-footer {
+        padding: 0.5rem !important;
+    }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+    /* Webkit browsers like Safari and Chrome */
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    </style>
+    <div class="container" style="padding-top: 18px;">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://2o42f91vxth73xagf92zhot2-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/Logo-FIne.png" alt="Truweight" style="width: 90px;">
+            </div>
+            <div class="card-body" style="padding: 0.8rem;">
+                <div>
+                    <p style="padding: 16px; border-radius: 6px; background-color: #dedddd;">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
+                    <div id="inpGrp" style="padding-left: 10px; padding-right: 10px;">
+                        <div id="step1Section">
+                            <div class="input-group" id="weightInputOutline">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="weightIconSpan"><i class="fas fa-weight"></i></span>
+                                </div>
+                                <input type="number" id="weightInput" class="form-control" placeholder="Enter your weight" aria-label="Weight" aria-describedby="weightIconSpan" maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                            </div>
+                            <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="weightError">Error</span>
+                            <div class="input-group" id="heightInputOutline">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="heightIconSpan" style="width: 42px;">
+                                <i style="margin-left: 5px;" class="fas fa-arrows-alt-v"></i></span>
+                                </div>
+                                <select class="form-control" id="heightInput">
+                                    <option value="0" selected disabled>Select your Height (ft.in)</option>
+                                    <option value="4ft.0in">4ft.0in</option>
+                                    <option value="4ft.1in">4ft.1in</option>
+                                    <option value="4ft.2in">4ft.2in</option>
+                                    <option value="4ft.3in">4ft.3in</option>
+                                    <option value="4ft.4in">4ft.4in</option>
+                                    <option value="4ft.5in">4ft.5in</option>
+                                    <option value="4ft.6in">4ft.6in</option>
+                                    <option value="4ft.7in">4ft.7in</option>
+                                    <option value="4ft.8in">4ft.8in</option>
+                                    <option value="4ft.9in">4ft.9in</option>
+                                    <option value="4ft.10in">4ft.10in</option>
+                                    <option value="4ft.11in">4ft.11in</option>
+                                    <option value="5ft.0in">5ft.0in</option>
+                                    <option value="5ft.1in">5ft.1in</option>
+                                    <option value="5ft.2in">5ft.2in</option>
+                                    <option value="5ft.3in">5ft.3in</option>
+                                    <option value="5ft.4in">5ft.4in</option>
+                                    <option value="5ft.5in">5ft.5in</option>
+                                    <option value="5ft.6in">5ft.6in</option>
+                                    <option value="5ft.7in">5ft.7in</option>
+                                    <option value="5ft.8in">5ft.8in</option>
+                                    <option value="5ft.9in">5ft.9in</option>
+                                    <option value="5ft.10in">5ft.10in</option>
+                                    <option value="5ft.11in">5ft.11in</option>
+                                    <option value="6ft.0in">6ft.0in</option>
+                                    <option value="6ft.1in">6ft.1in</option>
+                                    <option value="6ft.2in">6ft.2in</option>
+                                    <option value="6ft.3in">6ft.3in</option>
+                                    <option value="6ft.4in">6ft.4in</option>
+                                    <option value="6ft.5in">6ft.5in</option>
+                                    <option value="6ft.6in">6ft.6in</option>
+                                    <option value="6ft.7in">6ft.7in</option>
+                                    <option value="6ft.8in">6ft.8in</option>
+                                    <option value="6ft.9in">6ft.9in</option>
+                                    <option value="6ft.10in">6ft.10in</option>
+                                    <option value="6ft.11in">6ft.11in</option>
+                                    <option value="7ft.0in">7ft.0in</option>
+                                    <option value="7ft.1in">7ft.1in</option>
+                                    <option value="7ft.2in">7ft.2in</option>
+                                    <option value="7ft.3in">7ft.3in</option>
+                                    <option value="7ft.4in">7ft.4in</option>
+                                    <option value="7ft.5in">7ft.5in</option>
+                                </select>
+                            </div>
+                            <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="heightError">Error</span>
+                            <div class="input-group" id="genderInputOutline">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1" style="width: 42px;">
+                                <i style="margin-left: 5px;" class="fas fa-male"></i></span>
+                                </div>
+                                <select class="form-control" id="genderInput">
+                                    <option value="0" selected disabled>Select your Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <span style="visibility: hidden; color: red; font-size: 12px;" id="genderError">Error</span>
+                            <div class="input-group" id="ageInputOutline">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-circle"></i></i></span>
+                                </div>
+                                <input type="number" class="form-control" placeholder="Enter your age" aria-label="Age" aria-describedby="basic-addon1" id="ageInput" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                            </div>
+                            <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="ageError">Error</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="step2Section" style="text-align: center;">
+                    <span id="bmilabel" style="font-size: 22px">
+                    Current Bmi : <span class="odometer">0.0</span>
+                    </span>
+                    <div>
+                        <canvas width=250 height=150 id="gauge"></canvas>
+                    </div>
+                    <div id="bmiMsg"></div>
+                </div>
+                <div id="step3Section" style="text-align: center; display: none;">
+                    <div class="input-group" id="cookingInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 42px;">
+                                <i style="margin-left: 3px;" class="fas fa-utensils"></i></span>
+                        </div>
+                        <select class="form-control" id="cookingInput">
+                            <option value="0" selected disabled>Is Cooking Possible?</option>
+                            <option value="yes">Yes, we have a cook</option>
+                            <option value="no,_we_cook_ourselves">Yes, we cook ourselves</option>
+                            <option value="no">No cooking possible</option>
+                        </select>
+                    </div>
+                    <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="cookingError">Error</span>
+                    <div class="row" style="padding-left: 10px; padding-right: 10px; padding-top: 12px;">
+                        <p>Do you have any diseases / health issues?</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" style="text-align: left; left: 3px;">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Knee Pain / Back Pain">Knee Pain / Back Pain
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Diabetes (Type 2)">Diabetes (Type 2
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Thyroid">Thyroid
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="PCOD / PCOS">PCOD / PCOS
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="BP">BP
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Cholesterol">Cholesterol
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="text-align: left; left: 3px;">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Cancer">Cancer
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Diabetes (Type 1)">Diabetes (Type 1)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Liver failure transplant">Liver failure transplant
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Epilepsy / Parkinson's">Epilepsy / Parkinson's
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="Others">Others
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="medical_condition" class="form-check-input" value="None of these">None of these
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="medicalError">Error</span>
+                    </div>
+                </div>
+                <div id="step4Section" style="text-align: center; display: none;">
+                    <div class="input-group" id="dateInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="dateIconSpan"><i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                        <input style="background-color: #fff;" type="text" id='dateVal' class="form-control" placeholder="Select Preferred Date" aria-label="Date" aria-describedby="dateIconSpan">
+                    </div>
+                    <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="dateError">Error</span>
+                    <div class="input-group" id="timeInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 42px;">
+                                <i class="fas fa-clock"></i></span>
+                        </div>
+                        <select class="form-control" id="timeInput">
+                            <option value="0" selected disabled>Select preferred time</option>
+                            <option value="2">12:00 pm - 01:30 pm</option>
+                            <option value="3">03:00 pm - 04:30 pm</option>
+                            <option value="4">05:30 pm - 07:00 pm</option>
+                            <option value="5">08:00 pm - 09:30 pm</option>
+                            <option value="1">09:30 am - 11:00 am (morning)</option>
+                        </select>
+                    </div>
+                    <span style="visibility: hidden; color: red; font-size: 12px;" id="timeError">Error</span>
+                    <div class="input-group" id="cityInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 42px;">
+                                <i class="far fa-building"></i></span>
+                        </div>
+                        <select class="form-control" id="cityInput">
+                            <option value="" selected="" disabled="">Select your city</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Delhi NCR">Delhi NCR</option>
+                            <option value="Mumbai">Mumbai</option>
+                        </select>
+                    </div>
+                    <span style="visibility: hidden; color: red; font-size: 12px;" id="cityError">Error</span>
+                    <div class="input-group" id="addressInputOutline">
+                        <textarea class="form-control" rows="2" id="comment" style="resize: none;" placeholder="Enter your address"></textarea>
+                    </div>
+                    <span style="visibility: hidden; color: red; font-size: 12px;" id="addressError">Error</span>
+                    <div class="input-group" id="pincodeInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="pincodeIconSpan"><i class="fas fa-map-marker"></i></span>
+                        </div>
+                        <input type="number" id="pincodeInput" class="form-control" placeholder="Enter your Pincode" maxlength="6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" aria-label="Pincode" aria-describedby="pincodeIconSpan">
+                    </div>
+                    <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="pincodeError">Error</span>
+                    <br>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2">Recommended Book Now Test</button>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Success Book NOw</button>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <button type="button" class="btn btn-warning" id="step1Submit">Check My BMI <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-outline-warning" id="backStep1" style="display: none"><i class="fas fa-chevron-left"></i> Back</button>
+                <button type="button" class="btn btn-warning" id="step2Submit" style="display: none">Show me how to lose weight <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-warning" id="step3Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-warning" id="step4Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal 2-->
+    <div class="modal fade" id="myModal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">
+                          <i style="color: #f18181" class="fas fa-exclamation-circle"></i> 
+                          Sorry, the selected slot is not available.
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body text-center">
+                    <p><i>Please select any of these recommended slots to book</i></p>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom: 6px;">
+                        <div class="card-body" style="padding: 0.8rem;">
+                            9:30 am , Thursday , March 29th, 2018&nbsp;
+                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center;">
+                    <h3 class="modal-title">
+                          <i style="color: #08b100" class="fas fa-check-circle"></i> Available
+                        </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Yes, Slot is available for HOME VISIT!
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success btn-sm">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var opts = {
+        pointer: {
+            length: 0.6, // // Relative to gauge radius
+            strokeWidth: 0.035, // The thickness
+            color: '#000000' // Fill color
+        },
+        percentColors: [
+            [0.0, "#e5e577"],
+            [0.50, "#ffbb00"],
+            [1.0, "#b90b17"]
+        ],
+        colorStop: '#FFE11C', // just experiment with them
+        highDpiSupport: true, // High resolution support
+        generateGradient: true,
+    };
+
+    selectGauge = new Gauge(document.getElementById("gauge"));
+    selectGauge.setOptions(opts);
+    selectGauge.maxValue = 35;
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    var phn = getUrlParameter('data_phone');
+    var cityD = getUrlParameter('city');
+    console.log("phn is " + phn + " and city is " + cityD);
+
+    $(document).ready(function() {
+
+        flatpickr("#dateVal", {
+            dateFormat: "m-d-Y",
+            minDate: "today"
+        });
+
+        $("#step2Section").css("display", "none");
+        $("#step1Submit").click(function() {
+            var weightVal = $("#weightInput").val();
+            var heightVal = $('#heightInput').find(":selected").val();
+            var genderVal = $('#genderInput').find(":selected").val();
+            var ageVal = $('#ageInput').val();
+            var htValSplit = heightVal.split(".");
+            var feet = parseInt(htValSplit[0]);
+            var inch = parseInt(htValSplit[1]);
+
+            if (weightVal == "") {
+                $("#weightError").text("Enter weight");
+                $("#weightError").css("visibility", "visible");
+                $("#weightInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#weightError").css("visibility", "hidden");
+                    $("#weightInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (!weightVal.match(/^\s*-?\d+(\.\d{1,2})?\s*$/) || weightVal < 30 || weightVal > 200) {
+                $("#weightError").text("Weight only between 30 & 200");
+                $("#weightError").css("visibility", "visible");
+                setTimeout(function() {
+                    $("#weightError").css("visibility", "hidden");
+                }, 2000);
+
+            } else if (heightVal == "0") {
+                $("#heightError").text("Select height");
+                $("#heightError").css("visibility", "visible");
+                $("#heightInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#heightError").css("visibility", "hidden");
+                    $("#heightInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (genderVal == "0") {
+                $("#genderError").text("Select gender");
+                $("#genderError").css("visibility", "visible");
+                $("#genderInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#genderError").css("visibility", "hidden");
+                    $("#genderInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (ageVal == "") {
+                $("#ageError").text("Enter Age");
+                $("#ageError").css("visibility", "visible");
+                $("#ageInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#ageError").css("visibility", "hidden");
+                    $("#ageInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (!ageVal.match(/^\d+$/) || ageVal < 10 || ageVal > 70) {
+                $("#ageError").text("Age only between 10 & 70");
+                $("#ageError").css("visibility", "visible");
+                $("#ageInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#ageError").css("visibility", "hidden");
+                    $("#ageInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else {
+                var result = ((weightVal * 10000) / ((feet * 30.48 + inch * 2.54) * (feet * 30.48 + inch * 2.54))).toFixed(2);
+                var intResult = parseFloat(result);
+
+                if (intResult >= 30) {
+                    $("#bmiMsg").html("This is a bit alarming state. With this high BMI, we highly recommend you take steps to reduce your weight NOW. You are already 80% more likely to develop the risk of coronary heart disease, diabetes, BP, Hypertension etc in future. The good news is it’s possible to reverse the weight scale. If you are looking to lose weight like 12000+ customers of ours, schedule a detailed weightloss consultation from our Weightloss Experts, NOW.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                } else
+                if (intResult < 30 && intResult >= 25) {
+                    $("#bmiMsg").html("WATCH OUT! The scale is tilting towards the dreaded OBESE category, which is the genesis of heart diseases, diabetes, BP etc. Start now, start small, and tilt your weight scale back to NORMAL. Our weightloss experts can give you a detailed weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                } else
+                if (intResult < 25 && intResult >= 23) {
+                    $("#bmiMsg").html("Well, it’s a bit on the higher side. The tricky part is a little bit more, and you will be in the dreaded “Obese” Category, which is the genesis of heart diseases, diabetes, BP etc. Don’t worry, our weightloss experts can give you a weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+
+                } else
+                if (intResult <= 23 && intResult >= 18.5) {
+                    $("#bmiMsg").html("<p>Congratulations! You have a healthy weight for your height. Maintaining this weight is the important part, not just now, but for a disease free future. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
+                } else
+                if (intResult < 18.5) {
+                    $("#bmiMsg").html("<p>You seem to be underweight for your height. It's important to aim at keeping within your healthy weight range. Being in the healthy weight range will improve your body's ability to fight infection or illness. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
+                }
+                if (genderVal == "male" && intResult >= 23) {
+                    if (feet == 4) {
+                        var IBW = 50;
+                    }
+                    if (feet == 5) {
+                        var IBW = 50 + (2.3 * inch);
+                    }
+                    if (feet == 6) {
+                        var IBW = 50 + (2.3 * (inch + 10));
+                    }
+                    if (feet == 7) {
+                        var IBW = 50 + (2.3 * (inch + 20));
+                    }
+                    var NTL = (weightVal - IBW) + 2;
+                    $(".needToLoss").text(NTL.toFixed(1));
+                } else if (genderVal == "female" && intResult >= 23) {
+                    if (feet == 4) {
+                        var IBW = 45.5;
+                    }
+                    if (feet == 5) {
+                        var IBW = 45.5 + (2.3 * inch);
+                    }
+                    if (feet == 6) {
+                        var IBW = 45.5 + (2.3 * (inch + 10));
+                    }
+                    if (feet == 7) {
+                        var IBW = 45.5 + (2.3 * (inch + 20));
+                    }
+                    var NTL = (weightVal - IBW) + 2;
+                    $(".needToLoss").text(NTL.toFixed(1));
+                }
+                if (genderVal == "male" && weightVal < 50) {
+                    $(".ntlText").css("display", "none");
+                }
+                if (genderVal == "female" && weightVal < 45) {
+                    $(".ntlText").css("display", "none");
+                }
+                $("#step1Section").css("display", "none");
+                $("#step2Section").fadeIn();
+                selectGauge.set(intResult);
+                $('.odometer').html(intResult);
+                $("#step1Submit").css("display", "none");
+                $("#backStep1").css("display", "initial");
+                $("#step2Submit").css("display", "initial");
+            }
+        });
+        $("#backStep1").click(function() {
+            $("#step2Section").css("display", "none");
+            $("#step1Section").fadeIn("slow");
+            $("#step1Submit").css("display", "initial");
+            $("#backStep1").css("display", "none");
+            $("#step2Submit").css("display", "none");
+        });
+
+        $("#step2Submit").click(function() {
+            $("#step2Section").css("display", "none");
+            $("#step3Section").fadeIn("slow");
+            $("#step3Submit").css("display", "initial");
+            $("#backStep1").css("display", "none");
+            $("#step2Submit").css("display", "none");
+        });
+
+
+        $("#step3Submit").click(function() {
+
+            var cookingVal = $('#cookingInput').find(":selected").val();
+            var medical_data = $('input[name="medical_condition"]:checked').map(function() {
+                return this.value;
+            }).get().join(",");
+
+            if (cookingVal == "0") {
+                $("#cookingError").text("Select Cooking preference");
+                $("#cookingError").css("visibility", "visible");
+                $("#cookingInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#cookingError").css("visibility", "hidden");
+                    $("#cookingInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (medical_data == "") {
+                $("#medicalError").text("Select medical data");
+                $("#medicalError").css("visibility", "visible");
+                setTimeout(function() {
+                    $("#medicalError").css("visibility", "hidden");
+                }, 2000);
+            } else {
+                $("#step3Section").css("display", "none");
+                $("#step4Section").fadeIn("slow");
+                $("#step4Submit").css("display", "initial");
+                $("#step3Submit").css("display", "none");
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
