@@ -604,7 +604,7 @@
                 console.log("Step 1 data " + data);
 
                 $.ajax({
-                    url: 'htpps://heroku.truweight.in/post_leads_to_ls',
+                    url: '//heroku.truweight.in/post_leads_to_ls',
                     //url: "/nw",
                     type: 'post',
                     data: data
@@ -670,7 +670,7 @@
                 var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"}]';
                 console.log("Step 2 data " + m_data);
                 $.ajax({
-                    url: 'https://heroku.truweight.in/post_leads_to_ls',
+                    url: '//heroku.truweight.in/post_leads_to_ls',
                     //url: "/nw3",
                     type: 'post',
                     data: m_data
@@ -775,7 +775,7 @@
                 var addressData = '[{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"}]';
                 console.log(addressData);
                 $.ajax({
-                    url: 'https://heroku.truweight.in/post_leads_to_ls',
+                    url: '//heroku.truweight.in/post_leads_to_ls',
                     type: 'post',
                     data: bookedNowDataRec,
                     success: function(data) {
@@ -845,7 +845,7 @@
         $("#recBookBtn").click(function() {
             console.log("Recommen Book Now data " + bookedNowDataRec);
             $.ajax({
-                url: 'https://heroku.truweight.in/post_leads_to_ls',
+                url: '//heroku.truweight.in/post_leads_to_ls',
                 type: 'post',
                 data: bookedNowDataRec,
                 success: function(data) {
@@ -963,7 +963,7 @@
 
             console.log("Suggested Book failed Nw data " + bookedNowDataSug);
             $.ajax({
-                url: 'https://heroku.truweight.in/post_leads_to_ls',
+                url: '//heroku.truweight.in/post_leads_to_ls',
                 type: 'post',
                 data: bookedNowDataSug,
                 success: function(data) {
@@ -988,7 +988,7 @@
 
             console.log("Suggested Book failed Nw data " + data);
             $.ajax({
-                url: 'https://heroku.truweight.in/post_leads_to_ls',
+                url: '//heroku.truweight.in/post_leads_to_ls',
                 type: 'post',
                 data: data,
                 success: function(data) {
