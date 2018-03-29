@@ -69,6 +69,11 @@
         -webkit-appearance: none;
         margin: 0;
     }
+
+    .card-bodySugg {
+        display: flex;
+        justify-content: space-between;
+    }
     </style>
     <div class="container" style="padding-top: 18px; padding-bottom: 22px;">
         <div class="card cardShad">
@@ -297,7 +302,7 @@
                     </div>
                     <div id="suggestedSection">
                     </div>
-                    <button type="button" class="btn btn-outline-danger" id="step6Submit">or select a future date</button>
+                    <button type="button" class="btn btn-outline-danger" id="step6Submit">or select your date</button>
                 </div>
                 <!-- Step 5 End -->
                 <!--Step 6 Start -->
@@ -327,9 +332,9 @@
                         </select>
                     </div>
                     <span style="visibility: hidden; color: red; font-size: 13px;" id="timeError">Error</span>
-                    <br>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Recommended Book Now Test</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Success Book NOw</button>
+                    <div class="alert alert-danger" style="display: none;" id="msgToDisplay">
+                        gghiy
+                    </div>
                 </div>
             </div>
             <div class="card-footer text-right">
@@ -338,6 +343,8 @@
                 <button type="button" class="btn btn-danger" id="step2Submit" style="display: none">Show me how to lose weight <i class="fas fa-chevron-right"></i></button>
                 <button type="button" class="btn btn-danger" id="step3Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
                 <button type="button" class="btn btn-danger" id="step4Submit" style="display: none">Next <i class="fas fa-chevron-right"></i>
+                </button>
+                <button type="button" class="btn btn-danger" id="step7Submit" style="display: none">Check
                 </button>
             </div>
         </div>
@@ -348,68 +355,16 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header" style="text-align: center;">
-                    <h4 class="modal-title">
+                    <h3 class="modal-title">
                           <i style="color: #f18181" class="fas fa-exclamation-circle"></i> 
                           Sorry, the selected slot is not available.
-                        </h4>
+                        </h3>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
-                <div class="modal-body text-center">
+                <div class="modal-body">
                     <p><i>Please select any of these recommended slots to book</i></p>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
-                    </div>
-                    <div class="card cardShad" style="margin-bottom: 6px;">
-                        <div class="card-body" style="padding: 0.8rem;">
-                            9:30 am , Thursday , March 29th, 2018&nbsp;
-                            <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
-                        </div>
+                    <div id="customBookSection">
                     </div>
                 </div>
             </div>
@@ -436,7 +391,7 @@
             </div>
         </div>
     </div>
-    <!-- The Modal -->
+    <!-- The Confirmation Modal -->
     <div class="modal fade" id="confirmationModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -451,11 +406,35 @@
                     <p>Phone Number: <span style="color: #17a2d8" id="selPhn"></span></p>
                     <p>City <span style="color: #17a2d8" id="selCity"></span></p>
                     <p>Pincode <span style="color: #17a2d8" id="selPincode"></span></p>
-                    <p>You have selected slot Time: <span style="color: #17a2b8;" id="selTime"></span> &amp; Date: <span style="color: #17a2d8" id="selDate"></span></p>
+                    <p>Selected slot, Time: <span style="color: #17a2b8;" id="selTime"></span> &amp; Date: <span style="color: #17a2d8" id="selDate"></span></p>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-success btn-sm" id="recBookBtn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center;">
+                    <h3 class="modal-title">
+                          <i style="color: #08b100" class="fas fa-check-circle"></i> Confirmation
+                        </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Phone Number: <span style="color: #17a2d8" id="customPhn"></span></p>
+                    <p>City <span style="color: #17a2d8" id="customCity"></span></p>
+                    <p>Pincode <span style="color: #17a2d8" id="customPincode"></span></p>
+                    <p>Selected slot, Time: <span style="color: #17a2b8;" id="customTime"></span> &amp; Date: <span style="color: #17a2d8" id="customDate"></span></p>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success btn-sm" id="customBookBtn">Book Now</button>
                 </div>
             </div>
         </div>
@@ -497,7 +476,7 @@
         selectGauge.setOptions(opts);
 
         flatpickr("#dateVal", {
-            dateFormat: "m-d-Y",
+            dateFormat: "d-m-Y",
             minDate: "today"
         });
 
@@ -622,7 +601,7 @@
                 }
 
                 var data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_height","Value":"' + heightVal + '"},{"Attribute":"mx_Weight_in_kg","Value":"' + weightVal + '"},{"Attribute":"mx_gender","Value":"' + genderVal + '"},{"Attribute":"mx_bmi","Value":"' + result + '"},{"Attribute":"mx_Age","Value":"' + ageVal + '"}]';
-                console.log(data);
+                console.log("Step 1 data " + data);
 
                 $.ajax({
                     //url: '//heroku.truweight.in/post_leads_to_ls',
@@ -689,7 +668,7 @@
             } else {
 
                 var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"}]';
-                console.log(m_data);
+                console.log("Step 2 data " + m_data);
                 $.ajax({
                     //url: '//heroku.truweight.in/post_leads_to_ls',
                     url: "/nw3",
@@ -710,8 +689,8 @@
             var hours = Number(time.match(/^(\d+)/)[1]);
             var minutes = Number(time.match(/:(\d+)/)[1]);
             var AMPM = time.match(/\s(.*)$/)[1];
-            if (AMPM == "PM" && hours < 12) hours = hours + 12;
-            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            if (AMPM == "pm" && hours < 12) hours = hours + 12;
+            if (AMPM == "am" && hours == 12) hours = hours - 12;
             var sHours = hours.toString();
             var sMinutes = minutes.toString();
             if (hours < 10) sHours = "0" + sHours;
@@ -728,7 +707,25 @@
             addressVal = $("#addressInput").val();
             pincodeVal = $("#pincodeInput").val();
 
-            if (cityVal == "") {
+            if (addressVal == "") {
+                $("#addressError").text("Enter your Address");
+                $("#addressError").css("visibility", "visible");
+                $("#addressInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#addressError").css("visibility", "hidden");
+                    $("#addressInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (addressVal == "") {
+                $("#addressError").text("Enter your Address");
+                $("#addressError").css("visibility", "visible");
+                $("#addressInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#addressError").css("visibility", "hidden");
+                    $("#addressInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (cityVal == "") {
                 $("#cityError").text("Select your City");
                 $("#cityError").css("visibility", "visible");
                 $("#cityInput").addClass("errorBorder");
@@ -743,6 +740,15 @@
                 setTimeout(function() {
                     $("#pincodeError").css("visibility", "hidden");
                     $("#pincodeInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (addressVal.length < 50) {
+                $("#addressError").text("Address should be at least 50 characters");
+                $("#addressError").css("visibility", "visible");
+                $("#addressInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#addressError").css("visibility", "hidden");
+                    $("#addressInput").removeClass("errorBorder");
                 }, 2000);
 
             } else if (!pincodeVal.match(/^\d+$/)) {
@@ -764,8 +770,20 @@
                 }, 2000);
 
             } else {
-                console.log("api calling");
                 $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Checking for slots");
+
+                var addressData = '[{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"}]';
+                console.log(addressData);
+                $.ajax({
+                    url: '//jjfheroku.truweight.in/post_leads_to_ls',
+                    type: 'post',
+                    data: bookedNowDataRec,
+                    success: function(data) {
+                        console.log("Address data sent to LS");
+                    }
+                });
+
+                console.log("api calling");
                 $.ajax({
                     async: false,
                     type: 'POST',
@@ -805,7 +823,7 @@
 
         var suggestedDate;
         var suggestedTime;
-        var bookedNowData;
+        var bookedNowDataRec;
 
         $(document).on("click", ".recBtn", function() {
             suggestedTime = $(this).data("time");
@@ -815,30 +833,31 @@
             var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedRec = newDate.split(" ");
-            bookedNowData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
             $("#selTime").text(suggestedTime);
             $("#selDate").text(suggestedDate);
             $("#selCity").text(cityVal);
             $("#selPhn").text(phn)
             $("#selPincode").text(pincodeVal);
             $("#confirmationModal").modal();
-
         });
 
         $("#recBookBtn").click(function() {
-            console.log(bookedNowData);
+            console.log("Recommen Book Now data " + bookedNowDataRec);
             $.ajax({
                 url: '//jjfheroku.truweight.in/post_leads_to_ls',
                 type: 'post',
-                data: bookedNowData,
+                data: bookedNowDataRec,
                 success: function(data) {
                     setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        alert("Success, redirect to Thank you page");
+                        // window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
                     }, 1000);
                 },
                 error: function(data) {
                     setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        alert("Success, redirect to thank you page when live");
+                        // window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
                     }, 1000);
                 }
             });
@@ -847,6 +866,147 @@
         $("#step6Submit").click(function() {
             $("#step5Section").css("display", "none");
             $("#step6Section").fadeIn();
+            $("#step7Submit").css("display", "initial");
+        });
+
+        $("#step7Submit").click(function() {
+
+            var dateSelectedVal = $("#dateVal").val();
+            var timeSelectedVal = $('#timeInput').find(":selected").val();
+            var timetoDisplay = $('#timeInput').find(":selected").text();
+            if (dateSelectedVal == "") {
+                $("#dateError").text("Select Cooking preference");
+                $("#dateError").css("visibility", "visible");
+                $("#dateVal").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#dateError").css("visibility", "hidden");
+                    $("#dateVal").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (timeSelectedVal == "0") {
+                $("#timeError").text("Select Cooking preference");
+                $("#timeError").css("visibility", "visible");
+                $("#timeInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#timeError").css("visibility", "hidden");
+                    $("#timeInput").removeClass("errorBorder");
+                }, 2000);
+            } else {
+                $.post('https://billing.truweight.in/time_slot_for_long_form?date=' + dateSelectedVal + '&time=' + timeSelectedVal + '&city=' + cityVal + '&pincode=' + pincodeVal + '&category_type=true', "", function(returnedData) {
+                    console.log(returnedData);
+                    if (returnedData.status == true) {
+                        $("#customTime").text(timetoDisplay);
+                        $("#customDate").text(dateSelectedVal);
+                        $("#customCity").text(cityVal);
+                        $("#customPhn").text(phn);
+                        $("#customPincode").text(pincodeVal);
+                        var nowTime = timetoDisplay.split("-")[0];
+                        console.log(nowTime.trim());
+                        var convertTorailway = ConvertTimeformat("24", nowTime.trim());
+                        var dateUt2 = new Date("January 02, 2012 " + convertTorailway + " GMT+0530");
+                        var newDate2 = dateUt2.toUTCString();
+                        console.log(newDate2);
+                        var ConvertedSugSuccess = newDate2.split(" ");
+                        $('#customBookBtn').attr('data-time', ConvertedSugSuccess[4]);
+                        $('#customBookBtn').attr('data-date', dateSelectedVal);
+                        $("#confirmationModal2").modal();
+                    }
+
+                    if (returnedData.message == "Selected date is already past") {
+                        $("#msgToDisplay").text("Seems like you have selected a past Time");
+                        $("#msgToDisplay").fadeIn().delay(3000).fadeOut(500).text("Seems like you have selected a past date");
+                    }
+
+                    if (returnedData.message == "Selected Slot is not available") {
+                        var recMsg;
+                        var obj = returnedData;
+                        var recslots = [];
+                        Object.keys(obj.slot_available_for_dates).forEach(function(key) {
+                            var newV = obj.slot_available_for_dates[key];
+                            Object.keys(newV).forEach(function(key1, value) {
+                                var date = obj.slot_available_for_dates[key][value + 1];
+                                var newUpdatedDate = date.split(",")[2].slice(0, -2) + " " + date.split(",")[3];
+
+                                var originalDate = new Date(newUpdatedDate).getDate() + "-" + (new Date(newUpdatedDate).getMonth() + 1) + "-" + new Date(newUpdatedDate).getFullYear();
+
+                                var originalTime = date.split(",")[0];
+
+                                recslots.push("<div class='card' style='margin-bottom: 6px;'><div class='card-body card-bodySugg' style='padding: 0.8rem;'>" + date + " <button type='button'class='btn btn-outline-info btn-sm customBookSlotBtn' data-date='" + originalDate + "' data-time='" + originalTime.trim() + "'>Book this slot</button></div></div>");
+                            });
+                        });
+                        recMsg = recslots.join(" ");
+                        $("#customBookSection").html(recMsg);
+                        $("#myModal2").modal();
+                    }
+                });
+            }
+        });
+
+        $(document).on("click", ".customBookSlotBtn", function() {
+            var date = $(this).data("date");
+            var time = $(this).data("time");
+            if (time == "8 pm") {
+                time = "8:00 pm";
+            }
+            if (time == "3 pm") {
+                time = "3:00 pm";
+            }
+            if (time == "12 noon") {
+                time = "12:00 pm";
+            }
+            console.log("this is custom date " + date + " and ths is time " + time);
+            var conTim = ConvertTimeformat("24", time);
+            var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
+            var newDate = dateUt.toUTCString();
+            var indianTimeConvertedSug = newDate.split(" ");
+
+            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedSug[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+
+            console.log("Suggested Book failed Nw data " + bookedNowDataSug);
+            $.ajax({
+                url: '//dasdheroku.truweight.in/post_leads_to_ls',
+                type: 'post',
+                data: bookedNowDataSug,
+                success: function(data) {
+                    setTimeout(function() {
+                        alert("Success, redirect to thank you on Live page");
+                        //window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                },
+                error: function(data) {
+                    setTimeout(function() {
+                        alert("Success, redirect to thank you on Live page");
+                        //window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                }
+            });
+
+        });
+
+        $("#customBookBtn").click(function() {
+            var date = $(this).data("date");
+            var time = $(this).data("time");
+
+            var data = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+
+            console.log("Suggested Book failed Nw data " + data);
+            $.ajax({
+                url: '//dasdheroku.truweight.in/post_leads_to_ls',
+                type: 'post',
+                data: data,
+                success: function(data) {
+                    setTimeout(function() {
+                        alert("Success, redirect to thank you on Live page");
+                        //window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                },
+                error: function(data) {
+                    setTimeout(function() {
+                        alert("Success, redirect to thank you on Live page");
+                        //window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                }
+            });
         });
 
     });
