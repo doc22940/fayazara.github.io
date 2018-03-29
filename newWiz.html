@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>Truweight Wellness, Home Consultation</title>
+    <link rel="icon" type="image/png" href="https://2o42f91vxth73xagf92zhot2-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/16x16.png">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
@@ -42,7 +43,7 @@
         box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
     }
 
-    .card {
+    .cardShad {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     }
 
@@ -70,13 +71,13 @@
     }
     </style>
     <div class="container" style="padding-top: 18px; padding-bottom: 22px;">
-        <div class="card">
+        <div class="card cardShad">
             <div class="card-header">
                 <img src="https://2o42f91vxth73xagf92zhot2-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/Logo-FIne.png" alt="Truweight" style="width: 90px;">
             </div>
             <div class="card-body" style="padding: 0.8rem;">
                 <div>
-                    <p style="padding: 16px; border-radius: 5px; background-color: #f7f6f6;">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
+                    <p style="padding: 16px; border-radius: 5px; background-color: #f7f6f6;" id="titleMsg">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
                     <div id="inpGrp" style="padding-left: 10px; padding-right: 10px;">
                         <div id="step1Section">
                             <div class="input-group" id="weightInputOutline">
@@ -85,7 +86,7 @@
                                 </div>
                                 <input type="number" id="weightInput" class="form-control" placeholder="Enter your weight" aria-label="Weight" aria-describedby="weightIconSpan" maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
-                            <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="weightError">Error</span>
+                            <span style="visibility: hidden;  color: red; font-size: 13px;" class="mb-2" id="weightError">Error</span>
                             <div class="input-group" id="heightInputOutline">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="heightIconSpan" style="width: 42px;">
@@ -137,7 +138,7 @@
                                     <option value="7ft.5in">7ft.5in</option>
                                 </select>
                             </div>
-                            <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="heightError">Error</span>
+                            <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="heightError">Error</span>
                             <div class="input-group" id="genderInputOutline">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1" style="width: 42px;">
@@ -149,14 +150,14 @@
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-                            <span style="visibility: hidden; color: red; font-size: 12px;" id="genderError">Error</span>
+                            <span style="visibility: hidden; color: red; font-size: 13px;" id="genderError">Error</span>
                             <div class="input-group" id="ageInputOutline">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-circle"></i></i></span>
                                 </div>
                                 <input type="number" class="form-control" placeholder="Enter your age" aria-label="Age" aria-describedby="basic-addon1" id="ageInput" maxlength="2" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             </div>
-                            <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="ageError">Error</span>
+                            <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="ageError">Error</span>
                         </div>
                     </div>
                 </div>
@@ -182,7 +183,7 @@
                             <option value="no">No cooking possible</option>
                         </select>
                     </div>
-                    <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="cookingError">Error</span>
+                    <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="cookingError">Error</span>
                     <div class="row" style="padding-left: 10px; padding-right: 10px;">
                         <p>Do you have any diseases / health issues?</p>
                     </div>
@@ -253,32 +254,15 @@
                         </div>
                     </div>
                     <div class="row" style="text-align: center;">
-                        <span style="visibility: hidden; color: red; font-size: 12px;" class="mb-2" id="medicalError">Error</span>
+                        <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="medicalError">Error</span>
                     </div>
                 </div>
+                <!-- Step 4 Start -->
                 <div id="step4Section" style="text-align: center; display: none;">
-                    <div class="input-group" id="dateInputOutline">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="dateIconSpan"><i class="fas fa-calendar-alt"></i></span>
-                        </div>
-                        <input style="background-color: #fff;" type="text" id='dateVal' class="form-control" placeholder="Select Preferred Date" aria-label="Date" aria-describedby="dateIconSpan">
+                    <div class="input-group" id="addressInputOutline">
+                        <textarea class="form-control" rows="2" id="addressInput" style="resize: none;" placeholder="Enter your address"></textarea>
                     </div>
-                    <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="dateError">Error</span>
-                    <div class="input-group" id="timeInputOutline">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1" style="width: 42px;">
-                                <i class="fas fa-clock"></i></span>
-                        </div>
-                        <select class="form-control" id="timeInput">
-                            <option value="0" selected disabled>Select preferred time</option>
-                            <option value="2">12:00 pm - 01:30 pm</option>
-                            <option value="3">03:00 pm - 04:30 pm</option>
-                            <option value="4">05:30 pm - 07:00 pm</option>
-                            <option value="5">08:00 pm - 09:30 pm</option>
-                            <option value="1">09:30 am - 11:00 am (morning)</option>
-                        </select>
-                    </div>
-                    <span style="visibility: hidden; color: red; font-size: 12px;" id="timeError">Error</span>
+                    <span style="visibility: hidden; color: red; font-size: 13px;" id="addressError">Error</span>
                     <div class="input-group" id="cityInputOutline">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1" style="width: 42px;">
@@ -293,29 +277,68 @@
                             <option value="Mumbai">Mumbai</option>
                         </select>
                     </div>
-                    <span style="visibility: hidden; color: red; font-size: 12px;" id="cityError">Error</span>
-                    <div class="input-group" id="addressInputOutline">
-                        <textarea class="form-control" rows="2" id="addressInput" style="resize: none;" placeholder="Enter your address"></textarea>
-                    </div>
-                    <span style="visibility: hidden; color: red; font-size: 12px;" id="addressError">Error</span>
+                    <span style="visibility: hidden; color: red; font-size: 13px;" id="cityError">Error</span>
                     <div class="input-group" id="pincodeInputOutline">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="pincodeIconSpan"><i class="fas fa-map-marker"></i></span>
                         </div>
                         <input type="number" id="pincodeInput" class="form-control" placeholder="Enter your Pincode" maxlength="6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" aria-label="Pincode" aria-describedby="pincodeIconSpan">
                     </div>
-                    <span style="visibility: hidden;  color: red; font-size: 12px;" class="mb-2" id="pincodeError">Error</span>
+                    <span style="visibility: hidden;  color: red; font-size: 13px;" class="mb-2" id="pincodeError">Error</span>
+                    <div class="alert alert-danger" style="display: none;" id="pincodeMatchError">
+                        gghiy
+                    </div>
+                </div>
+                <!-- Step 4 End -->
+                <!-- Step 5 Start -->
+                <div id="step5Section" style="text-align: center; display: none;">
+                    <div style="text-align: left;">
+                        <p>Slots available for booking</p>
+                    </div>
+                    <div id="suggestedSection">
+                    </div>
+                    <button type="button" class="btn btn-outline-danger" id="step6Submit">or select a future date</button>
+                </div>
+                <!-- Step 5 End -->
+                <!--Step 6 Start -->
+                <div id="step6Section" style="text-align: center; display: none;">
+                    <div class="input-group" id="dateInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="dateIconSpan">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                        </div>
+                        <input style="background-color: #fff;" type="text" id='dateVal' class="form-control" placeholder="Select Preferred Date" aria-label="Date" aria-describedby="dateIconSpan">
+                    </div>
+                    <span style="visibility: hidden;  color: red; font-size: 13px;" class="mb-2" id="dateError">Error</span>
+                    <div class="input-group" id="timeInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1" style="width: 42px;">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                        </div>
+                        <select class="form-control" id="timeInput">
+                            <option value="0" selected disabled>Select preferred time</option>
+                            <option value="2">12:00 pm - 01:30 pm</option>
+                            <option value="3">03:00 pm - 04:30 pm</option>
+                            <option value="4">05:30 pm - 07:00 pm</option>
+                            <option value="5">08:00 pm - 09:30 pm</option>
+                            <option value="1">09:30 am - 11:00 am (morning)</option>
+                        </select>
+                    </div>
+                    <span style="visibility: hidden; color: red; font-size: 13px;" id="timeError">Error</span>
                     <br>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2">Recommended Book Now Test</button>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Success Book NOw</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Recommended Book Now Test</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Success Book NOw</button>
                 </div>
             </div>
             <div class="card-footer text-right">
-                <button type="button" class="btn btn-warning" id="step1Submit">Check My BMI <i class="fas fa-chevron-right"></i></button>
-                <button type="button" class="btn btn-outline-warning" id="backStep1" style="display: none"><i class="fas fa-chevron-left"></i> Back</button>
-                <button type="button" class="btn btn-warning" id="step2Submit" style="display: none">Show me how to lose weight <i class="fas fa-chevron-right"></i></button>
-                <button type="button" class="btn btn-warning" id="step3Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
-                <button type="button" class="btn btn-warning" id="step4Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-danger" id="step1Submit">Check My BMI <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-outline-danger" id="backStep1" style="display: none"><i class="fas fa-chevron-left"></i> Back</button>
+                <button type="button" class="btn btn-danger" id="step2Submit" style="display: none">Show me how to lose weight <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-danger" id="step3Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="btn btn-danger" id="step4Submit" style="display: none">Next <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -334,55 +357,55 @@
                 <!-- Modal body -->
                 <div class="modal-body text-center">
                     <p><i>Please select any of these recommended slots to book</i></p>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
                         </div>
                     </div>
-                    <div class="card" style="margin-bottom: 6px;">
+                    <div class="card cardShad" style="margin-bottom: 6px;">
                         <div class="card-body" style="padding: 0.8rem;">
                             9:30 am , Thursday , March 29th, 2018&nbsp;
                             <button type="button" class="btn btn-outline-info btn-sm">Book this slot</button>
@@ -413,27 +436,32 @@
             </div>
         </div>
     </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="confirmationModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center;">
+                    <h3 class="modal-title">
+                          <i style="color: #08b100" class="fas fa-check-circle"></i> Confirmation
+                        </h3>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Phone Number: <span style="color: #17a2d8" id="selPhn"></span></p>
+                    <p>City <span style="color: #17a2d8" id="selCity"></span></p>
+                    <p>Pincode <span style="color: #17a2d8" id="selPincode"></span></p>
+                    <p>You have selected slot Time: <span style="color: #17a2b8;" id="selTime"></span> &amp; Date: <span style="color: #17a2d8" id="selDate"></span></p>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success btn-sm" id="recBookBtn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
-    var opts = {
-        pointer: {
-            length: 0.6, // // Relative to gauge radius
-            strokeWidth: 0.035, // The thickness
-            color: '#000000' // Fill color
-        },
-        percentColors: [
-            [0.0, "#e5e577"],
-            [0.50, "#ffbb00"],
-            [1.0, "#b90b17"]
-        ],
-        colorStop: '#FFE11C', // just experiment with them
-        highDpiSupport: true, // High resolution support
-        generateGradient: true,
-    };
-
-    selectGauge = new Gauge(document.getElementById("gauge"));
-    selectGauge.setOptions(opts);
-    selectGauge.maxValue = 35;
-
+    var suggestionSlotMsg;
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -452,6 +480,21 @@
     console.log("phn is " + phn + " and city is " + cityD);
 
     $(document).ready(function() {
+        var step5html;
+        var opts = {
+            percentColors: [
+                [0.0, "#e5e577"],
+                [0.50, "#ffbb00"],
+                [1.0, "#b90b17"]
+            ],
+            colorStop: '#FFE11C', // just experiment with them
+            highDpiSupport: true, // High resolution support
+            generateGradient: true,
+        };
+
+        selectGauge = new Gauge(document.getElementById("gauge"));
+        selectGauge.maxValue = 35;
+        selectGauge.setOptions(opts);
 
         flatpickr("#dateVal", {
             dateFormat: "m-d-Y",
@@ -533,6 +576,7 @@
 
                 } else if (intResult <= 23 && intResult >= 18.5) {
                     $("#bmiMsg").html("<p>Congratulations! You have a healthy weight for your height. Maintaining this weight is the important part, not just now, but for a disease free future. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
+
                 } else if (intResult < 18.5) {
                     $("#bmiMsg").html("<p>You seem to be underweight for your height. It's important to aim at keeping within your healthy weight range. Being in the healthy weight range will improve your body's ability to fight infection or illness. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
                 }
@@ -593,6 +637,13 @@
                 $("#step1Submit").css("display", "none");
                 $("#backStep1").css("display", "initial");
                 $("#step2Submit").css("display", "initial");
+
+                if (intResult <= 23 && intResult >= 18.5) {
+                    $("#step2Submit").css("display", "none");
+                }
+                if (intResult < 18.5) {
+                    $("#step2Submit").css("display", "none");
+                }
             }
         });
 
@@ -610,8 +661,8 @@
             $("#step3Submit").css("display", "initial");
             $("#backStep1").css("display", "none");
             $("#step2Submit").css("display", "none");
+            $("#titleMsg").text('You are 1 step closer to getting a personalized weight loss consultation, worth Rs.750 for FREE today.');
         });
-
 
         $("#step3Submit").click(function() {
 
@@ -653,13 +704,151 @@
             }
         });
 
+
+        function ConvertTimeformat(format, str) {
+            var time = str;
+            var hours = Number(time.match(/^(\d+)/)[1]);
+            var minutes = Number(time.match(/:(\d+)/)[1]);
+            var AMPM = time.match(/\s(.*)$/)[1];
+            if (AMPM == "PM" && hours < 12) hours = hours + 12;
+            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            var sHours = hours.toString();
+            var sMinutes = minutes.toString();
+            if (hours < 10) sHours = "0" + sHours;
+            if (minutes < 10) sMinutes = "0" + sMinutes;
+            return (sHours + ":" + sMinutes);
+        }
+
+        var cityVal;
+        var addressVal;
+        var pincodeVal;
+
         $("#step4Submit").click(function() {
-            var dateVal = $("#dateVal").val();
-            var timeVal = $('#timeInput').find(":selected").val();
-            var cityVal = $('#cityVal').find(":selected").val();
-            var addressVal = $("#addressInput").val();
-            var pincodeVal = $("#pincodeInput").val();
+            cityVal = $('#cityInput').find(":selected").val();
+            addressVal = $("#addressInput").val();
+            pincodeVal = $("#pincodeInput").val();
+
+            if (cityVal == "") {
+                $("#cityError").text("Select your City");
+                $("#cityError").css("visibility", "visible");
+                $("#cityInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#cityError").css("visibility", "hidden");
+                    $("#cityInput").removeClass("errorBorder");
+                }, 2000);
+            } else if (pincodeVal == "") {
+                $("#pincodeError").text("Enter a pincode");
+                $("#pincodeError").css("visibility", "visible");
+                $("#pincodeInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#pincodeError").css("visibility", "hidden");
+                    $("#pincodeInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (!pincodeVal.match(/^\d+$/)) {
+                $("#pincodeError").text("Enter a valid pincode");
+                $("#pincodeError").css("visibility", "visible");
+                $("#pincodeInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#pincodeError").css("visibility", "hidden");
+                    $("#pincodeInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else if (pincodeVal.length != 6) {
+                $("#pincodeError").text("Enter a valid pincode");
+                $("#pincodeError").css("visibility", "visible");
+                $("#pincodeInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#pincodeError").css("visibility", "hidden");
+                    $("#pincodeInput").removeClass("errorBorder");
+                }, 2000);
+
+            } else {
+                console.log("api calling");
+                $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Checking for slots");
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: "https://billing.truweight.in/show_recommended_slots?city=" + cityVal + "&pincode=" + pincodeVal,
+                    success: function(data) {
+                        if (data.status == false) {
+                            $("#step4Submit").html("Check again");
+                            $("#pincodeMatchError").fadeIn().delay(3000).fadeOut(500).text(data.message);
+                        } else {
+                            suggestionSlotMsg = data;
+                            var obj = suggestionSlotMsg;
+                            var recslots = [];
+                            var newObj = obj.slot_available_for_dates;
+                            Object.keys(newObj).forEach(function(key, value) {
+                                var newV = newObj[key];
+
+                                html = '';
+                                html += '<div class="card text-left" style="margin-bottom: 6px"><div class="card-body">' +
+                                    '<p style="font-weight: bold;">For ' + key + '</p>';
+                                for (var i = 0; i < newV.length; i++) {
+                                    var newUpdatedTimeSlot = obj.slot_available_for_dates[key][i];
+                                    html += '<button type="button" class="btn btn-outline-info recBtn" data-time="' + newUpdatedTimeSlot +
+                                        '" data-date="' + key + '">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
+                                }
+                                html += '</div></div>';
+                                recslots.push(html);
+                            });
+                            $('#suggestedSection').html(recslots);
+                            $("#step4Section").css("display", "none");
+                            $("#step4Submit").css("display", "none");
+                            $("#step5Section").fadeIn();
+                        }
+                    }
+                });
+            }
         });
+
+        var suggestedDate;
+        var suggestedTime;
+        var bookedNowData;
+
+        $(document).on("click", ".recBtn", function() {
+            suggestedTime = $(this).data("time");
+            suggestedDate = $(this).data("date");
+            console.log("this is date " + suggestedDate + " and ths is time " + suggestedTime);
+            var conTim = ConvertTimeformat("24", suggestedTime);
+            var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
+            var newDate = dateUt.toUTCString();
+            var indianTimeConvertedRec = newDate.split(" ");
+            bookedNowData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+            $("#selTime").text(suggestedTime);
+            $("#selDate").text(suggestedDate);
+            $("#selCity").text(cityVal);
+            $("#selPhn").text(phn)
+            $("#selPincode").text(pincodeVal);
+            $("#confirmationModal").modal();
+
+        });
+
+        $("#recBookBtn").click(function() {
+            console.log(bookedNowData);
+            $.ajax({
+                url: '//jjfheroku.truweight.in/post_leads_to_ls',
+                type: 'post',
+                data: bookedNowData,
+                success: function(data) {
+                    setTimeout(function() {
+                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                },
+                error: function(data) {
+                    setTimeout(function() {
+                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                }
+            });
+        });
+
+        $("#step6Submit").click(function() {
+            $("#step5Section").css("display", "none");
+            $("#step6Section").fadeIn();
+        });
+
     });
     </script>
 </body>
