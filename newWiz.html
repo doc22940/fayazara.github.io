@@ -407,7 +407,10 @@
                     <p>Phone Number: <span style="color: #17a2d8" id="selPhn"></span></p>
                     <p>City <span style="color: #17a2d8" id="selCity"></span></p>
                     <p>Pincode <span style="color: #17a2d8" id="selPincode"></span></p>
-                    <p>Selected slot:  <span style="color: #17a2b8;" id="selTime">, </span> <pan style="color: #17a2d8" id="selDate"></span></p>
+                    <p>Selected slot: <span style="color: #17a2b8;" id="selTime">, </span>
+                        <pan style="color: #17a2d8" id="selDate">
+                            </span>
+                    </p>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -799,17 +802,17 @@
                             var newObj = obj.slot_available_for_dates;
                             Object.keys(newObj).forEach(function(key, value) {
                                 var newV = newObj[key];
-                                console.log("mm-dd-yy "+key);
+                                console.log("mm-dd-yy " + key);
                                 var keyChange = key.split("-");
                                 var newKey = keyChange[1] + '-' + keyChange[0] + '-' + keyChange[2];
-                                console.log("dd-mm-yy "+newKey);
+                                console.log("dd-mm-yy " + newKey);
                                 html = '';
                                 html += '<div class="card text-left" style="margin-bottom: 6px"><div class="card-body">' +
                                     '<p style="font-weight: bold;">For ' + newKey + '</p>';
                                 for (var i = 0; i < newV.length; i++) {
                                     var newUpdatedTimeSlot = obj.slot_available_for_dates[key][i];
                                     html += '<button type="button" class="btn btn-outline-info recBtn" data-time="' + newUpdatedTimeSlot +
-                                        '" data-date="' + newKey + '" data-mmdate="'+key+'">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
+                                        '" data-date="' + newKey + '" data-mmdate="' + key + '">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
                                 }
                                 html += '</div></div>';
                                 recslots.push(html);
@@ -827,11 +830,11 @@
         var suggestedDate;
         var suggestedTime;
         var bookedNowDataRec;
-        var daysWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var daysWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var revDate;
         $(document).on("click", ".recBtn", function() {
             suggestedTime = $(this).data("time");
-            suggestedDate = $(this).data("date");   
+            suggestedDate = $(this).data("date");
             revDate = $(this).data("mmdate");
             var dayNumOfWeek = Date.parse(revDate);
             var dayStrOfWeek = new Date(dayNumOfWeek);
@@ -841,9 +844,13 @@
             var dateUt = new Date("January 02, 2012 " + conTim);
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedRec = newDate.split(" ");
-            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + suggestedTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+
+
+            //SENDING TIME TO post_leads_to_ls should always be in IST am-pm format
+
+            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},,{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + suggestedTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             $("#selTime").text(suggestedTime);
-            $("#selDate").text(selDayOfWeek[0]+", "+suggestedDate);
+            $("#selDate").text(selDayOfWeek[0] + ", " + suggestedDate);
             $("#selCity").text(cityVal);
             $("#selPhn").text(phn)
             $("#selPincode").text(pincodeVal);
@@ -908,13 +915,8 @@
                         $("#customPhn").text(phn);
                         $("#customPincode").text(pincodeVal);
                         var nowTime = timetoDisplay.split("-")[0];
-                        console.log(nowTime.trim());
-                        var convertTorailway = ConvertTimeformat("24", nowTime.trim());
-                        var dateUt2 = new Date("January 02, 2012 " + convertTorailway);
-                        var newDate2 = dateUt2.toUTCString();
-                        console.log(newDate2);
-                        var ConvertedSugSuccess = newDate2.split(" ");
-                        $('#customBookBtn').attr('data-time', ConvertedSugSuccess[4]);
+                        nowTime = nowTime.trim();
+                        $('#customBookBtn').attr('data-time', nowTime);
                         $('#customBookBtn').attr('data-date', dateSelectedVal);
                         $("#confirmationModal2").modal();
                     }
@@ -1017,4 +1019,5 @@
     });
     </script>
 </body>
+
 </html>
