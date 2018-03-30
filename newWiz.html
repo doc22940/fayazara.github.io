@@ -991,7 +991,7 @@
             var time = $(this).data("time");
 
             var data = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
-
+            alert("Custom Date time success Data" +data);
             console.log("Suggested Book failed Nw data " + data);
             // $.ajax({
             //     url: '//heroku.truweight.in/post_leads_to_ls',
