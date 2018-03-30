@@ -838,7 +838,7 @@
             var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
             console.log("this is date " + suggestedDate + " and ths is time " + suggestedTime);
             var conTim = ConvertTimeformat("24", suggestedTime);
-            var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
+            var dateUt = new Date("January 02, 2012 " + conTim);
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedRec = newDate.split(" ");
             bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
@@ -910,7 +910,7 @@
                         var nowTime = timetoDisplay.split("-")[0];
                         console.log(nowTime.trim());
                         var convertTorailway = ConvertTimeformat("24", nowTime.trim());
-                        var dateUt2 = new Date("January 02, 2012 " + convertTorailway + " GMT+0530");
+                        var dateUt2 = new Date("January 02, 2012 " + convertTorailway);
                         var newDate2 = dateUt2.toUTCString();
                         console.log(newDate2);
                         var ConvertedSugSuccess = newDate2.split(" ");
@@ -963,7 +963,7 @@
             }
             console.log("this is custom date " + date + " and ths is time " + time);
             var conTim = ConvertTimeformat("24", time);
-            var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
+            var dateUt = new Date("January 02, 2012 " + conTim);
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedSug = newDate.split(" ");
 
