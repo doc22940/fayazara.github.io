@@ -788,7 +788,6 @@
 
                 console.log("api calling");
                 $.ajax({
-                    //async: false,
                     type: 'POST',
                     url: "https://billing.truweight.in/show_recommended_slots?city=" + cityVal + "&pincode=" + pincodeVal,
                     success: function(data) {
@@ -830,7 +829,7 @@
         var suggestedDate;
         var suggestedTime;
         var bookedNowDataRec;
-        var daysWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
         var revDate;
         $(document).on("click", ".recBtn", function() {
             suggestedTime = $(this).data("time");
@@ -859,22 +858,22 @@
 
         $("#recBookBtn").click(function() {
             console.log("Recommen Book Now data " + bookedNowDataRec);
-            $.ajax({
-                url: '//heroku.truweight.in/post_leads_to_ls',
-                type: 'post',
-                data: bookedNowDataRec,
-                success: function(data) {
-                    setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                },
-                error: function(data) {
-                    setTimeout(function() {
-                        alert("Success, redirect to thank you page when live");
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                }
-            });
+            // $.ajax({
+            //     url: '//heroku.truweight.in/post_leads_to_ls',
+            //     type: 'post',
+            //     data: bookedNowDataRec,
+            //     success: function(data) {
+            //         setTimeout(function() {
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     },
+            //     error: function(data) {
+            //         setTimeout(function() {
+            //             alert("Success, redirect to thank you page when live");
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     }
+            // });
         });
 
         $("#step6Submit").click(function() {
@@ -964,29 +963,26 @@
                 time = "12:00 pm";
             }
             console.log("this is custom date " + date + " and ths is time " + time);
-            var conTim = ConvertTimeformat("24", time);
-            var dateUt = new Date("January 02, 2012 " + conTim);
-            var newDate = dateUt.toUTCString();
-            var indianTimeConvertedSug = newDate.split(" ");
 
-            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
 
+            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},,{"Attribute":"mx_walk_in_date","Value":"' + date + '"},,{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            alert("Requested slot not available Book Now Data\n" + bookedNowDataSug);
             console.log("Suggested Book failed Nw data " + bookedNowDataSug);
-            $.ajax({
-                url: '//heroku.truweight.in/post_leads_to_ls',
-                type: 'post',
-                data: bookedNowDataSug,
-                success: function(data) {
-                    setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                },
-                error: function(data) {
-                    setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                }
-            });
+            // $.ajax({
+            //     url: '//heroku.truweight.in/post_leads_to_ls',
+            //     type: 'post',
+            //     data: bookedNowDataSug,
+            //     success: function(data) {
+            //         setTimeout(function() {
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     },
+            //     error: function(data) {
+            //         setTimeout(function() {
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     }
+            // });
 
         });
 
@@ -997,23 +993,23 @@
             var data = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
 
             console.log("Suggested Book failed Nw data " + data);
-            $.ajax({
-                url: '//heroku.truweight.in/post_leads_to_ls',
-                type: 'post',
-                data: data,
-                success: function(data) {
-                    setTimeout(function() {
+            // $.ajax({
+            //     url: '//heroku.truweight.in/post_leads_to_ls',
+            //     type: 'post',
+            //     data: data,
+            //     success: function(data) {
+            //         setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                },
-                error: function(data) {
-                    setTimeout(function() {
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     },
+            //     error: function(data) {
+            //         setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
-                    }, 1000);
-                }
-            });
+            //             window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+            //         }, 1000);
+            //     }
+            // });
         });
 
     });
