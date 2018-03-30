@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://truweight.in/date.js"></script>
 </head>
 
 <body>
@@ -302,7 +303,7 @@
                     </div>
                     <div id="suggestedSection">
                     </div>
-                    <button type="button" class="btn btn-outline-danger" id="step6Submit">or select your date</button>
+                    <button type="button" class="btn btn-outline-danger" id="step6Submit">Choose a future date</button>
                 </div>
                 <!-- Step 5 End -->
                 <!--Step 6 Start -->
@@ -406,7 +407,7 @@
                     <p>Phone Number: <span style="color: #17a2d8" id="selPhn"></span></p>
                     <p>City <span style="color: #17a2d8" id="selCity"></span></p>
                     <p>Pincode <span style="color: #17a2d8" id="selPincode"></span></p>
-                    <p>Selected slot, Time: <span style="color: #17a2b8;" id="selTime"></span> &amp; Date: <span style="color: #17a2d8" id="selDate"></span></p>
+                    <p>Selected slot:  <span style="color: #17a2b8;" id="selTime">, </span> <pan style="color: #17a2d8" id="selDate"></span></p>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -600,7 +601,7 @@
                     $(".ntlText").css("display", "none");
                 }
 
-                var data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_height","Value":"' + heightVal + '"},{"Attribute":"mx_Weight_in_kg","Value":"' + weightVal + '"},{"Attribute":"mx_gender","Value":"' + genderVal + '"},{"Attribute":"mx_bmi","Value":"' + result + '"},{"Attribute":"mx_Age","Value":"' + ageVal + '"}]';
+                var data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_height","Value":"' + heightVal + '"},{"Attribute":"mx_Weight_in_kg","Value":"' + weightVal + '"},{"Attribute":"mx_gender","Value":"' + genderVal + '"},{"Attribute":"mx_bmi","Value":"' + result + '"},{"Attribute":"mx_Age","Value":"' + ageVal + '"},{"Attribute":"mx_bmi_filled_from_form","Value":"true"}]';
                 console.log("Step 1 data " + data);
 
                 $.ajax({
@@ -667,7 +668,7 @@
                 }, 2000);
             } else {
 
-                var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"}]';
+                var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"},{"Attribute":"mx_disease_filled_from_form","Value":"true"}]';
                 console.log("Step 2 data " + m_data);
                 $.ajax({
                     url: '//heroku.truweight.in/post_leads_to_ls',
@@ -682,7 +683,6 @@
                 $("#step3Submit").css("display", "none");
             }
         });
-
 
         function ConvertTimeformat(format, str) {
             var time = str;
@@ -785,7 +785,7 @@
 
                 console.log("api calling");
                 $.ajax({
-                    async: false,
+                    //async: false,
                     type: 'POST',
                     url: "https://billing.truweight.in/show_recommended_slots?city=" + cityVal + "&pincode=" + pincodeVal,
                     success: function(data) {
@@ -799,14 +799,17 @@
                             var newObj = obj.slot_available_for_dates;
                             Object.keys(newObj).forEach(function(key, value) {
                                 var newV = newObj[key];
-
+                                console.log("mm-dd-yy "+key);
+                                var keyChange = key.split("-");
+                                var newKey = keyChange[1] + '-' + keyChange[0] + '-' + keyChange[2];
+                                console.log("dd-mm-yy "+newKey);
                                 html = '';
                                 html += '<div class="card text-left" style="margin-bottom: 6px"><div class="card-body">' +
-                                    '<p style="font-weight: bold;">For ' + key + '</p>';
+                                    '<p style="font-weight: bold;">For ' + newKey + '</p>';
                                 for (var i = 0; i < newV.length; i++) {
                                     var newUpdatedTimeSlot = obj.slot_available_for_dates[key][i];
                                     html += '<button type="button" class="btn btn-outline-info recBtn" data-time="' + newUpdatedTimeSlot +
-                                        '" data-date="' + key + '">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
+                                        '" data-date="' + newKey + '" data-mmdate="'+key+'">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
                                 }
                                 html += '</div></div>';
                                 recslots.push(html);
@@ -824,18 +827,23 @@
         var suggestedDate;
         var suggestedTime;
         var bookedNowDataRec;
-
+        var daysWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var revDate;
         $(document).on("click", ".recBtn", function() {
             suggestedTime = $(this).data("time");
-            suggestedDate = $(this).data("date");
+            suggestedDate = $(this).data("date");   
+            revDate = $(this).data("mmdate");
+            var dayNumOfWeek = Date.parse(revDate);
+            var dayStrOfWeek = new Date(dayNumOfWeek);
+            var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
             console.log("this is date " + suggestedDate + " and ths is time " + suggestedTime);
             var conTim = ConvertTimeformat("24", suggestedTime);
             var dateUt = new Date("January 02, 2012 " + conTim + " GMT+0530");
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedRec = newDate.split(" ");
-            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             $("#selTime").text(suggestedTime);
-            $("#selDate").text(suggestedDate);
+            $("#selDate").text(selDayOfWeek[0]+", "+suggestedDate);
             $("#selCity").text(cityVal);
             $("#selPhn").text(phn)
             $("#selPincode").text(pincodeVal);
@@ -959,7 +967,7 @@
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedSug = newDate.split(" ");
 
-            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedSug[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedSug[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
 
             console.log("Suggested Book failed Nw data " + bookedNowDataSug);
             $.ajax({
@@ -984,7 +992,7 @@
             var date = $(this).data("date");
             var time = $(this).data("time");
 
-            var data = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"}]';
+            var data = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
 
             console.log("Suggested Book failed Nw data " + data);
             $.ajax({
@@ -1009,5 +1017,4 @@
     });
     </script>
 </body>
-
 </html>
