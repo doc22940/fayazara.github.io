@@ -841,7 +841,7 @@
             var dateUt = new Date("January 02, 2012 " + conTim);
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedRec = newDate.split(" ");
-            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedRec[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            bookedNowDataRec = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + suggestedDate + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + suggestedTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             $("#selTime").text(suggestedTime);
             $("#selDate").text(selDayOfWeek[0]+", "+suggestedDate);
             $("#selCity").text(cityVal);
@@ -967,7 +967,7 @@
             var newDate = dateUt.toUTCString();
             var indianTimeConvertedSug = newDate.split(" ");
 
-            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + indianTimeConvertedSug[4] + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            var bookedNowDataSug = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"mx_walk_in_date","Value":"' + date + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
 
             console.log("Suggested Book failed Nw data " + bookedNowDataSug);
             $.ajax({
