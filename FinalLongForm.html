@@ -75,6 +75,12 @@
         display: flex;
         justify-content: space-between;
     }
+
+    .medicalErrorBorder {
+        border-color: #f30a0a;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+    }
     </style>
     <div class="container" style="padding-top: 18px; padding-bottom: 22px;">
         <div class="card cardShad">
@@ -82,7 +88,7 @@
                 <img src="https://2o42f91vxth73xagf92zhot2-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/Logo-FIne.png" alt="Truweight" style="width: 90px;">
             </div>
             <div class="card-body" style="padding: 0.8rem;">
-                <div>
+                <div id="titleMsgBox">
                     <p style="padding: 16px; border-radius: 5px; background-color: #f7f6f6;" id="titleMsg">Hey there, thanks for your interest. Before enrolling in a weightloss program, we recommend starting with checking your BMI and how much Kgs you need to lose.</p>
                     <div id="inpGrp" style="padding-left: 10px; padding-right: 10px;">
                         <div id="step1Section">
@@ -167,6 +173,11 @@
                         </div>
                     </div>
                 </div>
+                <div id="stepNoCook" style="text-align: center; margin-top: 10px; margin-bottom: 10px; display: none;">
+                    <h2><i style="color: #dc3545" class="fas fa-exclamation-circle"></i></h2>
+                    <h3 style="padding: 22px;" id="dropOutMsg">This program requires some amount of cooking. Since, you are not able to cook, the program is not suitable for you</h3>
+                    <h4>Thank you!</h4>
+                </div>
                 <div id="step2Section" style="text-align: center;">
                     <span id="bmilabel" style="font-size: 22px">
                     Current Bmi : <span class="odometer">0.0</span>
@@ -190,8 +201,13 @@
                         </select>
                     </div>
                     <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="cookingError">Error</span>
-                    <div class="row" style="padding-left: 10px; padding-right: 10px;">
-                        <p>Do you have any diseases / health issues?</p>
+                    <div id="medicalBorder" style="padding-left: 10px; border-radius: 2px; margin-bottom: 5px;">
+                        <div class="row" style="padding-left: 10px; padding-right: 10px;">
+                            <p style="margin-bottom: 0px;">Do you have any diseases / health issues?</p>
+                        </div>
+                        <div class="row" style="text-align: center;">
+                            <span style="visibility: hidden; color: red; font-size: 13px; padding-left: 10px; padding-right: 10px;" id="medicalError">Error</span>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6" style="text-align: left; left: 3px;">
@@ -259,9 +275,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="text-align: center;">
-                        <span style="visibility: hidden; color: red; font-size: 13px;" class="mb-2" id="medicalError">Error</span>
-                    </div>
                 </div>
                 <!-- Step 4 Start -->
                 <div id="step4Section" style="text-align: center; display: none;">
@@ -291,6 +304,13 @@
                         <input type="number" id="pincodeInput" class="form-control" placeholder="Enter your Pincode" maxlength="6" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" aria-label="Pincode" aria-describedby="pincodeIconSpan">
                     </div>
                     <span style="visibility: hidden;  color: red; font-size: 13px;" class="mb-2" id="pincodeError">Error</span>
+                    <div class="input-group" id="landmarkInputOutline">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="landmarkIconSpan"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <input type="text" id="landmarkInput" class="form-control" placeholder="Nearest Landmark" aria-label="landmark" aria-describedby="landmarkIconSpan">
+                    </div>
+                    <span style="visibility: hidden;  color: red; font-size: 13px;" class="mb-2" id="landmarkError">Error</span>
                     <div class="alert alert-danger" style="display: none;" id="pincodeMatchError">
                         gghiy
                     </div>
@@ -452,6 +472,26 @@
             </div>
         </div>
     </div>
+    <!-- The Online consultation Confirmation modal-->
+    <div class="modal fade" id="onlineConsultationModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center; border-bottom:0px; padding: 10px 10px 0px 0px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" style="text-align: center;">
+                    <p style="font-size: 20px">Sorry, the pincode you have enetered is not available for service, please click the below button to book an online consultation, or edit the pincode by closing this dialog</p>
+                    <div id="customBookSection">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success btn-sm" id="onlineConsultationBtn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
     var suggestionSlotMsg;
     var getUrlParameter = function getUrlParameter(sParam) {
@@ -564,7 +604,7 @@
                 } else if (intResult < 30 && intResult >= 25) {
                     $("#bmiMsg").html("WATCH OUT! The scale is tilting towards the dreaded OBESE category, which is the genesis of heart diseases, diabetes, BP etc. Start now, start small, and tilt your weight scale back to NORMAL. Our weightloss experts can give you a detailed weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
                 } else if (intResult < 25 && intResult >= 23) {
-                    $("#bmiMsg").html("Well, it’s a bit on the higher side. The tricky part is a little bit more, and you will be in the dreaded “Obese” Category, which is the genesis of heart diseases, diabetes, BP etc. Don’t worry, our weightloss experts can give you a weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p>");
+                    $("#bmiMsg").html("Well, it’s a bit on the higher side. The tricky part is a little bit more, and you will be in the dreaded “Obese” Category, which is the genesis of heart diseases, diabetes, BP etc. Don’t worry, our weightloss experts can give you a weightloss consultation worth Rs.750 for FREE, today.<p class='ntlText' style='color:#0a6f96; margin-bottom: 0rem;'>By the way, you need to lose <span class='needToLoss'></span> Kgs more to reach your average weight, which is achievable, if we both are committed towards to it</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
 
                 } else if (intResult <= 23 && intResult >= 18.5) {
                     $("#bmiMsg").html("<p>Congratulations! You have a healthy weight for your height. Maintaining this weight is the important part, not just now, but for a disease free future. How about starting with making healthier food choices eg. Teatox, Granola Bars, Amla Drink, Healthy Snacks etc.</p><br><a href='https://shop.truweight.in' class='btn btn-outline-info'>Click here to know how</a>");
@@ -630,11 +670,9 @@
                 $("#backStep1").css("display", "initial");
                 $("#step2Submit").css("display", "initial");
 
-                if (intResult <= 23 && intResult >= 18.5) {
+                if (intResult <= 25) {
                     $("#step2Submit").css("display", "none");
-                }
-                if (intResult < 18.5) {
-                    $("#step2Submit").css("display", "none");
+                    $("#backStep1").css("display", "none");
                 }
             }
         });
@@ -655,6 +693,7 @@
             $("#step2Submit").css("display", "none");
             $("#titleMsg").text('You are 1 step closer to getting a personalized weight loss consultation, worth Rs.750 for FREE today.');
         });
+        var epilepsyCheck, cancerCheck;
 
         $("#step3Submit").click(function() {
 
@@ -675,35 +714,64 @@
             } else if (medical_data == "") {
                 $("#medicalError").text("Select medical data");
                 $("#medicalError").css("visibility", "visible");
+                $("#medicalBorder").addClass("medicalErrorBorder");
                 setTimeout(function() {
                     $("#medicalError").css("visibility", "hidden");
+                    $("#medicalBorder").removeClass("medicalErrorBorder");
                 }, 2000);
             } else {
+                diabetesCheck = medical_data.includes("Diabetes (Type 1)");
+                cancerCheck = medical_data.includes("Cancer");
+                epilepsyCheck = medical_data.includes("Epilepsy / Parkinson's");
+                if (cookingVal == "no" && diabetesCheck == true) {
+                    $("#step3Section").css("display", "none");
+                    $("#titleMsgBox").css("display", "none");
+                    $("#step3Submit").css("display", "none");
+                    $("#dropOutMsg").text("We understand that you are insulin dependent & this program requires some amount of cooking. Hence, the program is not suitable for you.");
+                    $("#stepNoCook").fadeIn("slow");
 
-                var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"},{"Attribute":"mx_disease_filled_from_form","Value":"true"}]';
-                console.log("Step 2 data " + m_data);
-                $.ajax({
-                    url: '//heroku.truweight.in/post_leads_to_ls',
-                    //url: "/nw3",
-                    type: 'post',
-                    data: m_data
-                });
+                } else if (cookingVal == "no") {
+                    $("#step3Section").css("display", "none");
+                    $("#titleMsgBox").css("display", "none");
+                    $("#step3Submit").css("display", "none");
+                    $("#stepNoCook").fadeIn("slow");
 
-                $("#step3Section").css("display", "none");
-                $("#step4Section").fadeIn("slow");
-                $("#step4Submit").css("display", "initial");
-                $("#step3Submit").css("display", "none");
+                } else if (diabetesCheck == true) {
+                    $("#step3Section").css("display", "none");
+                    $("#titleMsgBox").css("display", "none");
+                    $("#step3Submit").css("display", "none");
+                    $("#dropOutMsg").text("We understand that you are insulin dependent hence, the program is not suitable for you.");
+                    $("#stepNoCook").fadeIn("slow");
+
+                } else {
+                    var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"},{"Attribute":"mx_disease_filled_from_form","Value":"true"}]';
+                    console.log("Step 2 data " + m_data);
+                    $.ajax({
+                        url: '//heroku.truweight.in/post_leads_to_ls',
+                        //url: "/nw3",
+                        type: 'post',
+                        data: m_data
+                    });
+
+                    $("#step3Section").css("display", "none");
+                    $("#step4Section").fadeIn("slow");
+                    $("#step4Submit").css("display", "initial");
+                    $("#step3Submit").css("display", "none");
+                }
+
+
             }
         });
 
         var cityVal;
         var addressVal;
         var pincodeVal;
-
+        var addressData;
         $("#step4Submit").click(function() {
             cityVal = $('#cityInput').find(":selected").val();
             addressVal = $("#addressInput").val();
             pincodeVal = $("#pincodeInput").val();
+            landmarkVal = $("#landmarkInput").val();
 
             if (addressVal == "") {
                 $("#addressError").text("Enter your Address");
@@ -714,8 +782,8 @@
                     $("#addressInput").removeClass("errorBorder");
                 }, 2000);
 
-            } else if (addressVal == "") {
-                $("#addressError").text("Enter your Address");
+            } else if (addressVal.length < 40) {
+                $("#addressError").text("Address should be at least 40 characters");
                 $("#addressError").css("visibility", "visible");
                 $("#addressInput").addClass("errorBorder");
                 setTimeout(function() {
@@ -740,15 +808,6 @@
                     $("#pincodeInput").removeClass("errorBorder");
                 }, 2000);
 
-            } else if (addressVal.length < 50) {
-                $("#addressError").text("Address should be at least 50 characters");
-                $("#addressError").css("visibility", "visible");
-                $("#addressInput").addClass("errorBorder");
-                setTimeout(function() {
-                    $("#addressError").css("visibility", "hidden");
-                    $("#addressInput").removeClass("errorBorder");
-                }, 2000);
-
             } else if (!pincodeVal.match(/^\d+$/)) {
                 $("#pincodeError").text("Enter a valid pincode");
                 $("#pincodeError").css("visibility", "visible");
@@ -767,58 +826,98 @@
                     $("#pincodeInput").removeClass("errorBorder");
                 }, 2000);
 
+            } else if (landmarkVal == "") {
+                $("#landmarkError").text("Enter a nearest landmark to your address");
+                $("#landmarkError").css("visibility", "visible");
+                $("#landmarkInput").addClass("errorBorder");
+                setTimeout(function() {
+                    $("#landmarkError").css("visibility", "hidden");
+                    $("#landmarkInput").removeClass("errorBorder");
+                }, 2000);
+
             } else {
-                $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Checking for slots");
-
-                var addressData = '[{"Attribute":"mx_address","Value":"' + addressVal + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"}]';
-                console.log(addressData);
-                $.ajax({
-                    url: '//heroku.truweight.in/post_leads_to_ls',
-                    type: 'post',
-                    data: addressData,
-                    success: function(data) {
-                        console.log("Address data sent to LS");
-                    }
-                });
-
-                console.log("api calling");
-                $.ajax({
-                    type: 'POST',
-                    url: "https://billing.truweight.in/show_recommended_slots?city=" + cityVal + "&pincode=" + pincodeVal,
-                    success: function(data) {
-                        if (data.status == false) {
-                            $("#step4Submit").html("Check again");
-                            $("#pincodeMatchError").fadeIn().delay(3000).fadeOut(500).text(data.message);
-                        } else {
-                            suggestionSlotMsg = data;
-                            var obj = suggestionSlotMsg;
-                            var recslots = [];
-                            var newObj = obj.slot_available_for_dates;
-                            Object.keys(newObj).forEach(function(key, value) {
-                                var newV = newObj[key];
-                                var keyChange = key.split("-");
-                                var newKey = keyChange[1] + '-' + keyChange[0] + '-' + keyChange[2];
-                                var dayNumOfWeek = Date.parse(key);
-                                var dayStrOfWeek = new Date(dayNumOfWeek);
-                                var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
-                                html = '';
-                                html += '<div class="card text-left" style="margin-bottom: 6px"><div class="card-body">' +
-                                    '<p style="font-size: 18px;">For ' + selDayOfWeek[0] + ', ' + newKey + '</p>';
-                                for (var i = 0; i < newV.length; i++) {
-                                    var newUpdatedTimeSlot = obj.slot_available_for_dates[key][i];
-                                    html += '<button type="button" class="btn btn-outline-info recBtn" data-time="' + newUpdatedTimeSlot +
-                                        '" data-date="' + newKey + '" data-mmdate="' + key + '">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
-                                }
-                                html += '</div></div>';
-                                recslots.push(html);
-                            });
-                            $('#suggestedSection').html(recslots);
-                            $("#step4Section").css("display", "none");
-                            $("#step4Submit").css("display", "none");
-                            $("#step5Section").fadeIn();
+                var addressValWithLandmark = addressVal + " | **Landmark**: " + landmarkVal;
+                if (cancerCheck == true || epilepsyCheck == true) {
+                    var addressDataWithChronicDisease = '[{"Attribute":"mx_address","Value":"' + addressValWithLandmark + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"}]';
+                    $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Submitting your data, please wait");
+                    $("#step4Submit").attr("disabled", "disabled");
+                    $.ajax({
+                        url: '//heroku.truweight.in/post_leads_to_ls',
+                        type: 'post',
+                        data: addressDataWithChronicDisease,
+                        success: function(data) {
+                            setTimeout(function() {
+                                window.location.href = "https://get.truweight.in/thank-you/";;
+                            }, 1000);
+                        },
+                        error: function(data) {
+                            setTimeout(function() {
+                                window.location.href = "https://get.truweight.in/thank-you/";
+                            }, 1000);
                         }
-                    }
-                });
+                    });
+                } else {
+                    $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Checking for slots");
+                    $("#step4Submit").attr("disabled", "disabled");
+                    addressData = '[{"Attribute":"mx_address","Value":"' + addressValWithLandmark + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"}]';
+                    console.log(addressData);
+                    $.ajax({
+                        url: '//heroku.truweight.in/post_leads_to_ls',
+                        type: 'post',
+                        data: addressData,
+                        success: function(data) {
+                            console.log("Address data sent to LS");
+                        }
+                    });
+
+                    console.log("api calling");
+                    $.ajax({
+                        type: 'POST',
+                        url: "https://billing.truweight.in/show_recommended_slots?city=" + cityVal + "&pincode=" + pincodeVal,
+                        success: function(data) {
+                            if (data.status == false) {
+                                $("#step4Submit").removeAttr("disabled");
+                                $("#step4Submit").html("Check again");
+                                if (data.message == "Pincode not available for service.Please book an online consultation.") {
+                                    $("#onlineConsultationModal").modal();
+                                } else {
+
+                                    $("#pincodeMatchError").fadeIn().delay(3000).fadeOut(500).text(data.message);
+                                }
+
+                            } else {
+                                suggestionSlotMsg = data;
+                                var obj = suggestionSlotMsg;
+                                var recslots = [];
+                                var newObj = obj.slot_available_for_dates;
+                                Object.keys(newObj).forEach(function(key, value) {
+                                    var newV = newObj[key];
+                                    var keyChange = key.split("-");
+                                    var newKey = keyChange[1] + '-' + keyChange[0] + '-' + keyChange[2];
+                                    var dayNumOfWeek = Date.parse(key);
+                                    var dayStrOfWeek = new Date(dayNumOfWeek);
+                                    var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
+                                    html = '';
+                                    html += '<div class="card text-left" style="margin-bottom: 6px"><div class="card-body">' +
+                                        '<p style="font-size: 18px;">For ' + selDayOfWeek[0] + ', ' + newKey + '</p>';
+                                    for (var i = 0; i < newV.length; i++) {
+                                        var newUpdatedTimeSlot = obj.slot_available_for_dates[key][i];
+                                        html += '<button type="button" class="btn btn-outline-info recBtn" data-time="' + newUpdatedTimeSlot +
+                                            '" data-date="' + newKey + '" data-mmdate="' + key + '">' + newUpdatedTimeSlot + '</button>&nbsp;&nbsp;';
+                                    }
+                                    html += '</div></div>';
+                                    recslots.push(html);
+                                });
+                                $('#suggestedSection').html(recslots);
+                                $("#step4Section").css("display", "none");
+                                $("#step4Submit").css("display", "none");
+                                $("#step5Section").fadeIn();
+                            }
+                        }
+                    });
+
+                }
+
             }
         });
 
@@ -835,7 +934,7 @@
             var dayStrOfWeek = new Date(dayNumOfWeek);
             var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
             //SENDING TIME TO post_leads_to_ls should always be in IST am-pm format
-            availableSlotBookedData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},,{"Attribute":"mx_walk_in_date","Value":"' + revDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + availableSlotTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            availableSlotBookedData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_walk_in_date","Value":"' + revDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + availableSlotTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             $("#selTime").text(availableSlotTime);
             $("#selDate").text(selDayOfWeek[0] + ", " + availableSlotDate);
             $("#selCity").text(cityVal);
@@ -860,7 +959,6 @@
                 },
                 error: function(data) {
                     setTimeout(function() {
-                        alert("Success, redirect to thank you page when live");
                         window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
                     }, 1000);
                 }
@@ -954,8 +1052,6 @@
             }
         });
 
-
-
         $("#customSuccessBookBtn").click(function() {
             $("#customSuccessBookBtn").attr("disabled", "disabled");
             $("#customSuccessBookBtn").html("<i class='fas fa-circle-notch fa-spin'></i> Booking your slot");
@@ -966,7 +1062,7 @@
             console.log("Custom Date time success Data" + customSuccessBookData);
             $.ajax({
                 url: '//heroku.truweight.in/post_leads_to_ls',
-                type: 'post',    
+                type: 'post',
                 data: customSuccessBookData,
                 success: function(data) {
                     setTimeout(function() {
@@ -1002,16 +1098,16 @@
             if (time == "12 noon") {
                 time = "12:00 pm";
             }
-            customFailSlotBookData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},,{"Attribute":"mx_walk_in_date","Value":"' + newDate + '"},,{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            customFailSlotBookData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_walk_in_date","Value":"' + newDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             console.log("Requested slot not available Book Now Data\n" + customFailSlotBookData);
             $("#customFailSlotModal").modal('hide');
             $("#customFailPhn").text(phn);
             $("#customFailCity").text(cityVal);
             $("#customFailPincode").text(pincodeVal);
-            $("#customFailTime").text(time + ", " +selDayOfWeek[0]);
+            $("#customFailTime").text(time + ", " + selDayOfWeek[0]);
             $("#customFailDate").text(date);
             $("#customFailConfModal").modal();
-            
+
             $.ajax({
                 url: '//heroku.truweight.in/post_leads_to_ls',
                 type: 'post',
@@ -1035,7 +1131,7 @@
             $("#customFailBookBtn").html("<i class='fas fa-circle-notch fa-spin'></i> Booking your slot");
             $.ajax({
                 url: '//heroku.truweight.in/post_leads_to_ls',
-                type: 'post',    
+                type: 'post',
                 data: customFailSlotBookData,
                 success: function(data) {
                     setTimeout(function() {
@@ -1052,7 +1148,28 @@
             });
         });
 
+        $("#onlineConsultationBtn").click(function() {
+            $("#onlineConsultationBtn").attr("disabled", "disabled");
+            $("#onlineConsultationBtn").html("<i class='fas fa-circle-notch fa-spin'></i> Booking your online consultation");
+            var onlineBookData = '[{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"},{"Attribute":"Phone","Value":"' + phn + '"}';
+            $.ajax({
+                url: '//heroku.truweight.in/post_leads_to_ls',
+                type: 'post',
+                data: customFailSlotBookData,
+                success: function(data) {
+                    setTimeout(function() {
 
+                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                },
+                error: function(data) {
+                    setTimeout(function() {
+
+                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                    }, 1000);
+                }
+            });
+        });
     });
     </script>
 </body>
