@@ -360,7 +360,7 @@
             </div>
             <div class="card-footer text-right">
                 <button type="button" class="btn btn-danger" id="step1Submit">Check My BMI <i class="fas fa-chevron-right"></i></button>
-                <button type="button" class="btn btn-outline-danger" id="backStep1" style="display: none"><i class="fas fa-chevron-left"></i> Back</button>
+                
                 <button type="button" class="btn btn-danger" id="step2Submit" style="display: none">Show me how to lose weight <i class="fas fa-chevron-right"></i></button>
                 <button type="button" class="btn btn-danger" id="step3Submit" style="display: none">Next <i class="fas fa-chevron-right"></i></button>
                 <button type="button" class="btn btn-danger" id="step4Submit" style="display: none">Next <i class="fas fa-chevron-right"></i>
@@ -668,29 +668,18 @@
                 selectGauge.set(intResult);
                 $('.odometer').html(intResult);
                 $("#step1Submit").css("display", "none");
-                $("#backStep1").css("display", "initial");
                 $("#step2Submit").css("display", "initial");
 
                 if (intResult <= 25) {
                     $("#step2Submit").css("display", "none");
-                    $("#backStep1").css("display", "none");
                 }
             }
-        });
-
-        $("#backStep1").click(function() {
-            $("#step2Section").css("display", "none");
-            $("#step1Section").fadeIn("slow");
-            $("#step1Submit").css("display", "initial");
-            $("#backStep1").css("display", "none");
-            $("#step2Submit").css("display", "none");
         });
 
         $("#step2Submit").click(function() {
             $("#step2Section").css("display", "none");
             $("#step3Section").fadeIn("slow");
             $("#step3Submit").css("display", "initial");
-            $("#backStep1").css("display", "none");
             $("#step2Submit").css("display", "none");
             $("#titleMsg").text('You are 1 step closer to getting a personalized weight loss consultation, worth Rs.750 for FREE today.');
         });
@@ -852,7 +841,7 @@
             } else {
                 var addressValWithLandmark = addressVal + " | **Landmark**: " + landmarkVal;
                 if (cancerCheck == true || epilepsyCheck == true) {
-                    var addressDataWithChronicDisease = '[{"Attribute":"mx_address","Value":"' + addressValWithLandmark + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"}]';
+                    var addressDataWithChronicDisease = '[{"Attribute":"mx_address","Value":"' + addressValWithLandmark + '"},{"Attribute":"mx_Zip","Value":"' + pincodeVal + '"},{"Attribute":"mx_city_consultation","Value":"' + cityVal + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"},{"Attribute":"mx_Disposition","Value":"Interested"}]';
                     $("#step4Submit").html("<i class='fas fa-circle-notch fa-spin'></i> Submitting your data, please wait");
                     $("#step4Submit").attr("disabled", "disabled");
                     $.ajax({
@@ -1175,7 +1164,7 @@
         $("#onlineConsultationBtn").click(function() {
             $("#onlineConsultationBtn").attr("disabled", "disabled");
             $("#onlineConsultationBtn").html("<i class='fas fa-circle-notch fa-spin'></i> Booking your online consultation");
-            var onlineBookData = '[{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"},{"Attribute":"Phone","Value":"' + phn + '"}';
+            var onlineBookData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Online Consultation Scheduled"},{"Attribute":"Phone","Value":"' + phn + '"}';
             $.ajax({
                 url: '//heroku.truweight.in/post_leads_to_ls',
                 type: 'post',
