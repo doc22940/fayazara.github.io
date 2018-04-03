@@ -102,7 +102,7 @@
                             <div class="input-group" id="heightInputOutline">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="heightIconSpan" style="width: 42px;">
-                                <i style="margin-left: 5px;" class="fas fa-arrows-alt-v"></i></span>
+                                <i style="margin-left: 4px;" class="fas fa-arrows-alt-v"></i></span>
                                 </div>
                                 <select class="form-control" id="heightInput">
                                     <option value="0" selected disabled>Select your Height (ft.in)</option>
@@ -154,7 +154,7 @@
                             <div class="input-group" id="genderInputOutline">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1" style="width: 42px;">
-                                <i style="margin-left: 5px;" class="fas fa-male"></i></span>
+                                <i style="margin-left: 4px;" class="fas fa-male"></i></span>
                                 </div>
                                 <select class="form-control" id="genderInput">
                                     <option value="0" selected disabled>Select your Gender</option>
@@ -367,6 +367,7 @@
                 </button>
                 <button type="button" class="btn btn-danger" id="step7Submit" style="display: none">Check
                 </button>
+                <button type="button" class="btn btn-outline-danger" id="backHome" style="display: none"><i class="fas fa-chevron-left"></i> Back</button>
             </div>
         </div>
     </div>
@@ -693,6 +694,15 @@
             $("#step2Submit").css("display", "none");
             $("#titleMsg").text('You are 1 step closer to getting a personalized weight loss consultation, worth Rs.750 for FREE today.');
         });
+
+
+        $("#backHome").click(function() {
+            $("#stepNoCook").css("display", "none");
+            $("#step3Section").fadeIn("slow");
+            $("#step3Submit").css("display", "initial");
+            $("#backHome").css("display", "none");
+        });
+
         var epilepsyCheck, cancerCheck;
 
         $("#step3Submit").click(function() {
@@ -729,12 +739,15 @@
                     $("#step3Submit").css("display", "none");
                     $("#dropOutMsg").text("We understand that you are insulin dependent & this program requires some amount of cooking. Hence, the program is not suitable for you.");
                     $("#stepNoCook").fadeIn("slow");
+                    $("#backHome").css("display", "initial");
+
 
                 } else if (cookingVal == "no") {
                     $("#step3Section").css("display", "none");
                     $("#titleMsgBox").css("display", "none");
                     $("#step3Submit").css("display", "none");
                     $("#stepNoCook").fadeIn("slow");
+                    $("#backHome").css("display", "initial");
 
                 } else if (diabetesCheck == true) {
                     $("#step3Section").css("display", "none");
@@ -742,6 +755,7 @@
                     $("#step3Submit").css("display", "none");
                     $("#dropOutMsg").text("We understand that you are insulin dependent hence, the program is not suitable for you.");
                     $("#stepNoCook").fadeIn("slow");
+                    $("#backHome").css("display", "initial");
 
                 } else {
                     var m_data = '[{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_diseases","Value":"' + medical_data + '"},{"Attribute":"mx_have_a_cook_at_home","Value":"' + cookingVal + '"},{"Attribute":"mx_disease_filled_from_form","Value":"true"}]';
@@ -925,6 +939,7 @@
         var availableSlotTime;
         var availableSlotBookedData;
         var revDate;
+        var unbounceDTR;
         $(document).on("click", ".recBtn", function() {
 
             availableSlotTime = $(this).attr("data-time");
@@ -935,6 +950,8 @@
             var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
             //SENDING TIME TO post_leads_to_ls should always be in IST am-pm format
             availableSlotBookedData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_walk_in_date","Value":"' + revDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + availableSlotTime + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
+            var unbounceData = "Your Slot is successfully booked on " + availableSlotTime + ", " + selDayOfWeek[0] +" "+ availableSlotDate;
+            unbounceDTR = encodeURI(unbounceData);
             $("#selTime").text(availableSlotTime);
             $("#selDate").text(selDayOfWeek[0] + ", " + availableSlotDate);
             $("#selCity").text(cityVal);
@@ -944,6 +961,7 @@
         });
 
         $("#availableSlotBookBtn").click(function() {
+
             $("#availableSlotBookBtn").html("<i class='fas fa-circle-notch fa-spin'></i> Booking your slot");
             $("#availableSlotBookBtn").attr("disabled", "disabled");
             console.log("availableSlotBookBtn data " + availableSlotBookedData);
@@ -954,12 +972,12 @@
                 data: availableSlotBookedData,
                 success: function(data) {
                     setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 },
                 error: function(data) {
                     setTimeout(function() {
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 }
             });
@@ -1012,6 +1030,8 @@
                         var dayNumOfWeek = Date.parse(newDate);
                         var dayStrOfWeek = new Date(dayNumOfWeek);
                         var selDayOfWeek = (dayStrOfWeek.toString()).split(" ");
+                        var unbounceData = "Your Slot is successfully booked on " + nowTime + ", " + selDayOfWeek[0] +" "+ dateSelectedVal;
+                        unbounceDTR = encodeURI(unbounceData);
                         $("#customDate").text(selDayOfWeek[0] + ", " + dateSelectedVal);
                         $('#customSuccessBookBtn').attr('data-time', nowTime);
                         $('#customSuccessBookBtn').attr('data-dateval', newDate);
@@ -1047,6 +1067,8 @@
                         recMsg = recslots.join(" ");
                         $("#customBookSection").html(recMsg);
                         $("#customFailSlotModal").modal();
+                        $('#step7Submit').html("Check");
+                        $("#step7Submit").removeAttr("disabled", "disabled");
                     }
                 });
             }
@@ -1067,13 +1089,13 @@
                 success: function(data) {
                     setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 },
                 error: function(data) {
                     setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 }
             });
@@ -1100,6 +1122,8 @@
             }
             customFailSlotBookData = '[{"Attribute":"mx_Disposition","Value":"Interested"},{"Attribute":"mx_SubDisposition","Value":"Home Visit Scheduled"},{"Attribute":"mx_walk_in_date","Value":"' + newDate + '"},{"Attribute":"mx_walk_in_time","Value":"' + time + '"},{"Attribute":"Phone","Value":"' + phn + '"},{"Attribute":"mx_appointment_date_filled_from_form","Value":"true"}]';
             console.log("Requested slot not available Book Now Data\n" + customFailSlotBookData);
+            var unbounceData = "Your Slot is successfully booked on " + time + ", " + selDayOfWeek[0] +" "+ date;
+                        unbounceDTR = encodeURI(unbounceData);
             $("#customFailSlotModal").modal('hide');
             $("#customFailPhn").text(phn);
             $("#customFailCity").text(cityVal);
@@ -1136,13 +1160,13 @@
                 success: function(data) {
                     setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 },
                 error: function(data) {
                     setTimeout(function() {
 
-                        window.location.href = "https://get.truweight.in/thank-you/?data_phone=" + phn;
+                        window.location.href = "https://get.truweight.in/booked-thank-you/?bookingdata=" + unbounceDTR;
                     }, 1000);
                 }
             });
