@@ -92,7 +92,7 @@
             console.log(encodeURI(bank));
         });
 
-        $("#stateGo").click(function() {
+        $(document).on("click", "#stateGo", function() {
             state = $("#stateIn-flexdatalist").val();
             $("main").append(districtTemplate);
             $('#districtIn').flexdatalist({
