@@ -32,6 +32,7 @@ $(document).ready(function() {
             setTimeout(function() { $("#noResDiv").fadeIn("fast"); }, 1000);
         }
     });
+
     function getData() {
         var i, j;
         $.getJSON('https://api.jsonbin.io/b/5a98371aa121bc097fe76892/5', function(data) {
@@ -63,5 +64,23 @@ $(document).ready(function() {
             $("#filter").focus();
         }, 850);
 
+    });
+    $(document).on("click", ".chip", function() {        
+        var chipVal = $(this).text();
+        $("#filter").val(chipVal);
+        console.log(chipVal);
+        var filter = chipVal,
+            count = 0;
+        $("#users ul li").each(function() {
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                $(this).fadeOut();
+            } else {
+                $(this).show();
+                count++;
+            }
+        });
+        if (count == 0) {
+            setTimeout(function() { $("#noResDiv").fadeIn("fast"); }, 1000);
+        }
     });
 });

@@ -9,6 +9,7 @@ body {
         line-height: 22px;
         background-color: #b9b9b9;
         margin-top: 5px;
+        cursor: pointer;
     }
 
     .collection {
