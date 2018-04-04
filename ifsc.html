@@ -115,15 +115,13 @@
                 }, 1000);
             } else {
                 $.getJSON("https://ifsc.razorpay.com/" + ifscVal, function(result) {
-                    var contact;
-                    if (result.CONTACT == ""){
-                        contact = "NA"
-                    }
+                    console.log(result);
+
                     $("#bankName").text(result.BANK);
                     $("#bankIfsc").text(result.IFSC);
                     $("#bankCode").text(result.BANKCODE);
                     $("#bankRtgs").text(result.RTGS);
-                    $("#bankContact").html("<i>"+contact+"</i>");
+                    $("#bankContact").html(result.CONTACT);
                     $("#bankBranch").text(result.BRANCH);
                     $("#bankAddress").text(result.ADDRESS);
                     $("#bankCity").text(result.CITY);
