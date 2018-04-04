@@ -45,6 +45,32 @@
     #ifsccode {
         text-transform: uppercase;
     }
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    main {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-flex-direction: row;
+        -moz-box-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        margin: auto;
+    }
     </style>
     <nav>
     </nav>
@@ -116,7 +142,6 @@
             } else {
                 $.getJSON("https://ifsc.razorpay.com/" + ifscVal, function(result) {
                     console.log(result);
-
                     $("#bankName").text(result.BANK);
                     $("#bankIfsc").text(result.IFSC);
                     $("#bankCode").text(result.BANKCODE);
@@ -130,6 +155,7 @@
                     $("#bankcard").fadeIn();
                 }).fail(function(jqXHR, textStatus, errorThrown) {
                     $("#bankcard").css("display", "none");
+                    console.log("textStatus " + textStatus + " errorThrown " + errorThrown);
                     $("#errorMsg").text("Seems like you've entered a wrong IFSC Code");
                     $(".alert").fadeIn();
                 });
