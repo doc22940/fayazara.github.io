@@ -66,7 +66,7 @@
                 </div>
                 <div class="card" style="display: none;" id="bankcard">
                     <div class="card-body">
-                        <h4 class="card-title"><strong><span id="bankName"></span></strong></h4>
+                        <h4 class="card-title"><strong><span style="text-decoration: underline;" id="bankName"></span></strong></h4>
                         <p class="card-text"><strong>IFSC Code</strong> <span id="bankIfsc"></span></p>
                         <p class="card-text"><strong>Bank Code</strong> <span id="bankCode"></span></p>
                         <p class="card-text"><strong>RTGS</strong> <span id="bankRtgs"></span></p>
@@ -93,6 +93,17 @@
             $("#searchBtn").html('<i class="fas fa-search"></i>');
         });
         $("#searchBtn").click(function() {
+            fetch();
+        });
+
+        $('#ifsccode').keydown(function(event) {
+            var keyCode = (event.keyCode ? event.keyCode : event.which);
+            if (keyCode == 13) {
+                fetch();
+            }
+        });
+
+        function fetch() {
             $(".alert").css("display", "none");
             var ifscVal = $("#ifsccode").val();
             if (ifscVal == "") {
@@ -104,11 +115,15 @@
                 }, 1000);
             } else {
                 $.getJSON("https://ifsc.razorpay.com/" + ifscVal, function(result) {
+                    var contact;
+                    if (result.CONTACT == ""){
+                        contact = "NA"
+                    }
                     $("#bankName").text(result.BANK);
                     $("#bankIfsc").text(result.IFSC);
                     $("#bankCode").text(result.BANKCODE);
                     $("#bankRtgs").text(result.RTGS);
-                    $("#bankContact").text(result.CONTACT);
+                    $("#bankContact").html("<i>"+contact+"</i>");
                     $("#bankBranch").text(result.BRANCH);
                     $("#bankAddress").text(result.ADDRESS);
                     $("#bankCity").text(result.CITY);
@@ -121,7 +136,7 @@
                     $(".alert").fadeIn();
                 });
             }
-        });
+        }
     });
     </script>
 </body>
