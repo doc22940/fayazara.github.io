@@ -127,6 +127,11 @@
                     </header>
                 </article>
             </section>
+            <section id="two">
+                <div class="inner">
+                    <iframe id="testimonials" src="testimonial.html"></iframe>
+                </div>
+            </section>
             <!-- Two -->
             <section id="two">
                 <div class="inner">
@@ -194,7 +199,8 @@
                             <h3>Address</h3>
                             <span>1234 Somewhere Road #5432<br />
                                         Nashville, TN 00000<br />
-                                        United States of America</span>
+                                        United States of America
+                                    </span>
                         </div>
                     </section>
                 </section>
@@ -227,11 +233,7 @@
     }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js"></script>
-    <script>
-    particlesJS.load('particle', 'https://cdn.rawgit.com/fayazara/fayazara.github.io/9d33a10d/particles.json', function() {
-        console.log('callback - particles.js config loaded');
-    });
-    </script>
+    <script src="https://cdn.rawgit.com/sparkbuzz/jquery-xml2json/9e394c18/src/xml2json.js"></script>
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -240,6 +242,29 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
+    <script>
+    $(document).ready(function() {
+        particlesJS.load('particle', 'https://cdn.rawgit.com/fayazara/fayazara.github.io/9d33a10d/particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+
+        $.ajax({
+            url: 'https://medium.com/feed/@fayazara',
+            dataType: 'xml',
+            success: function(response) {
+                json = $.xml2json(response);
+                console.log("JSON " + json);
+            }
+        });
+        $("#testimonials").css("width", "100%");
+        if (/Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent)) {
+            $("#testimonials").css("height", "445px");
+        } else {
+            $("#testimonials").css("height", "270px");
+        }
+
+    }); 
+    </script>
 </body>
 
 </html>
