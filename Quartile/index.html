@@ -24,6 +24,11 @@
         z-index: 2;
         margin-left: 20px;
     }
+
+    iframe {
+        border-radius: 4px;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
     </style>
     <!-- Wrapper -->
     <div id="wrapper">
@@ -37,10 +42,10 @@
         <!-- Menu -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="landing.html">What are we?</a></li>
-                <li><a href="generic.html">Feed</a></li>
-                <li><a href="elements.html">Contact Us</a></li>
+                <li id="homeSec">Home</li>
+                <li id="whyUsSec">What are we?a></li>
+                <li id="testimSec">Feed</li>
+                <li id="contactSec">Contact Us</li>
             </ul>
         </nav>
         <!-- Banner -->
@@ -263,7 +268,14 @@
             $("#testimonials").css("height", "270px");
         }
 
-    }); 
+        $("#homeSec").click(function() {
+            console.log("Clicked");
+            $('html, body').animate({
+                scrollTop: $("#header").offset().top
+            }, 1000);
+        });
+
+    });
     </script>
 </body>
 
