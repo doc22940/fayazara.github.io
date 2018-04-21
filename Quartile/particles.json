@@ -1,7 +1,7 @@
 {
   "particles": {
     "number": {
-      "value": 100,
+      "value": 80,
       "density": {
         "enable": false,
         "value_area": 800
@@ -17,12 +17,12 @@
         "color": "#000000"
       },
       "polygon": {
-        "nb_sides": 3
+        "nb_sides": 5
       },
       "image": {
         "src": "img/github.svg",
-        "width": 300,
-        "height": 300
+        "width": 100,
+        "height": 100
       }
     },
     "opacity": {
@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 3,
+      "value": 3.5,
       "random": true,
       "anim": {
         "enable": false,
@@ -47,16 +47,16 @@
     },
     "line_linked": {
       "enable": true,
-      "distance": 150,
+      "distance": 128.27296486924183,
       "color": "#ffffff",
-      "opacity": 0.4,
+      "opacity": 0.5,
       "width": 1.5
     },
     "move": {
       "enable": true,
-      "speed": 3,
+      "speed": 1.8,
       "direction": "none",
-      "random": true,
+      "random": false,
       "straight": false,
       "out_mode": "out",
       "bounce": false,
@@ -82,7 +82,7 @@
     },
     "modes": {
       "grab": {
-        "distance": 100,
+        "distance": 80,
         "line_linked": {
           "opacity": 1
         }
