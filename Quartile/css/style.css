@@ -24,7 +24,7 @@ Table of contents
 
 
 /*--------------------
-	Main Styles
+    Main Styles
 ----------------------*/
 
 html,
@@ -116,6 +116,9 @@ ol {
 
 
 
+
+
+
 /* Image Popup */
 
 .img-popup-warp .mfp-content,
@@ -135,6 +138,9 @@ ol {
     -ms-transform: scale(1);
     transform: scale(1);
 }
+
+
+
 
 
 
@@ -206,8 +212,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Navigation
+    Navigation
 ----------------------*/
 
 .nav-toggle {
@@ -393,8 +402,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Intro Section
+    Intro Section
 ----------------------*/
 
 .intro-section {
@@ -468,8 +480,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	About Section
+    About Section
 ----------------------*/
 
 .about-section {
@@ -503,8 +518,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Service Section
+    Service Section
 ----------------------*/
 
 .service-box {
@@ -607,8 +625,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Resume Section
+    Resume Section
 ----------------------*/
 
 .resume-section {
@@ -661,8 +682,11 @@ ol {
 
 
 
+
+
+
 /*-----------------------
-	Portfolio Section
+    Portfolio Section
 -------------------------*/
 
 .portfolio-filter {
@@ -776,8 +800,11 @@ ol {
 
 
 
+
+
+
 /*-----------------------
-	Testimonial Section
+    Testimonial Section
 -------------------------*/
 
 .testimonial-section {
@@ -850,8 +877,11 @@ ol {
 
 
 
+
+
+
 /*-----------------------
-	Contact Section
+    Contact Section
 -------------------------*/
 
 .contact-info {
@@ -928,8 +958,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Footer Section
+    Footer Section
 ----------------------*/
 
 .footer-section {
@@ -965,8 +998,11 @@ ol {
 
 
 
+
+
+
 /*--------------------
-	Responsive
+    Responsive
 ----------------------*/
 
 
@@ -981,6 +1017,9 @@ ol {
 
 
 
+
+
+
 /* Tablet :768px. */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -988,6 +1027,9 @@ ol {
         width: 70%;
     }
 }
+
+
+
 
 
 
@@ -1005,6 +1047,9 @@ ol {
         font-size: 15px;
     }
 }
+
+
+
 
 
 
@@ -1035,7 +1080,6 @@ ol {
 }
 
 
-
 /* Scrollbar Styling */
 
  ::-webkit-scrollbar {
@@ -1052,4 +1096,21 @@ ol {
     -webkit-border-radius: 4px;
     border-radius: 4px;
     background: #adadad;
+}
+
+#logoTem {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #ffffff;
+    color: #242943;
+    display: inline-block;
+    line-height: 1.65em;
+    margin-right: 0.325em;
+    padding: 0 0.3em 0 0.375em;
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+
+#logoTem:hover {
+    border-bottom-color: transparent;
+    color: #9bf1ff !important;
 }
