@@ -45,6 +45,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#whyQuartile">Why Quartile?</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#feed">Feed</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -363,18 +364,23 @@
     <script src="js/scripts.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        var feedHtml = "";;
-        var i = "0"
+        var feedHtml = "";
+
         $.getJSON("https://fayazahmed.com/medapi.php", function(result) {
                 //console.log(result.payload.references.Post);
                 var newObj = result.payload.references.Post;
+                var breakFlag = false;
+
                 Object.keys(newObj).forEach(function(key, value) {
-                    i++;
+                    if (breakFlag) return false;
+
                     feedHtml += '<div class="resume-item wow fadeInUp" data-wow-delay="0.3s">' +
-                        '<h2>' + newObj[key].title + '</h2>' +
+                        '<h2><a href ="https://medium.com/@Financial_times" target="_blank">' + newObj[key].title + '</a></h2>' +
                         '<h3></h3>' +
                         '<p>' + newObj[key].content.subtitle + '</p>' +
                         '</div>';
+
+                    if (value === 3) breakFlag = true;
                 });
 
             }).done(function() {
