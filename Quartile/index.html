@@ -41,12 +41,12 @@
         <!-- Main menu -->
         <nav class="main-manu">
             <ul class="menu-list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#whyQuartile">Why Quartile?</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#feed">Feed</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" onclick="myFunction()">Home</a></li>
+                <li><a href="#about" onclick="myFunction()">About</a></li>
+                <li><a href="#whyQuartile" onclick="myFunction()">Why Quartile?</a></li>
+                <li><a href="#testimonials" onclick="myFunction()">Testimonials</a></li>
+                <li><a href="#feed" onclick="myFunction()">Feed</a></li>
+                <li><a href="#contact" onclick="myFunction()">Contact</a></li>
             </ul>
         </nav>
         <div class="social-links">
@@ -347,8 +347,7 @@
                 <a href="#">behance </a>
                 <a href="#">dribbble  </a>
             </div>
-            <div class="copyright">Copyright © 2018 Vivid, All rights Reserved.
-                <br> Created by BootExpress</div>
+            <div class="copyright">Copyright © 2018 The Quartile Company</div>
         </div>
     </footer>
     <!-- Footer section start end -->
@@ -363,6 +362,9 @@
     <script src="js/wow.min.js"></script>
     <script src="js/scripts.js"></script>
     <script type="text/javascript">
+    function myFunction() {
+        $('.nav-section').removeClass('active');
+    }
     $(document).ready(function() {
         var feedHtml = "";
 
@@ -390,6 +392,9 @@
             .fail(function() {
                 console.log("error");
             });
+
+
+
     });
     </script>
 </body>
