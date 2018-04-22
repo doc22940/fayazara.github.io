@@ -152,7 +152,7 @@
     // 	return false;
     // });
     $(function() {
-        $("#send-form-contact").click(function(e) {
+        $("#contact-form").submit(function(e) {
             e.preventDefault();
             $("#send-form-contact").text("Sending..");
             var href = $(this).attr("action");
