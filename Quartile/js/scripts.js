@@ -151,10 +151,17 @@
     // 	});
     // 	return false;
     // });
+
+    function reset_form() {
+        $("#name").val('');
+        $("#email").val('');
+        $("#massage").val('');
+    }
+    var send_btn = $('#send-form')
     $(function() {
         $("#contact-form").submit(function(e) {
             e.preventDefault();
-            $("#send-form").text("Sending..");
+            send_btn.html("<i class='fa fa-circle-o-notch fa-spin' aria-hidden='true'></i> Sending..");
             var href = $(this).attr("action");
             $.ajax({
                 type: "POST",
@@ -163,9 +170,21 @@
                 data: $(this).serialize(),
                 success: function(response) {
                     if (response.status == "success") {
-                        $("#send-form").text("Sent");
+                        send_btn.addClass('done');
+                        send_btn.text('Success');
+                        setTimeout(function() {
+                            reset_form();
+                            send_btn.removeClass('done');
+                            send_btn.text('Send Message');
+                        }, 3000);
                     } else {
-                        $("#send-form").text("Failed, please try again")
+                        reset_form();
+                        send_btn.addClass('error');
+                        send_btn.text('Something went wrong');
+                        setTimeout(function() {
+                            send_btn.removeClass('error');
+                            send_btn.text('Send Message');
+                        }, 3000);
                     }
                 }
             });
