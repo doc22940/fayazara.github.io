@@ -154,7 +154,7 @@
     $(function() {
         $("#contact-form").submit(function(e) {
             e.preventDefault();
-            $("#send-form-").text("Sending..");
+            $("#send-form").text("Sending..");
             var href = $(this).attr("action");
             $.ajax({
                 type: "POST",
@@ -163,9 +163,9 @@
                 data: $(this).serialize(),
                 success: function(response) {
                     if (response.status == "success") {
-                        $("#send-form-").text("Sent");
+                        $("#send-form").text("Sent");
                     } else {
-                        $("#send-form-").text("Failed, please try again")
+                        $("#send-form").text("Failed, please try again")
                     }
                 }
             });
