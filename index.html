@@ -494,7 +494,7 @@
         $(function() {
             $(".ajaxForm").submit(function(e) {
                 $("#formSend").html('<i class="fas fa-circle-notch fa-spin"></i>');
-                $("#formSend").removeAttr("disabled")
+                $("#formSend").attr("disabled",'disabled');
                 e.preventDefault();
                 var href = $(this).attr("action");
                 $.ajax({
