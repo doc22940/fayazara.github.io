@@ -5,10 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fayaz Ahmed | Front End Developer | Wordpress Developer | Javascript Developer | SEO Optimization</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async="" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <script src="js/jquery.viewportchecker.min.js"></script>
@@ -102,6 +101,65 @@
     .socialIc {
         font-size: 18px;
         padding: 4px;
+    }
+    /* Custom Stylesheet */
+    /**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+    nav ul a,
+    nav .brand-logo {
+        color: #444;
+    }
+
+    p {
+        line-height: 2rem;
+    }
+
+    .sidenav-trigger {
+        color: #26a69a;
+    }
+
+    .parallax-container {
+        min-height: 380px;
+        line-height: 0;
+        height: auto;
+        color: rgba(255, 255, 255, .9);
+    }
+
+    .parallax-container .section {
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 992px) {
+        .parallax-container .section {
+            position: absolute;
+            top: 40%;
+        }
+        #index-banner .section {
+            top: 10%;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        #index-banner .section {
+            top: 0;
+        }
+    }
+
+    .icon-block {
+        padding: 0 15px;
+    }
+
+    .icon-block .material-icons {
+        font-size: inherit;
+    }
+
+    footer.page-footer {
+        margin: 0;
     }
     </style>
     <div id="index-banner" class="parallax-container">
