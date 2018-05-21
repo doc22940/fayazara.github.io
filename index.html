@@ -9,7 +9,6 @@
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" async href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    
     <meta name="theme-color" content="#edf1f1">
     <meta name="author" content="@fayazara">
     <meta name="description" content="JavaScript, Wordpress, SEO, Website Speed Optimization and website front-end development In Bangalore">
@@ -172,311 +171,335 @@
         border-radius: 4px;
         background: #adadad;
     }
+
+    nav {
+        position: absolute;
+        z-index: 999999999;
+    }
     </style>
-    <div id="index-banner" class="parallax-container">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <br>
-                <br>
-                <h1 class="header txtShad center teal-text text-lighten-2"><span class="brandFyz">Fayaz Ahmed</span></h1>
+    <div class="navbar">
+        <nav class="transparent z-depth-0">
+            <div class="nav-wrapper">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="right hide-on-down">
+                            <li><a id="servicesSection">Services</a></li>
+                            <li><a id="techSection">Tech Stack</a></li>
+                            <li><a id="contactSection">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <main>
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <br>
+                    <br>
+                    <h1 class="header txtShad center teal-text text-lighten-2"><span class="brandFyz">Fayaz Ahmed</span></h1>
+                    <div class="row center">
+                        <h5 class="header col s12 light" style="color: #242943; font-weight: bold;">Front End Developer</h5>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="parallax"><img src="images/FotoJet.png" alt="Home Page Image"></div>
+        </div>
+        <div class="container">
+            <div class="section" id="mainSection">
                 <div class="row center">
-                    <h5 class="header col s12 light" style="color: #242943; font-weight: bold;">Front End Developer</h5>
+                    <h4 style="padding-bottom: 20px;">Hi, I am Fayaz. I design fast websites</h4>
+                    <hr style="width: 35%; border: solid #e6e1e1;">
                 </div>
-                <br>
-                <br>
-            </div>
-        </div>
-        <div class="parallax"><img src="images/FotoJet.png" alt="Home Page Image"></div>
-    </div>
-    <div class="container">
-        <div class="section" id="mainSection">
-            <div class="row center">
-                <h4 style="padding-bottom: 20px;">Hi, I am Fayaz. I design fast websites</h4>
-                <hr style="width: 35%; border: solid #e6e1e1;">
-            </div>
-            <div class="row center">
-                <p style="font-size: 16px;">I can get your site up & running, fully responsive, beautiful, SEO optimized, Speed Optimized & help you generate Potential Leads for your business</p>
-            </div>
-        </div>
-        <blockquote class="blockq">
-            <h5>Services I provide</h5>
-        </blockquote>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/web-design.svg" alt="Fayaz Web Design">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Website Development</span>
-                        <br>
-                        <p>I can make beautiful, responsive, trendy websites using the latest tech stack & optimize it intelligently according to Google</p>
-                    </div>
+                <div class="row center">
+                    <p style="font-size: 16px;">I can get your site up & running, fully responsive, beautiful, SEO optimized, Speed Optimized & help you generate Potential Leads for your business</p>
                 </div>
             </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/computer.svg" alt="Fayaz SEO">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">SEO Optimization</span>
-                        <br>
-                        <p>Having your website SEO optimized is very important today, this could be a deal breaker. I will make your site as per the current Search Engine principles</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/speed.svg" alt="Fayaz Speed Optimization">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Speed Optimization</span>
-                        <br>
-                        <p>Having a slow site leads to losing potential customers, I will make it extremely faster as per industry standards</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/wp.svg" alt="Fayaz Wordpress development">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Wordpress</span>
-                        <br>
-                        <p>Wordpress setup on your website if you are in need of a site where you constantly write and publish articles.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/newsletter.svg" alt="Fayaz Newsletter development">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Email Newsletters</span>
-                        <br>
-                        <p>I can make beautiful email campaign HTML templates for you, which are both compatible with mobiles & desktops </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/analytics.svg" alt="Fayaz Google Analytics Integration">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Google Analytics</span>
-                        <br>
-                        <p>Getting data on how your users use your website gives you an insight, which will help you decide how to proceed & update in future</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/landing-page.svg" alt="Fayaz Landing Page Development">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Landing Pages</span>
-                        <br>
-                        <p>Fast, beautiful & User friendly landing pages made as per current trends, which can generate potential leads for you, with Google sheets integration on Form submission </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/google-amp.svg" alt="Fayaz Google Amp Page Development">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Google AMP Landing Pages</span>
-                        <br>
-                        <p>Super fast Landing pages using Google AMP, with Form Submission integration</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col s12 service">
-            <div class="card horizontal valign-wrapper">
-                <div class="card-image-custom card-image">
-                    <img src="images/schema.svg" alt="Fayaz Schema Markup">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <span class="bBottom">Google Schema & Rich Snippets</span>
-                        <br>
-                        <p>Improve your Google Ranking & Impressions with automated Schema.org snippets</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="section">
-            <div class="row service">
+            <div id="services">
                 <blockquote class="blockq">
-                    <h5>Tech Stack, Frameworks & Guidelines</h5>
+                    <h5>Services I provide</h5>
                 </blockquote>
-                <ul class="collection">
-                    <li class="collection-item">HTML5</li>
-                    <li class="collection-item">CSS3</li>
-                    <li class="collection-item">Javascript</li>
-                    <li class="collection-item">Jquery</li>
-                    <li class="collection-item">Wordpress</li>
-                    <li class="collection-item">Bootstrap 4</li>
-                    <li class="collection-item">Material Design</li>
-                    <li class="collection-item">Jquery</li>
-                    <li class="collection-item">Java/J2EE</li>
-                    <li class="collection-item">JSON</li>
-                    <li class="collection-item">Unbounce/Instapage Landing Page generation, </li>
-                    <li class="collection-item">Wordpress Core backend APIs</li>
-                    <li class="collection-item">Google Sheets Integration</li>
-                    <li class="collection-item">Google APIs - Maps, Paces, Business Listings, Fusion Tables etc</li>
-                    <li class="collection-item">Facebook Graph API</li>
-                    <li class="collection-item">Google AMP</li>
-                    <li class="collection-item">PHP</li>
-                </ul>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/web-design.svg" alt="Fayaz Web Design">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Website Development</span>
+                                <br>
+                                <p>I can make beautiful, responsive, trendy websites using the latest tech stack & optimize it intelligently according to Google</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/computer.svg" alt="Fayaz SEO">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">SEO Optimization</span>
+                                <br>
+                                <p>Having your website SEO optimized is very important today, this could be a deal breaker. I will make your site as per the current Search Engine principles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/speed.svg" alt="Fayaz Speed Optimization">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Speed Optimization</span>
+                                <br>
+                                <p>Having a slow site leads to losing potential customers, I will make it extremely faster as per industry standards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/wp.svg" alt="Fayaz Wordpress development">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Wordpress</span>
+                                <br>
+                                <p>Wordpress setup on your website if you are in need of a site where you constantly write and publish articles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/newsletter.svg" alt="Fayaz Newsletter development">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Email Newsletters</span>
+                                <br>
+                                <p>I can make beautiful email campaign HTML templates for you, which are both compatible with mobiles & desktops </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/analytics.svg" alt="Fayaz Google Analytics Integration">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Google Analytics</span>
+                                <br>
+                                <p>Getting data on how your users use your website gives you an insight, which will help you decide how to proceed & update in future</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/landing-page.svg" alt="Fayaz Landing Page Development">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Landing Pages</span>
+                                <br>
+                                <p>Fast, beautiful & User friendly landing pages made as per current trends, which can generate potential leads for you, with Google sheets integration on Form submission </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/google-amp.svg" alt="Fayaz Google Amp Page Development">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Google AMP Landing Pages</span>
+                                <br>
+                                <p>Super fast Landing pages using Google AMP, with Form Submission integration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 service">
+                    <div class="card horizontal valign-wrapper">
+                        <div class="card-image-custom card-image">
+                            <img src="images/schema.svg" alt="Fayaz Schema Markup">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="bBottom">Google Schema & Rich Snippets</span>
+                                <br>
+                                <p>Improve your Google Ranking & Impressions with automated Schema.org snippets</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="section">
+        <div class="container">
+            <div class="section" id="techBlock">
+                <div class="row service">
+                    <blockquote class="blockq">
+                        <h5>Tech Stack, Frameworks & Guidelines</h5>
+                    </blockquote>
+                    <ul class="collection">
+                        <li class="collection-item">HTML5</li>
+                        <li class="collection-item">CSS3</li>
+                        <li class="collection-item">Javascript</li>
+                        <li class="collection-item">Jquery</li>
+                        <li class="collection-item">Wordpress</li>
+                        <li class="collection-item">Bootstrap 4</li>
+                        <li class="collection-item">Material Design</li>
+                        <li class="collection-item">Jquery</li>
+                        <li class="collection-item">Java/J2EE</li>
+                        <li class="collection-item">JSON</li>
+                        <li class="collection-item">Unbounce/Instapage Landing Page generation, </li>
+                        <li class="collection-item">Wordpress Core backend APIs</li>
+                        <li class="collection-item">Google Sheets Integration</li>
+                        <li class="collection-item">Google APIs - Maps, Paces, Business Listings, Fusion Tables etc</li>
+                        <li class="collection-item">Facebook Graph API</li>
+                        <li class="collection-item">Google AMP</li>
+                        <li class="collection-item">PHP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <blockquote class="blockq">
+                        <h5>Recent Works</h5>
+                    </blockquote>
+                    <div class="row">
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/fulls/quartile.png" alt="Quartile Co Portfolio">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://www.thequartile.co" target="_blank">The Quartile Co</a></p>
+                                    <p>A Upcoming VC, used Bootstrap 4, Custom Medium Feed API & Form Submissions integration.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/fulls/01.png" alt="Mohammed Aamir Portfolio">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://aamirbs.github.io/" target="_blank">Mohammed Aamir</a></p>
+                                    <p>Portfoilio for a model based in Bangalore, Attitude Clothing Ambassdor for North Karnataka</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/fulls/02.png" alt="Truweight Landing Page">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://get.truweight.in/annual-membership/" target="_blank">Truweight Landing Page</a></p>
+                                    <p>One of the many landing pages I have made over at my workplace</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/fulls/03.png" alt="Awesome Libraries">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://fayazara.github.io/libraries.html" target="_blank">Awesome Libraries tool</a></p>
+                                    <p>A curated list of awesome libraries, frameworks, Public APIs & resources, built using Materializecss</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/thumbs/07.png" alt="myqr qr code generator">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://fayazara.github.io/qrgen.html" target="_blank">MyQr</a></p>
+                                    <p>App to create QR codes fast & share them on whatsapp easily. Made using goqr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 l6 m6">
+                            <div class="card service">
+                                <div class="card-image">
+                                    <img src="https://fayazara.github.io/images/thumbs/08.png" alt="IndiTranslator - Indian languages translator">
+                                </div>
+                                <div class="card-content">
+                                    <p><a href="https://fayazara.github.io/inditranslate.html" target="_blank">IndiTranslator</a></p>
+                                    <p>Quick Indian translator with major languages, at one click, made using Yandex API</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.github.com/fayazara">
+                    <p style="text-align: center;">More projects on my Github</p>
+                </a>
+            </div>
+        </div>
+        <div class="container" id="contactBlock">
+            <blockquote class="blockq">
+                <h5>Get in touch</h5>
+            </blockquote>
             <div class="row">
-                <blockquote class="blockq">
-                    <h5>Recent Works</h5>
-                </blockquote>
-                <div class="row">
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/fulls/quartile.png" alt="Quartile Co Portfolio">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://www.thequartile.co" target="_blank">The Quartile Co</a></p>
-                                <p>A Upcoming VC, used Bootstrap 4, Custom Medium Feed API & Form Submissions integration.</p>
-                            </div>
+                <form class="col s12 service ajaxForm" action="https://formcarry.com/s/Hy-MXtaRG" method="POST" accept-charset="UTF-8">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" name="Name" class="validate" required>
+                            <label for="icon_prefix">First Name</label>
                         </div>
                     </div>
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/fulls/01.png" alt="Mohammed Aamir Portfolio">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://aamirbs.github.io/" target="_blank">Mohammed Aamir</a></p>
-                                <p>Portfoilio for a model based in Bangalore, Attitude Clothing Ambassdor for North Karnataka</p>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">email</i>
+                            <input id="icon_prefix" type="email" name="Email" class="validate" required>
+                            <label for="icon_prefix">Email ID</label>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/fulls/02.png" alt="Truweight Landing Page">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://get.truweight.in/annual-membership/" target="_blank">Truweight Landing Page</a></p>
-                                <p>One of the many landing pages I have made over at my workplace</p>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea id="icon_prefix2" name="Message" class="materialize-textarea validate" required rows="3" style="resize: none;"></textarea>
+                            <label for="icon_prefix2">Message</label>
                         </div>
                     </div>
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/fulls/03.png" alt="Awesome Libraries">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://fayazara.github.io/libraries.html" target="_blank">Awesome Libraries tool</a></p>
-                                <p>A curated list of awesome libraries, frameworks, Public APIs & resources, built using Materializecss</p>
-                            </div>
-                        </div>
+                    <div style="text-align: center;">
+                        <button type="submit" id="formSend" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">send</i></button>
+                        <br>
+                        <br>
+                        <span id="formMsgSuccess" style="display: none; color: green;">Successful</span>
+                        <span id="formMsgFailed" style="display: none; color: red;">Failed, please try again in a moment</span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/thumbs/07.png" alt="myqr qr code generator">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://fayazara.github.io/qrgen.html" target="_blank">MyQr</a></p>
-                                <p>App to create QR codes fast & share them on whatsapp easily. Made using goqr</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 l6 m6">
-                        <div class="card service">
-                            <div class="card-image">
-                                <img src="https://fayazara.github.io/images/thumbs/08.png" alt="IndiTranslator - Indian languages translator">
-                            </div>
-                            <div class="card-content">
-                                <p><a href="https://fayazara.github.io/inditranslate.html" target="_blank">IndiTranslator</a></p>
-                                <p>Quick Indian translator with major languages, at one click, made using Yandex API</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
-            <a href="https://www.github.com/fayazara">
-                <p style="text-align: center;">More projects on my Github</p>
-            </a>
         </div>
-    </div>
-    <div class="container">
-        <blockquote class="blockq">
-            <h5>Get in touch</h5>
-        </blockquote>
-        <div class="row">
-            <form class="col s12 service ajaxForm" action="https://formcarry.com/s/Hy-MXtaRG" method="POST" accept-charset="UTF-8">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" name="Name" class="validate" required>
-                        <label for="icon_prefix">First Name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">email</i>
-                        <input id="icon_prefix" type="email" name="Email" class="validate" required>
-                        <label for="icon_prefix">Email ID</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">mode_edit</i>
-                        <textarea id="icon_prefix2" name="Message" class="materialize-textarea validate" required rows="3" style="resize: none;"></textarea>
-                        <label for="icon_prefix2">Message</label>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <button type="submit" id="formSend" class="btn-floating btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">send</i></button>
-                    <br>
-                    <br>
-                    <span id="formMsgSuccess" style="display: none; color: green;">Successful</span>
-                    <span id="formMsgFailed" style="display: none; color: red;">Failed, please try again in a moment</span>
-                </div>
-            </form>
-        </div>
-    </div>
+    </main>
     <footer class="page-footer teal">
         <div class="container">
             <div class="row center">
@@ -556,6 +579,27 @@
                 $("#filter").focus();
             }, 850);
 
+        });
+
+        $.fn.scrollView = function() {
+            return this.each(function() {
+                $('html, body').animate({
+                    scrollTop: $(this).offset().top - 60
+                }, 700);
+            });
+        }
+
+        $('#servicesSection').click(function(event) {
+            event.preventDefault();
+            $('#services').scrollView();
+        });
+        $('#techSection').click(function(event) {
+            event.preventDefault();
+            $('#techBlock').scrollView();
+        });
+        $('#contactSection').click(function(event) {
+            event.preventDefault();
+            $('#contactBlock').scrollView();
         });
 
     });
