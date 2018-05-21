@@ -185,6 +185,7 @@
                         <ul class="right hide-on-down">
                             <li><a id="servicesSection">Services</a></li>
                             <li><a id="techSection">Tech Stack</a></li>
+                            <li><a id="projectsSection">Projects</a></li>
                             <li><a id="contactSection">Contact</a></li>
                         </ul>
                     </div>
@@ -379,7 +380,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="section">
+            <div class="section" id="projectsBlock">
                 <div class="row">
                     <blockquote class="blockq">
                         <h5>Recent Works</h5>
@@ -464,7 +465,7 @@
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://fayazara.github.io/quotemachine.html" target="_blank">Quote Machine</a></p>
-                                    <p>This app generates random quotes | used Forismatic API</p>
+                                    <p>This app generates random quotes using Forismatic API</p>
                                 </div>
                             </div>
                         </div>
@@ -614,6 +615,11 @@
             event.preventDefault();
             $('#contactBlock').scrollView();
         });
+        $('#projectsSection').click(function(event) {
+            event.preventDefault();
+            $('#projectsBlock').scrollView();
+        });
+
 
     });
     </script>
