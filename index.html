@@ -5,12 +5,12 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115308094-2"></script>
     <script>
-	    window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-	    function gtag() { dataLayer.push(arguments); }
-	    gtag('js', new Date());
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-	    gtag('config', 'UA-115308094-2');
+    gtag('config', 'UA-115308094-2');
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -402,7 +402,7 @@
                                     <img src="https://fayazara.github.io/images/fulls/quartile.png" alt="Quartile Co Portfolio">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://www.thequartile.co" target="_blank">The Quartile Co</a></p>
+                                    <p><a href="https://www.thequartile.co" target="_blank" onclick="gtag('event', 'Quartile Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on Quartile link'})">The Quartile Co</a></p>
                                     <p>A Upcoming VC, used Bootstrap 4, Custom Medium Feed API & Form Submissions integration.</p>
                                 </div>
                             </div>
@@ -413,7 +413,7 @@
                                     <img src="https://fayazara.github.io/images/fulls/01.png" alt="Mohammed Aamir Portfolio">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://aamirbs.github.io/" target="_blank">Mohammed Aamir</a></p>
+                                    <p><a href="https://aamirbs.github.io/" target="_blank" onclick="gtag('event', 'MD Aamir Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on MD Aamir link'})">Mohammed Aamir</a></p>
                                     <p>Portfoilio for a model based in Bangalore, Attitude Clothing Ambassdor for North Karnataka</p>
                                 </div>
                             </div>
@@ -426,7 +426,7 @@
                                     <img src="https://fayazara.github.io/images/fulls/02.png" alt="Truweight Landing Page">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://get.truweight.in/annual-membership/" target="_blank">Truweight Landing Page</a></p>
+                                    <p><a href="https://get.truweight.in/annual-membership/" target="_blank" onclick="gtag('event', 'TW LP Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on TQ LP link'})">Truweight Landing Page</a></p>
                                     <p>One of the many landing pages I have made over at my workplace</p>
                                 </div>
                             </div>
@@ -437,7 +437,7 @@
                                     <img src="https://fayazara.github.io/images/fulls/03.png" alt="Awesome Libraries">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://fayazara.github.io/libraries.html" target="_blank">Awesome Libraries tool</a></p>
+                                    <p><a href="https://fayazara.github.io/libraries.html" target="_blank" onclick="gtag('event', 'Awesome Libraries Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on Awesome Libraries link'})">Awesome Libraries tool</a></p>
                                     <p>A curated list of awesome libraries, frameworks, Public APIs & resources, built using Materializecss</p>
                                 </div>
                             </div>
@@ -450,7 +450,7 @@
                                     <img src="https://fayazara.github.io/images/thumbs/07.png" alt="myqr qr code generator">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://fayazara.github.io/qrgen.html" target="_blank">MyQr</a></p>
+                                    <p><a href="https://fayazara.github.io/qrgen.html" target="_blank" onclick="gtag('event', 'MyQr Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on MyQr link'})">MyQr</a></p>
                                     <p>App to create QR codes fast & share them on whatsapp easily. Made using goqr</p>
                                 </div>
                             </div>
@@ -461,7 +461,7 @@
                                     <img src="https://fayazara.github.io/images/thumbs/08.png" alt="IndiTranslator - Indian languages translator">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://fayazara.github.io/inditranslate.html" target="_blank">IndiTranslator</a></p>
+                                    <p><a href="https://fayazara.github.io/inditranslate.html" target="_blank" onclick="gtag('event', 'IndiTranslator Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on IndiTranslator link'})">IndiTranslator</a></p>
                                     <p>Quick Indian translator with major languages, at one click, made using Yandex API</p>
                                 </div>
                             </div>
@@ -474,7 +474,7 @@
                                     <img src="https://fayazara.github.io/images/quote.png" alt="quote machine">
                                 </div>
                                 <div class="card-content">
-                                    <p><a href="https://fayazara.github.io/quotemachine.html" target="_blank">Quote Machine</a></p>
+                                    <p><a href="https://fayazara.github.io/quotemachine.html" target="_blank" onclick="gtag('event', 'Quote Machine Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on quote machine link'})">Quote Machine</a></p>
                                     <p>This app generates random quotes using Forismatic API</p>
                                 </div>
                             </div>
@@ -556,6 +556,7 @@
         });
         $(function() {
             $(".ajaxForm").submit(function(e) {
+            	gtag('event', 'Form Send Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on contact form send'});
                 $("#formSend").html('<i class="fas fa-circle-notch fa-spin"></i>');
                 $("#formSend").attr("disabled", 'disabled');
                 e.preventDefault();
@@ -603,6 +604,8 @@
                 $("#filter").focus();
             }, 850);
 
+            gtag('event', 'Scroll to top Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on scroll to Top' });
+
         });
 
         $.fn.scrollView = function() {
@@ -616,19 +619,26 @@
         $('#servicesSection').click(function(event) {
             event.preventDefault();
             $('#services').scrollView();
+            gtag('event', 'Services Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on services Navbar' });
         });
         $('#techSection').click(function(event) {
             event.preventDefault();
             $('#techBlock').scrollView();
+            gtag('event', 'Tech Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on Tech Navbar' });
         });
-        $('#contactSection').click(function(event) {
-            event.preventDefault();
-            $('#contactBlock').scrollView();
-        });
+
         $('#projectsSection').click(function(event) {
             event.preventDefault();
             $('#projectsBlock').scrollView();
+            gtag('event', 'Projects Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on projects Navbar' });
         });
+
+        $('#contactSection').click(function(event) {
+            event.preventDefault();
+            $('#contactBlock').scrollView();
+            gtag('event', 'Contact us Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on contact Navbar' });
+        });
+
 
 
     });
