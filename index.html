@@ -156,6 +156,22 @@
     #index-banner {
         background-color: rgba(256, 256, 256, 0.6);
     }
+
+     ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+     ::-webkit-scrollbar-track {
+        background-color: #ebebeb;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+     ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        background: #adadad;
+    }
     </style>
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
@@ -494,7 +510,7 @@
         $(function() {
             $(".ajaxForm").submit(function(e) {
                 $("#formSend").html('<i class="fas fa-circle-notch fa-spin"></i>');
-                $("#formSend").attr("disabled",'disabled');
+                $("#formSend").attr("disabled", 'disabled');
                 e.preventDefault();
                 var href = $(this).attr("action");
                 $.ajax({
