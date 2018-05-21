@@ -15,7 +15,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fayaz Ahmed | Front End Developer | Wordpress Developer</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Ubuntu" rel="stylesheet">
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" async href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -546,6 +545,7 @@
             <i style="color: grey" class="fas fa-chevron-up"></i>
         </a>
     </div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Ubuntu" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/jquery.viewportchecker.min.js"></script>
     <script type="text/javascript">
@@ -556,7 +556,7 @@
         });
         $(function() {
             $(".ajaxForm").submit(function(e) {
-            	gtag('event', 'Form Send Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on contact form send'});
+                gtag('event', 'Form Send Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on contact form send' });
                 $("#formSend").html('<i class="fas fa-circle-notch fa-spin"></i>');
                 $("#formSend").attr("disabled", 'disabled');
                 e.preventDefault();
