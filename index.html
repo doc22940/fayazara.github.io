@@ -15,7 +15,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Fayaz Ahmed | Front End Developer | Wordpress Developer</title>
-    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="assets/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" async href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <meta name="theme-color" content="#edf1f1">
@@ -23,22 +23,22 @@
     <meta name="description" content="JavaScript, Wordpress, SEO, Website Speed Optimization and website front-end development In Bangalore">
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
-    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
 </head>
 
 <body>
@@ -66,6 +66,7 @@
         border-bottom: 2px solid #dadad0;
         padding-bottom: 2px;
         font-weight: bold;
+        font-size: 16px;
     }
 
     .blockq {
@@ -185,7 +186,72 @@
         position: absolute;
         z-index: 999999999;
     }
+
+    #preloder {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999999;
+        background: #fff
+    }
+
+    .loader {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -13px;
+        margin-left: -13px;
+        border-radius: 60px;
+        animation: loader .8s linear infinite;
+        -webkit-animation: loader .8s linear infinite
+    }
+
+    @keyframes loader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            border: 4px solid #f44336;
+            border-left-color: transparent
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            border: 4px solid #673ab7;
+            border-left-color: transparent
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            border: 4px solid #f44336;
+            border-left-color: transparent
+        }
+    }
+
+    @-webkit-keyframes loader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            border: 4px solid #f44336;
+            border-left-color: transparent
+        }
+        50% {
+            -webkit-transform: rotate(180deg);
+            border: 4px solid #673ab7;
+            border-left-color: transparent
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            border: 4px solid #f44336;
+            border-left-color: transparent
+        }
+    }
     </style>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
     <div class="navbar">
         <nav class="transparent z-depth-0">
             <div class="nav-wrapper">
@@ -216,26 +282,28 @@
                     <br>
                 </div>
             </div>
-            <div class="parallax"><img src="images/FotoJet.png" alt="Home Page Image"></div>
+            <div class="parallax"><img src="assets/images/FotoJet.png" alt="Home Page Image"></div>
         </div>
         <div class="container">
             <div class="section" id="mainSection">
                 <div class="row center">
-                    <h4 style="padding-bottom: 20px;">Hi, I am Fayaz. I design fast websites</h4>
+                    <h4 style="padding-bottom: 20px;" class="subtitle">Hi, I am Fayaz. I design fast websites</h4>
                     <hr style="width: 35%; border: solid #e6e1e1;">
                 </div>
                 <div class="row center">
                     <p style="font-size: 16px;">I can get your site up & running, fully responsive, beautiful, SEO optimized, Speed Optimized & help you generate Potential Leads for your business</p>
                 </div>
             </div>
-            <div id="services">
+        </div>
+        <div id="services">
+            <div class="container">
                 <blockquote class="blockq">
                     <h5>Services I provide</h5>
                 </blockquote>
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/web-design.svg" alt="Fayaz Web Design">
+                            <img src="assets/images/web-design.svg" alt="Fayaz Web Design">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -249,7 +317,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/computer.svg" alt="Fayaz SEO">
+                            <img src="assets/images/computer.svg" alt="Fayaz SEO">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -263,7 +331,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/speed.svg" alt="Fayaz Speed Optimization">
+                            <img src="assets/images/speed.svg" alt="Fayaz Speed Optimization">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -277,7 +345,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/wp.svg" alt="Fayaz Wordpress development">
+                            <img src="assets/images/wp.svg" alt="Fayaz Wordpress development">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -291,7 +359,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/newsletter.svg" alt="Fayaz Newsletter development">
+                            <img src="assets/images/newsletter.svg" alt="Fayaz Newsletter development">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -305,7 +373,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/analytics.svg" alt="Fayaz Google Analytics Integration">
+                            <img src="assets/images/analytics.svg" alt="Fayaz Google Analytics Integration">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -319,7 +387,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/landing-page.svg" alt="Fayaz Landing Page Development">
+                            <img src="assets/images/landing-page.svg" alt="Fayaz Landing Page Development">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -333,7 +401,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/google-amp.svg" alt="Fayaz Google Amp Page Development">
+                            <img src="assets/images/google-amp.svg" alt="Fayaz Google Amp Page Development">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -347,7 +415,7 @@
                 <div class="col s12 service">
                     <div class="card horizontal valign-wrapper">
                         <div class="card-image-custom card-image">
-                            <img src="images/schema.svg" alt="Fayaz Schema Markup">
+                            <img src="assets/images/schema.svg" alt="Fayaz Schema Markup">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
@@ -398,7 +466,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/fulls/quartile.png" alt="Quartile Co Portfolio">
+                                    <img src="assets/images/fulls/quartile.png" alt="Quartile Co Portfolio">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://www.thequartile.co" target="_blank" onclick="gtag('event', 'Quartile Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on Quartile link'})">The Quartile Co</a></p>
@@ -409,7 +477,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/fulls/01.png" alt="Mohammed Aamir Portfolio">
+                                    <img src="assets/images/fulls/01.png" alt="Mohammed Aamir Portfolio">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://aamirbs.github.io/" target="_blank" onclick="gtag('event', 'MD Aamir Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on MD Aamir link'})">Mohammed Aamir</a></p>
@@ -422,7 +490,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/fulls/02.png" alt="Truweight Landing Page">
+                                    <img src="assets/images/fulls/02.png" alt="Truweight Landing Page">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://get.truweight.in/annual-membership/" target="_blank" onclick="gtag('event', 'TW LP Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on TQ LP link'})">Truweight Landing Page</a></p>
@@ -433,7 +501,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/fulls/03.png" alt="Awesome Libraries">
+                                    <img src="assets/images/fulls/03.png" alt="Awesome Libraries">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://fayazara.github.io/libraries.html" target="_blank" onclick="gtag('event', 'Awesome Libraries Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on Awesome Libraries link'})">Awesome Libraries tool</a></p>
@@ -446,7 +514,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/thumbs/07.png" alt="myqr qr code generator">
+                                    <img src="assets/images/thumbs/07.png" alt="myqr qr code generator">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://fayazara.github.io/qrgen.html" target="_blank" onclick="gtag('event', 'MyQr Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on MyQr link'})">MyQr</a></p>
@@ -457,7 +525,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/thumbs/08.png" alt="IndiTranslator - Indian languages translator">
+                                    <img src="assets/images/thumbs/08.png" alt="IndiTranslator - Indian languages translator">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://fayazara.github.io/inditranslate.html" target="_blank" onclick="gtag('event', 'IndiTranslator Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on IndiTranslator link'})">IndiTranslator</a></p>
@@ -470,7 +538,7 @@
                         <div class="col s12 l6 m6">
                             <div class="card service">
                                 <div class="card-image">
-                                    <img src="https://fayazara.github.io/images/quote.png" alt="quote machine">
+                                    <img src="assets/images/quote.png" alt="quote machine">
                                 </div>
                                 <div class="card-content">
                                     <p><a href="https://fayazara.github.io/quotemachine.html" target="_blank" onclick="gtag('event', 'Quote Machine Click', {event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on quote machine link'})">Quote Machine</a></p>
@@ -547,11 +615,16 @@
     </div>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Ubuntu" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/jquery.viewportchecker.min.js"></script>
+    <script src="assets/js/jquery.viewportchecker.min.js"></script>
     <script type="text/javascript">
+    $(window).on('load', function() {
+        $(".loader").fadeOut();
+        $("#preloder").delay(400).fadeOut("slow");
+    });
+
     $(document).ready(function() {
         $('.service').addClass("hidden").viewportChecker({
-            classToAdd: 'visible animated fadeInUp',
+            classToAdd: 'visible animated fadeIn',
             offset: 100
         });
         $(function() {
@@ -638,9 +711,6 @@
             $('#contactBlock').scrollView();
             gtag('event', 'Contact us Click', { event_category: 'Portfolio site events', event_action: 'Click', event_label: 'Clicked on contact Navbar' });
         });
-
-
-
     });
     </script>
     <script type="application/ld+json">
@@ -670,8 +740,8 @@
         "url": "https://fayazara.github.io/"
     }
     </script>
-    <script src="js/materialize.min.js"></script>
-    <script src="js/init.js"></script>
+    <script src="assets/js/materialize.min.js"></script>
+    <script src="assets/js/init.js"></script>
 </body>
 
 </html>
