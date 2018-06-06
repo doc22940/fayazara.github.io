@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>API Collection</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+<body>
+    <style type="text/css">
+    main {
+        margin-top: 22px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .card {
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        border-radius: 5px;
+    }
+
+    .card:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    #notFound {
+        display: none;
+    }
+
+    nav {
+        background: #30d2d2;
+    }
+    </style>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <input id="filter" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons" id="closeFilter">close</i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <main>
+        <div class="container">
+            <p class="center-align" id="notFound">Not found</p>
+            <div id="users">
+                <ul id="mainCat">
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        $.getJSON('https://api.publicapis.org/entries', function(response) {
+            for (i = 0; i < response.count; i++) {
+                $("#mainCat").append(
+                    '<div class="col s12">' +
+                    '<li>' +
+                    '<div class="card" id="catCard" data-link="' + response.entries[i].Link + '">' +
+                    '<div class="card-content">' +
+                    '<span class="card-title">' + response.entries[i].API + '</span>' +
+                    '<p>' + response.entries[i].Description + '</p><br>' +
+                    '<span><strong>Auth </strong>' + response.entries[i].Auth + ' | </span>' +
+                    '<span><strong>HTTPS </strong>' + response.entries[i].HTTPS + ' | </span>' +
+                    '<span><strong>Cors </strong>' + response.entries[i].Cors + ' | </span>' +
+                    '<span><strong>Category </strong>' + response.entries[i].Category + '</span>' +
+                    '</div>' +
+                    '</div></li>' +
+                    '</div>'
+                );
+            }
+        });
+
+
+        $("#filter").keyup(function() {
+            $("#notFound").fadeOut("fast");
+            var filter = $(this).val(),
+                count = 0;
+            $("#users ul li").each(function() {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+                } else {
+                    $(this).show();
+                    count++;
+                }
+            });
+            if (count == 0) {
+                setTimeout(function() { $("#notFound").fadeIn("fast"); }, 1000);
+            }
+        });
+
+        $("#closeFilter").click(function() {
+            $("#notFound").fadeOut("fast");
+            $("#filter").val("");
+            var filter = $(this).val(),
+                count = 0;
+            $("#users ul li").each(function() {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                    $(this).fadeOut();
+                } else {
+                    $(this).show();
+                    count++;
+                }
+            });
+            if (count == 0) {
+                setTimeout(function() { $("#notFound").fadeIn("fast"); }, 1000);
+            }
+        });
+
+
+        $(document).on("click", "#catCard", function() {
+            window.open($(this).attr("data-link"), '_target');
+        });
+
+    });
+    </script>
+</body>
+
+</html>
