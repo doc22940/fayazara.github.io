@@ -42,6 +42,10 @@
     nav {
         background: #30d2d2;
     }
+
+    #ajaxLoader{
+        font-size: 22px;        
+    }
     </style>
     <div class="navbar-fixed">
         <nav>
@@ -58,6 +62,10 @@
     </div>
     <main>
         <div class="container">
+            <div id="ajaxLoader" class="center-align">
+                <i class="fas fa-circle-notch fa-spin"></i><br><br>
+                <span>Downloading List</span>
+            </div>
             <p class="center-align" id="notFound">Not found</p>
             <div id="users">
                 <ul id="mainCat">
@@ -69,6 +77,16 @@
     </footer>
     <script type="text/javascript">
     $(document).ready(function() {
+
+        $(document).ajaxStart(function() {
+            $("#ajaxLoader").fadeIn();
+            console.log("Triggered ajaxStart handler.");
+        });
+
+        $(document).ajaxStop(function() {
+            $("#ajaxLoader").fadeOut();
+            console.log("Triggered ajaxStop handler.");
+        });
 
         $.getJSON('https://api.publicapis.org/entries', function(response) {
             for (i = 0; i < response.count; i++) {
