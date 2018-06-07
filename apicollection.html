@@ -105,15 +105,9 @@
         $(document).ajaxStop(function() {
             $("#ajaxLoader").fadeOut();
             console.log("Triggered ajaxStop handler.");
-        });
+        });       
 
-        $.ajaxSetup({
-            headers: {
-                'secret-key': '$2a$10$AbiPT/l8V3rDpiDBlMNfbO./yThrTWWoQAAq6Gk9xYBo8BwQycx9m'
-            }
-        });
-
-        $.getJSON('https://api.jsonbin.io/b/5b17fbe5c83f6d4cc734ab8b', function(response) {
+        $.getJSON('https://api.jsonbin.io/b/5b18e80bc83f6d4cc734ac28', function(response) {
             for (i = 0; i < response.count; i++) {
                 if (response.entries[i].Auth == "") {
                     response.entries[i].Auth = "unknown"
