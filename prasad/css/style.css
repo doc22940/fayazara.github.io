@@ -81,7 +81,7 @@ ol{padding:0;margin:0;}
 .service-content:after{position:absolute;content:'';width:120%;height:120%;left:-10%;top:-10%;background-image:url("../img/service-bg.jpg");background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position:top;-webkit-filter:blur(16px);filter:blur(16px);}
 .bg-1{background-image:url("../img/service-bg.jpg");}
 .resume-section{background:#f2f2f2;}
-.resume-item{padding:30px;background:#fff;-webkit-box-shadow:-1px 3px 30px rgba(0, 0, 0, 0.08);box-shadow:-1px 3px 30px rgba(0, 0, 0, 0.08);margin-bottom:30px;position:relative;}
+.resume-item{padding:30px;background:#fff;-webkit-box-shadow:-1px 3px 30px rgba(0, 0, 0, 0.08);box-shadow:-1px 3px 30px rgba(0, 0, 0, 0.08);margin-bottom:30px;position:relative;border-radius:5px;}
 .resume-item:last-child{margin-bottom:0;}
 .resume-item:last-child:after{display:none;}
 .resume-item:after{position:absolute;content:"";height:30px;border-right:2px dashed #ddd;top:100%;left:25px;}
