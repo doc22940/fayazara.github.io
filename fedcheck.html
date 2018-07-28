@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,500,700,900" rel="stylesheet">
+    <meta name="theme-color" content="#6263CD">
+</head>
+
+<body>
+    <style type="text/css">
+    body {
+        font-family: Product Sans;
+    }
+
+    .chip {
+        height: 22px;
+        color: #4e4e4e;
+        font-size: 12px;
+        line-height: 22px;
+        background-color: #b9b9b9;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    .row {
+        margin-bottom: 0px;
+    }
+
+    #titleCard {
+        background: #6263CD;
+        margin: 0px;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 0px;
+        font-size: 22px;
+        height: 185px;
+    }
+    /* Scrollbar Styling */
+    /*     ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+     ::-webkit-scrollbar-track {
+        background-color: #ebebeb;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+     ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        background: #adadad;
+    }*/
+
+     ::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    .card {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    .card .card-title {
+        font-weight: 500;
+    }
+
+    @media only screen and (min-width: 993px) {
+        .container {
+            width: 90%;
+        }
+    }
+
+    .progress .determinate {
+        background-color: #6263cd;
+    }
+
+    .progress {
+        background-color: #c5c5e4;
+    }
+
+    [type="checkbox"]:checked+span:not(.lever):before {
+        border-right: 2px solid #6263cd;
+        border-bottom: 2px solid #6263cd;
+    }
+
+    .refLink {
+        display: none;
+    }
+
+    .heroCard {
+        top: -75px;
+    }
+
+    .chip {
+        color: #252525;
+        font-size: 13px;
+        background-color: #c5c5e4;
+        font-weight: 300;
+    }
+    </style>
+    <header>
+        <div class="col s12">
+            <div class="card-panel" id="titleCard">
+                <div class="row valign-wrapper" id="carRow">
+                    <div class="col l1 center-align">
+                        <span class="white-text" style="font-size: 42px;"><i id="tadaIcon" class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="col l11">
+                        <span class="white-text">The Complete frontend checklist for developers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card heroCard">
+                        <div class="card-content">
+                            <span class="card-title">The Head Tag</span>
+                            <div class="chip">
+                                <span id="headProgressPercentage">0%</span>&nbsp;completed</span>
+                            </div>
+                            <div class="progress">
+                                <div class="determinate" style="width: 0%"></div>
+                            </div>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Why?</th>
+                                        <th>Done?</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="headTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+    var headhtml = "";
+    var headItemCount, addPercentage = 0,
+        progressCount = 0;
+
+    // function refLinkHide(x) {
+    //     x.find("a").fadeOut();
+    // }
+
+    // function refLinkShow(y) {
+    //     $(y).find("a").fadeIn().css("display", "inline");
+    // }
+
+
+    $(document).ready(function() {
+        setInterval(function() {
+            $("#tadaIcon").addClass("animated tada");
+            setTimeout(function() {
+                $("#tadaIcon").removeClass("animated tada");
+            }, 2000);
+        }, 3000);
+
+        getHeadData();
+    });
+
+    $(document).on("mouseleave", ".refLinkTD", function() {
+        $(this).find("a").fadeOut();
+    });
+
+    $(document).on("mouseenter", ".refLinkTD", function() {
+        $(this).find("a").fadeIn().css("display", "initial");
+    });
+
+    $(document).on("change", ".checkbox", function() {
+        if ($(this).prop("checked") == true) {
+            $(".determinate").css("width");
+            progressCount = 100 / headItemCount;
+            addPercentage = addPercentage + progressCount;
+            $('.determinate').width(addPercentage + "%")
+            $("#headProgressPercentage").text(addPercentage + "%");
+        } else if ($(this).prop("checked") == false) {
+            addPercentage = addPercentage - progressCount
+            $('.determinate').width(addPercentage + "%")
+            $("#headProgressPercentage").text(addPercentage + "%");
+        }
+    });
+
+    function getHeadData() {
+
+        $.getJSON("https://api.jsonbin.io/b/5b5b7baadc72f955bb796d73", function(result) {
+            headItemCount = result.length;
+            for (var i = 0; i < result.length; i++) {
+                headhtml += "<tr>" +
+                    "<td>" + result[i].item + "</td>" +
+                    "<td class='refLinkTD'>" + result[i].why + "&nbsp;<a target='_blank' class='refLink'  href='" + result[i].referenceURL + "'>Reference</a></td>" +
+                    "<td><label><input type='checkbox' class='checkbox'/><span></span></label></td>" +
+                    "</tr>";
+            }
+            $("#headTable").html(headhtml);
+        });
+    }
+    </script>
+</body>
+
+</html>
