@@ -107,7 +107,7 @@
         display: none;
     }
 
-    .heroCard {
+    .top75 {
         top: -75px;
     }
 
@@ -117,6 +117,28 @@
         background-color: #c5c5e4;
         font-weight: 300;
     }
+
+    .flexDisplay {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sidenav .user-view {
+        position: relative;
+        padding: 32px;
+        text-align: center;
+        background: #7BFAC3;
+    }
+
+    .sidenav .user-view .name {
+        margin-top: 0;
+        background: #3A4856;
+        border-radius: 2px;
+    }
+
+    .profileLink {
+        color: #fff;
+    }
     </style>
     <header>
         <div class="col s12">
@@ -125,8 +147,9 @@
                     <div class="col l1 center-align">
                         <span class="white-text" style="font-size: 42px;"><i id="tadaIcon" class="fas fa-check-circle"></i></span>
                     </div>
-                    <div class="col l11">
+                    <div class="col l11 flexDisplay">
                         <span class="white-text">The Complete frontend checklist for developers</span>
+                        <span><a href="#" data-target="slide-out" class="sidenav-trigger white-text"><i class="fas fa-bars"></i></a></span>
                     </div>
                 </div>
             </div>
@@ -136,7 +159,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <div class="card heroCard">
+                    <div class="card top75">
                         <div class="card-content">
                             <span class="card-title">The Head Tag</span>
                             <div class="chip">
@@ -162,21 +185,29 @@
             </div>
         </div>
     </main>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="https://fayazara.github.io" target="_blank">
+                <span class="white-text name">Made by Fayaz Ahmed</span>
+                </a>
+            </div>
+        </li>
+        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
     <script>
     var headhtml = "";
     var headItemCount, addPercentage = 0,
         progressCount = 0;
 
-    // function refLinkHide(x) {
-    //     x.find("a").fadeOut();
-    // }
-
-    // function refLinkShow(y) {
-    //     $(y).find("a").fadeIn().css("display", "inline");
-    // }
-
-
     $(document).ready(function() {
+        $('.sidenav').sidenav();
         setInterval(function() {
             $("#tadaIcon").addClass("animated tada");
             setTimeout(function() {
