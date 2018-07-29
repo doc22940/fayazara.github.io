@@ -651,7 +651,7 @@
                             }
 
                             function runPageTest(pageURL) {
-                                $.getJSON("http://www.webpagetest.org/runtest.php?k=A.27a983b2b29ecb81028675bc013d4c42&f=json&url=" + encodeURI(pageURL) + "&location=ap-south-1", function(result) {
+                                $.getJSON("https://www.webpagetest.org/runtest.php?k=A.27a983b2b29ecb81028675bc013d4c42&f=json&url=" + encodeURI(pageURL) + "&location=ap-south-1", function(result) {
                                     console.log("testresult " + result.data.jsonUrl);
                                     pageTestJsonUrl = result.data.jsonUrl;
                                     setTimeout(function() {
