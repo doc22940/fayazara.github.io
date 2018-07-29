@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>The Front End Toolkit</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,500,700,900" rel="stylesheet">
+    <meta name="theme-color" content="#6263CD">
+    <script src="rap.js"></script>
+    <script src="https://unpkg.com/tui-code-snippet"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+    <script src="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.js"></script>
+</head>
+
+<body>
+    <style type="text/css">
+    body {
+        font-family: Product Sans !important;
+    }
+
+    .row {
+        margin-bottom: 0px;
+    }
+
+    #titleCard {
+        background: #6263CD;
+        margin: 0px;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 0px;
+        font-size: 22px;
+        height: 185px;
+    }
+    /* Scrollbar Styling */
+    /*     ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+     ::-webkit-scrollbar-track {
+        background-color: #ebebeb;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+     ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        background: #adadad;
+    }*/
+
+     ::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    .card {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    .card .card-title {
+        font-weight: 500;
+    }
+
+    @media only screen and (min-width: 993px) {
+        .container {
+            width: 90%;
+        }
+    }
+
+    .progress .determinate {
+        background-color: #6263cd;
+    }
+
+    .progress {
+        background-color: #c5c5e4;
+    }
+
+    [type="checkbox"]:checked+span:not(.lever):before {
+        border-right: 2px solid #6263cd;
+        border-bottom: 2px solid #6263cd;
+    }
+
+    .refLink {
+        display: none;
+    }
+
+    .top75 {
+        top: -75px;
+    }
+
+    .chip {
+        color: #252525;
+        font-size: 13px;
+        background-color: #c5c5e4;
+        font-weight: 400;
+        border-radius: 8px;
+        margin-bottom: 0px;
+    }
+
+    .flexDisplay {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .sidenav .user-view {
+        position: relative;
+        padding: 32px;
+        text-align: center;
+        background: #7BFAC3;
+    }
+
+    .sidenav .user-view .name {
+        margin-top: 0;
+        background: #3A4856;
+        border-radius: 2px;
+    }
+
+    .profileLink {
+        color: #fff;
+    }
+
+    .spinner-green-only {
+        border-color: #6263CD;
+    }
+
+    input:not([type]):focus:not([readonly]),
+    input[type=text]:not(.browser-default):focus:not([readonly]),
+    input[type=password]:not(.browser-default):focus:not([readonly]),
+    input[type=email]:not(.browser-default):focus:not([readonly]),
+    input[type=url]:not(.browser-default):focus:not([readonly]),
+    input[type=time]:not(.browser-default):focus:not([readonly]),
+    input[type=date]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+    input[type=tel]:not(.browser-default):focus:not([readonly]),
+    input[type=number]:not(.browser-default):focus:not([readonly]),
+    input[type=search]:not(.browser-default):focus:not([readonly]),
+    textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid #6263CD;
+        -webkit-box-shadow: 0 1px 0 0 #6263CD;
+        box-shadow: 0 1px 0 0 #6263CD;
+    }
+
+    input:not([type]),
+    input[type=text]:not(.browser-default),
+    input[type=password]:not(.browser-default),
+    input[type=email]:not(.browser-default),
+    input[type=url]:not(.browser-default),
+    input[type=time]:not(.browser-default),
+    input[type=date]:not(.browser-default),
+    input[type=datetime]:not(.browser-default),
+    input[type=datetime-local]:not(.browser-default),
+    input[type=tel]:not(.browser-default),
+    input[type=number]:not(.browser-default),
+    input[type=search]:not(.browser-default),
+    textarea.materialize-textarea {
+        margin: 0 0 4px 0;
+    }
+
+    .btn {
+        font-weight: 500;
+        border-radius: 4px;
+        text-transform: none;
+        background-color: #6263CD;
+    }
+
+    .btn:hover,
+    .btn-large:hover,
+    .btn-small:hover {
+        background-color: #6263CD;
+        color: #fff;
+    }
+
+    .input-field .helper-text {
+        color: #fb5b5b;
+    }
+
+    #errMsg {
+        display: none;
+    }
+
+    .rem1 {
+        margin-bottom: 1rem;
+    }
+
+    .fs35 {
+        font-size: 35px;
+    }
+
+    .fs14 {
+        font-size: 14px;
+    }
+
+    .fs12 {
+        font-size: 12px;
+        text-align: right;
+    }
+    </style>
+    <header>
+        <div class="col s12">
+            <div class="card-panel" id="titleCard">
+                <div class="row valign-wrapper" id="carRow">
+                    <div class="col l1 center-align">
+                        <span class="white-text" style="font-size: 42px;"><i id="tadaIcon" class="fas fa-check-circle"></i></span>
+                    </div>
+                    <div class="col l11 flexDisplay">
+                        <span class="white-text">The Complete frontend toolkit for developers</span>
+                        <span><a href="#" data-target="slide-out" class="sidenav-trigger white-text"><i class="fas fa-bars"></i></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <!-- Head Tag Content -->
+                    <div class="card top75">
+                        <div class="card-content">
+                            <span class="card-title">The Head Tag</span>
+                            <div class="chip">
+                                <span id="headProgressPercentage">0%</span>&nbsp;completed</span>
+                            </div>
+                            <div class="progress">
+                                <div class="determinate" id="headBar" style="width: 0%"></div>
+                            </div>
+                            <div class="center-align htmlDataSpinner">
+                                <div class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-green-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Why?</th>
+                                        <th>Done?</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="headTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- HTML Tag Content -->
+                    <div class="card top75">
+                        <div class="card-content">
+                            <span class="card-title">The HTML Content</span>
+                            <div class="chip">
+                                <span id="documentProgressPercentage">0%</span>&nbsp;completed</span>
+                            </div>
+                            <div class="progress">
+                                <div class="determinate" id="documentBar" style="width: 0%"></div>
+                            </div>
+                            <div class="center-align htmlDataSpinner">
+                                <div class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-green-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Why?</th>
+                                        <th>Done?</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="documentTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Speed table Content -->
+                    <div class="card top75">
+                        <div class="card-content">
+                            <span class="card-title">Speed Optimisation</span>
+                            <div class="chip">
+                                <span id="speedProgressPercentage">0%</span>&nbsp;completed</span>
+                            </div>
+                            <div class="progress">
+                                <div class="determinate" id="speedBar" style="width: 0%"></div>
+                            </div>
+                            <div class="center-align htmlDataSpinner">
+                                <div class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-green-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Why?</th>
+                                        <th>Done?</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="speedTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- SEO table Content -->
+                    <div class="card top75">
+                        <div class="card-content">
+                            <span class="card-title">SEO</span>
+                            <div class="chip">
+                                <span id="SEOProgressPercentage">0%</span>&nbsp;completed</span>
+                            </div>
+                            <div class="progress">
+                                <div class="determinate" id="SEOBar" style="width: 0%"></div>
+                            </div>
+                            <div class="center-align htmlDataSpinner">
+                                <div class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-green-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Why?</th>
+                                        <th>Done?</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="SEOTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- WebpageTest -->
+                    <div class="card top75">
+                        <div class="card-content">
+                            <span class="card-title">WebPage Test</span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="webpagetest" type="text" class="validate" placeholder="Enter URL">
+                                    <span class="helper-text" id="errMsg">Enter a valid URL</span>
+                                </div>
+                                <div class="col s12 rem1">
+                                    <a class="waves-effect waves-light btn" id="pageTestBtn">Begin Test</a>
+                                </div>
+                                <div class="m8">
+                                    <div class="col l3 s12">
+                                        <div class=" card card-panel  ">
+                                            <p class="fs35">6.74<span class="fs14">&nbsp;s</span></p>
+                                            <span>Load time</span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="col l3 s12">
+                                        <div class=" card card-panel  ">
+                                            <p class="fs35">2453<span class="fs14">&nbsp;kbs</span></p>
+                                            <span>Page size</span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="col l3 s12">
+                                        <div class=" card card-panel  ">
+                                            <p class="fs35">122</p>
+                                            <span>HTTP requests</span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="col l3 s12">
+                                        <div class=" card card-panel  ">
+                                            <p class="fs35">Mumbai, India</p>
+                                            <span>Tested from</span>
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col l12">
+                                            <div id="chart-area"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="fs12">Powered by webpagetest.org</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <a href="https://fayazara.github.io" target="_blank">
+                <span class="white-text name">Made by Fayaz Ahmed</span>
+                </a>
+            </div>
+        </li>
+        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+    <script>
+    //chart
+    var container = document.getElementById('chart-area');
+    var data = {
+        categories: ['content'],
+        series: [{
+                name: 'HTML',
+                data: 69076
+            },
+            {
+                name: 'Javascript',
+                data: 1003808
+            },
+            {
+                name: 'CSS',
+                data: 1002536
+            },
+            {
+                name: 'Images',
+                data: 818857
+            },
+            {
+                name: 'Fonts',
+                data: 384583
+            }
+        ]
+    };
+    var options = {
+        chart: {
+            width: 320,
+            height: 260,
+            title: 'Web page content breakdown'
+        },
+        tooltip: {
+            suffix: 'kb'
+        }
+    };
+    var theme = {
+        series: {
+            colors: [
+                '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
+                '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
+            ]
+        }
+    };
+    tui.chart.pieChart(container, data, options);
+
+    //chart
+
+    var headhtml = "",
+        headItemCount, headAddPercentage = 0,
+        headProgressCount = 0;
+    var documenthtml = "",
+        documentItemCount, documentAddPercentage = 0,
+        documentProgressCount = 0;
+    var speedhtml = "",
+        speedItemCount, speedAddPercentage = 0,
+        speedProgressCount = 0;
+    var SEOhtml = "",
+        SEOItemCount, SEOAddPercentage = 0,
+        SEOProgressCount = 0,
+        pageTestFlag, pageTestJsonUrl;
+
+    $(document).ready(function() {
+
+        $(document).ajaxStart(function() {
+            $(".htmlDataSpinner").fadeIn();
+            console.log("Triggered ajaxStart handler.");
+        });
+
+        $(document).ajaxStop(function() {
+            $(".htmlDataSpinner").fadeOut();
+            console.log("Triggered ajaxStop handler.");
+        });
+
+        $('.sidenav').sidenav();
+        setInterval(function() {
+            $("#tadaIcon").addClass("animated tada");
+            setTimeout(function() {
+                $("#tadaIcon").removeClass("animated tada");
+            }, 2000);
+        }, 3000);
+
+        $("#pageTestBtn").click(function() {
+            var pageURL = $("#webpagetest").val();
+            if (pageURL == "") {
+                $("#errMsg").fadeIn();
+            } else {
+                runPageTest(pageURL);
+                $("#pageTestBtn").attr('disabled', 'disabled');
+                $("#pageTestBtn").html('<i class="fas fa-circle-notch"></i>&nbsp;Running Webpage test, this can take upto 30 seconds.');
+            }
+        });
+        // getHeadData();
+        // getDocumentData();
+        // getSpeedData();
+        // getSEOData();
+    });
+
+    $(document).on("mouseleave", ".refLinkTD", function() {
+        $(this).find("a").fadeOut();
+    });
+
+    $(document).on("mouseenter", ".refLinkTD", function() {
+        $(this).find("a").fadeIn().css("display", "initial");
+    });
+
+    $(document).on("change", ".headCheckbox", function() {
+        if ($(this).prop("checked") == true) {
+            $("#headBar").css("width");
+            headProgressCount = 100 / headItemCount;
+            headAddPercentage = headAddPercentage + headProgressCount;
+            $('#headBar').width(headAddPercentage + "%")
+            $("#headProgressPercentage").text(headAddPercentage.toFixed(2) + "%");
+        } else if ($(this).prop("checked") == false) {
+            headAddPercentage = headAddPercentage - headProgressCount;
+            $('#headBar').width(headAddPercentage + "%");
+            $("#headProgressPercentage").text(headAddPercentage.toFixed(2) + "%");
+        }
+    });
+
+    $(document).on("change", ".documentCheckbox", function() {
+        if ($(this).prop("checked") == true) {
+            $("#documentBar").css("width");
+            documentProgressCount = 100 / documentItemCount;
+            documentAddPercentage = documentAddPercentage + documentProgressCount;
+            $('#documentBar').width(documentAddPercentage + "%")
+            $("#documentProgressPercentage").text(documentAddPercentage.toFixed(2) + "%");
+        } else if ($(this).prop("checked") == false) {
+            documentAddPercentage = documentAddPercentage - documentProgressCount
+            $('#documentBar').width(documentAddPercentage + "%")
+            $("#documentProgressPercentage").text(documentAddPercentage.toFixed(2) + "%");
+        }
+    });
+
+    $(document).on("change", ".speedCheckbox", function() {
+        if ($(this).prop("checked") == true) {
+            $("#speedBar").css("width");
+            speedProgressCount = 100 / speedItemCount;
+            speedAddPercentage = speedAddPercentage + speedProgressCount;
+            $('#speedBar').width(speedAddPercentage + "%")
+            $("#speedProgressPercentage").text(speedAddPercentage.toFixed(2) + "%");
+        } else if ($(this).prop("checked") == false) {
+            speedAddPercentage = speedAddPercentage - speedProgressCount
+            $('#speedBar').width(speedAddPercentage + "%")
+            $("#speedProgressPercentage").text(speedAddPercentage.toFixed(2) + "%");
+        }
+    });
+
+    $(document).on("change", ".SEOCheckbox", function() {
+        if ($(this).prop("checked") == true) {
+            $("#SEOBar").css("width");
+            SEOProgressCount = 100 / SEOItemCount;
+            SEOAddPercentage = SEOAddPercentage + SEOProgressCount;
+            $('#SEOBar').width(SEOAddPercentage + "%")
+            $("#SEOProgressPercentage").text(SEOAddPercentage.toFixed(2) + "%");
+        } else if ($(this).prop("checked") == false) {
+            SEOAddPercentage = SEOAddPercentage - SEOProgressCount
+            $('#SEOBar').width(SEOAddPercentage + "%")
+            $("#SEOProgressPercentage").text(SEOAddPercentage.toFixed(2) + "%");
+        }
+    });
+
+    function getHeadData() {
+        $.getJSON("https://api.jsonbin.io/b/5b5b7baadc72f955bb796d73", function(result) {
+            headItemCount = result.length;
+            for (var i = 0; i < result.length; i++) {
+                headhtml += "<tr>" +
+                    "<td>" + result[i].item + "</td>" +
+                    "<td class='refLinkTD'>" + result[i].why + "&nbsp;<a target='_blank' class='refLink'  href='" + result[i].referenceURL + "'>Reference</a></td>" +
+                    "<td><label><input type='checkbox' class='headCheckbox'/><span></span></label></td>" +
+                    "</tr>";
+            }
+            $("#headTable").html(headhtml);
+        });
+    }
+
+    function getDocumentData() {
+        $.getJSON("https://api.jsonbin.io/b/5b5c8bcbdc72f955bb799d90", function(result) {
+            documentItemCount = result.length;
+            for (var i = 0; i < result.length; i++) {
+                documenthtml += "<tr>" +
+                    "<td>" + result[i].item + "</td>" +
+                    "<td class='refLinkTD'>" + result[i].why + "&nbsp;<a target='_blank' class='refLink'  href='" + result[i].referenceURL + "'>Reference</a></td>" +
+                    "<td><label><input type='checkbox' class='documentCheckbox'/><span></span></label></td>" +
+                    "</tr>";
+            }
+            $("#documentTable").html(documenthtml);
+        });
+    }
+
+    function getSpeedData() {
+        $.getJSON("https://api.jsonbin.io/b/5b5c8eb4e013915146c8e4d7/1", function(result) {
+            speedItemCount = result.length;
+            for (var i = 0; i < result.length; i++) {
+                speedhtml += "<tr>" +
+                    "<td>" + result[i].item + "</td>" +
+                    "<td class='refLinkTD'>" + result[i].why + "&nbsp;<a target='_blank' class='refLink'  href='" + result[i].referenceURL + "'>Reference</a></td>" +
+                    "<td><label><input type='checkbox' class='speedCheckbox'/><span></span></label></td>" +
+                    "</tr>";
+            }
+            $("#speedTable").html(speedhtml);
+        });
+    }
+
+    function getSEOData() {
+        $.getJSON("https://api.jsonbin.io/b/5b5c95b97b21295367851a3c", function(result) {
+            SEOItemCount = result.length;
+            for (var i = 0; i < result.length; i++) {
+                SEOhtml += "<tr>" +
+                    "<td>" + result[i].item + "</td>" +
+                    "<td class='refLinkTD'>" + result[i].why + "&nbsp;<a target='_blank' class='refLink'  href='" + result[i].referenceURL + "'>Reference</a></td>" +
+                    "<td><label><input type='checkbox' class='SEOCheckbox'/><span></span></label></td>" +
+                    "</tr>";
+            }
+            $("#SEOTable").html(SEOhtml);
+        });
+    }
+
+    function runPageTest(pageURL) {
+        $.getJSON("http://www.webpagetest.org/runtest.php?k=A.27a983b2b29ecb81028675bc013d4c42&f=json&url=" + encodeURI(pageURL) + "&location=ap-south-1", function(result) {
+            console.log("testresult " + result.data.jsonUrl);
+            pageTestJsonUrl = result.data.jsonUrl;
+            setTimeout(function() {
+                getPageTestJsonData(result.data.jsonUrl);
+            }, 25000);
+
+        });
+    }
+
+    function getPageTestJsonData(jsonURL) {
+        $.getJSON(jsonURL, function(result) {
+            pageTestFlag = result;
+            if (pageTestFlag.statusCode == 100) {
+                setTimeout(function() {
+                    getPageTestJsonData(pageTestJsonUrl);
+                }, 10000);
+            }
+
+            if (pageTestFlag.statusCode == 200) {
+                $("#pageTestBtn").removeAttr('disabled');
+                $("#pageTestBtn").html('Test Successful');
+                console.log("JSONtestresult " + result.data);
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

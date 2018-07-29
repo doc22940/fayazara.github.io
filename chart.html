@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="rap.js"></script>
+    <script src="https://unpkg.com/tui-code-snippet"></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+    <script src="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.js"></script>
+</head>
+
+<body>
+    <div id="chart-area"></div>
+    <script type="text/javascript">
+    var container = document.getElementById('chart-area');
+    var data = {
+        categories: ['content'],
+        series: [{
+                name: 'HTML',
+                data: 69076
+            },
+            {
+                name: 'Javascript',
+                data: 1003808
+            },
+            {
+                name: 'CSS',
+                data: 17.71
+            },
+            {
+                name: 'Images',
+                data: 818857
+            },
+            {
+                name: 'Fonts',
+                data: 384583
+            },
+            {
+                name: 'Other',
+                data: 6261
+            }
+        ]
+    };
+    var options = {
+        chart: {
+            width: 360,
+            height: 260,
+            title: 'Web page content breakdown'
+        },
+        tooltip: {
+            suffix: 'kb'
+        }
+    };
+    var theme = {
+        series: {
+            colors: [
+                '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
+                '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
+            ]
+        }
+    };
+
+    // For apply theme
+
+    // tui.chart.registerTheme('myTheme', theme);
+    // options.theme = 'myTheme';
+
+    tui.chart.pieChart(container, data, options);
+    </script>
+</body>
+
+</html>
