@@ -1,0 +1,435 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,500,700,900" rel="stylesheet">
+</head>
+
+<body>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin-: 0;
+        font-family: Product Sans;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    body {
+        background: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .7)), url("pattern.png");
+    }
+
+    .cardOuter {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !important;
+        border-radius: 8px;
+    }
+
+    #titleCard {
+        background: #5cdb95;
+        margin: 0px;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.12), 0 0px 0px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 0px;
+        font-size: 22px;
+    }
+
+    .ht185 {
+        height: 135px;
+    }
+
+    .top75 {
+        top: -55px;
+    }
+
+    .headtitle {
+        color: #05386b;
+    }
+
+    .tabs .tab a:hover,
+    .tabs .tab a.active {
+        background-color: transparent;
+        color: #05386b;
+    }
+
+    .tabs .tab {
+        text-transform: none;
+    }
+
+    .tabs .indicator {
+        background-color: #05386b;
+    }
+
+    .tabs .tab a {
+        color: #0000004d;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+
+    .tabs .tab a:focus,
+    .tabs .tab a:focus.active {
+        background-color: rgba(98, 99, 205, 0.2);
+        outline: none;
+    }
+
+    @media only screen and (min-width: 993px) {
+        .container {
+            width: 90% !important;
+        }
+    }
+
+    .coinImage {
+        height: 25px;
+    }
+
+    .dNone {
+        display: none;
+    }
+    </style>
+    <header>
+        <div class="col s12">
+            <div class="card-panel center-align" id="titleCard">
+                <div class="ht185">
+                    <div class="brandOverlay">
+                        <img src="chart.svg" height="45px">
+                        <h1 class="headtitle">CryptIndia - Indian crypto exchanges prices</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="card cardOuter top75">
+                <div class="card-content ">
+                </div>
+                <div class="card-tabs">
+                    <ul class="tabs">
+                        <li class="tab"><a class="active" href="#bitbnsTab">BitBNS</a></li>
+                        <li class="tab"><a href="#koinexTab">Koinex</a></li>
+                        <li class="tab"><a href="#coinomeTab">Coinome</a></li>
+                        <li class="tab"><a href="#zebpayTab">Zebpay</a></li>
+                    </ul>
+                </div>
+                <div class="card-content">
+                    <div id="bitbnsTab">
+                        <div class="center-align bitbnsloader dNone">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Current Price (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bitbnsTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="koinexTab">
+                        <div class="center-align koinexloader dNone">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Current Price (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="koinexTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="coinomeTab">
+                        <div class="center-align coinomeloader dNone">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Current Price (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="coinomeTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="zebpayTab">
+                        <div class="center-align zebpayloader dNone">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Current Price (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="zebpayTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript">
+    var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml;
+    $(document).ready(function() {
+        M.AutoInit();
+        getBitbns();
+        getKoinex();
+        getCoinome();
+        getZebpay();
+    });
+
+    function getBitbns() {
+        $(".bitbnsloader").fadeIn();
+        var apiUrl = 'https://api.constrade.in/cryptoapi.php?function=bitbns';
+        $.getJSON(apiUrl, function(result) {
+            bitbns = result;
+            Object.keys(bitbns).forEach(function(key, value) {
+                if (key == "QKC") {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/QKC.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                } else if (key == "EOSD") {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/EOS.svg">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                } else if (key == "CPX") {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/CPX.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                }  else if (key == "LET") {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/LET.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                }   else if (key == "PHX") {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/PHX.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                } else {
+                    bitbnsHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/' + key + '.svg">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
+                        '</tr>';
+                    $("#bitbnsTable").append(bitbnsHtml);
+                }
+
+            });
+            $(".bitbnsloader").fadeOut();
+        });
+    }
+
+
+    function getKoinex() {
+        $(".koinexloader").fadeIn();
+        var apiUrl = 'https://koinex.in/api/ticker';
+        $.getJSON(apiUrl, function(result) {
+            koinex = result.prices.inr;
+            Object.keys(koinex).forEach(function(key, value) {
+                if (key == "ZCO") {
+                    koinexHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img style="height: 16px;" src="coins/zco.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + koinex[key] + '</span></td>' +
+                        '</tr>';
+                    $("#koinexTable").append(koinexHtml);
+                } else if (key == "QKC") {
+                    koinexHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/QKC.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + koinex[key] + '</span></td>' +
+                        '</tr>';
+                    $("#koinexTable").append(koinexHtml);
+                }  else if (key == "CPX") {
+                    koinexHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/CPX.png">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + koinex[key] + '</span></td>' +
+                        '</tr>';
+                    $("#koinexTable").append(koinexHtml);
+                } else {
+                    koinexHtml =
+                        '<tr>' +
+                        '<td>' +
+                        '<div style="display: inline-block;">' +
+                        '<div class="valign-wrapper"><img class="coinImage" src="coins/' + key + '.svg">&nbsp;' + key + '</div>' +
+                        '</div>' +
+                        '</td>' +
+                        '<td><span id="coinPrice">' + koinex[key] + '</span></td>' +
+                        '</tr>';
+                    $("#koinexTable").append(koinexHtml);
+                }
+
+            });
+            $(".koinexloader").fadeOut();
+        });
+    }
+
+
+    function getCoinome() {
+        $(".coinomeloader").fadeIn();
+        var apiUrl = 'https://api.constrade.in/cryptoapi.php?function=coinome';
+        var ccoins = [ "btc-inr", "bch-inr", "ltc-inr", "eth-inr", "xrp-inr", "btg-inr", "qtum-inr", "zec-inr", "dgb-inr", "dash-inr", "tusd-inr", "dai-inr", "bat-inr", "waves-inr"];
+        $.getJSON(apiUrl, function(result) {
+            coinome = result;
+            ccoins.forEach(function(coin) {
+                coinomeHtml =
+                    '<tr>' +
+                    '<td>' +
+                    '<div style="display: inline-block;">' +
+                    '<div class="valign-wrapper"><img class=	"coinImage" src="coins/' + coin.replace('-inr', '').toUpperCase() + '.svg">&nbsp;' + coin.replace('-inr', '').toUpperCase() + '</div>' +
+                    '</div>' +
+                    '</td>' +
+                    '<td><span id="coinPrice">' + coinome[coin].last + '</span></td>' +
+                    '</tr>';
+                $("#coinomeTable").append(coinomeHtml);
+            });
+            $(".coinomeloader").fadeOut();
+        });
+    }
+
+
+    function getZebpay() {
+        $(".zebpayloader").fadeIn();
+        var apiUrl = 'https://www.zebapi.com/api/v1/market/ticker-new/btc/inr';
+        var zcoins = ["btc", "tusd", "eth", "ltc", "bch", "xrp", "eos", "omg", "trx", "gnt", "zrx", "rep", "knc", "bat", "ae", "zil", "cmt", "ncash"];
+
+        zcoins.forEach(function(coin) {
+            $.getJSON('https://www.zebapi.com/api/v1/market/ticker-new/' + coin + '/inr', function(result) {
+                zebpay = result;
+                zebpayHtml =
+                    '<tr>' +
+                    '<td>' +
+                    '<div style="display: inline-block;">' +
+                    '<div class="valign-wrapper"><img class="coinImage" src="coins/' + coin.toUpperCase() + '.svg">&nbsp;' + coin.toUpperCase() + '</div>' +
+                    '</div>' +
+                    '</td>' +
+                    '<td><span id="coinPrice">' + zebpay.buy + '</span></td>' +
+                    '</tr>';
+
+                $("#zebpayTable").append(zebpayHtml);
+                $(".zebpayloader").fadeOut();
+            });
+        });
+
+    }
+    </script>
+</body>
+
+</html>
