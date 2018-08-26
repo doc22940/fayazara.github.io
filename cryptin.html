@@ -34,7 +34,7 @@
     <meta property="og:title" content="Cryptin - All india crypto price tracker">
     <meta property="og:site_name" content="Cryptin">
     <meta property="og:image" content="https://fayazara.github.io/assets/images/cryptin.png" />
-    <meta property="og:url" content="https://fayazara.github.io/cryptin">    
+    <meta property="og:url" content="https://fayazara.github.io/cryptin">
     <meta property="og:description" content="CryptIn tracks live prices of BitBNS, Koinex, Coinome and Zebpay at one place, watch all live current price of Bitcoin, Ethereum, Ripple at one place" />
     <meta property="fb:app_id" content="849761111895056" />
     <meta name="twitter:card" content="summary">
@@ -146,6 +146,11 @@
 
     .shareIc {
         font-size: 35px;
+        text-decoration: none;
+    }
+
+    .alinkc {
+        color: #05386b;
     }
     </style>
     <header>
@@ -153,7 +158,7 @@
             <div class="card-panel center-align" id="titleCard">
                 <div class="ht185">
                     <div class="brandOverlay">
-                        <img src="assets/images/chart.svg" height="45px">
+                        <img src="assets/images/chart.svg" alt="cryptin logo" height="45px">
                         <h1 class="headtitle">CryptIn Live prices</h1>
                     </div>
                 </div>
@@ -299,9 +304,9 @@
                 </div>
                 <div class="col l4 s12">
                     <h5>Share</h5>
-                    <span><a href="https://api.whatsapp.com/send?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin&source=&data="><i class="fab fa-whatsapp shareIc"></i></a>&nbsp;</span>
-                    <span><a href="https://telegram.me/share/url?url=https://fayazara.github.io/cryptin&text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker"><i class="fab fa-telegram shareIc"></i>&nbsp;</a></span>
-                    <span><a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin"><i class="fab fa-twitter shareIc"></i>&nbsp;</a></span>
+                    <span><a class = "alinkc" href="https://api.whatsapp.com/send?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin&source=&data="><i class="fab fa-whatsapp shareIc"></i></a>&nbsp;</span>
+                    <span><a class = "alinkc" href="https://telegram.me/share/url?url=https://fayazara.github.io/cryptin&text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker"><i class="fab fa-telegram shareIc"></i>&nbsp;</a></span>
+                    <span><a class = "alinkc" href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin"><i class="fab fa-twitter shareIc"></i>&nbsp;</a></span>
                     <span><i class="fab fa-facebook shareIc" id="fbShare"></i>&nbsp;</span>
                 </div>
             </div>
@@ -335,14 +340,14 @@
     var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml;
     $(document).ready(function() {
         M.AutoInit();
-        $('.tabs').tabs({
-            swipeable: true,
-            responsiveThreshold: 1920
-        });
+        // $('.tabs').tabs({
+        //     swipeable: true,
+        //     responsiveThreshold: 1920
+        // });
         getBitbns();
         getKoinex();
         getCoinome();
-        getZebpay();
+        //getZebpay();
     });
 
     function getBitbns() {
@@ -423,6 +428,7 @@
 
             });
             $(".bitbnsloader").fadeOut();
+            $('img').attr("alt", "crypto icon");
         });
     }
 
@@ -481,6 +487,7 @@
 
             });
             $(".koinexloader").fadeOut();
+            $('img').attr("alt", "crypto icon");
         });
     }
 
@@ -504,6 +511,7 @@
                 $("#coinomeTable").append(coinomeHtml);
             });
             $(".coinomeloader").fadeOut();
+            $('img').attr("alt", "crypto icon");
         });
     }
 
@@ -528,6 +536,7 @@
 
                 $("#zebpayTable").append(zebpayHtml);
                 $(".zebpayloader").fadeOut();
+                $('img').attr("alt", "crypto icon");
             });
         });
 
