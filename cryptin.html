@@ -192,6 +192,7 @@
                         <li class="tab"><a href="#koinexTab">Koinex</a></li>
                         <li class="tab"><a href="#coinomeTab">Coinome</a></li>
                         <li class="tab"><a href="#zebpayTab">Zebpay</a></li>
+                        <li class="tab"><a href="#wazirxTab">WazirX</a></li>
                     </ul>
                 </div>
                 <div class="card-content">
@@ -315,6 +316,36 @@
                             <p>Open <a target="_blank" href="https://zebpay.com">Zebpay</a></p>
                         </div>
                     </div>
+                    <div id="wazirxTab">
+                        <div class="center-align wazirxloader dNone">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-green-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Coin</th>
+                                    <th>Current Price (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wazirxTable">
+                            </tbody>
+                        </table>
+                        <div class="row p20">
+                            <p>Open <a target="_blank" href="https://wazirx.com">WazirX</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -365,13 +396,14 @@
     }(document, 'script', 'facebook-jssdk'));
     </script>
     <script type="text/javascript">
-    var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml;
+    var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml, wazirx, wazirxHtml;
     $(document).ready(function() {
         M.AutoInit();
         getBitbns();
         getKoinex();
         getCoinome();
         getZebpay();
+        getWazirx();
     });
 
     function getBitbns() {
@@ -564,6 +596,103 @@
             });
         });
 
+    }
+
+    function getWazirx() {
+        $(".wazirxloader").fadeIn();
+        var apiUrl = 'https://api.constrade.in/cryptoapi.php?function=wazirx';
+
+        $.getJSON(apiUrl, function(result) {
+            wazirx = result;
+            Object.keys(wazirx).forEach(function(key, value) {
+                if (wazirx[key].quote_unit == "inr") {
+                    if (wazirx[key].base_unit == "zco") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/ZCO.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else if (wazirx[key].base_unit == "qkc") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/QKC.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else if (wazirx[key].base_unit == "banca") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/BANCA.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else if (wazirx[key].base_unit == "noah") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/NOAH.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else if (wazirx[key].base_unit == "hot") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/HOT.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else if (wazirx[key].base_unit == "ocn") {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/OCN.png">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    } else {
+                        wazirxHtml =
+                            '<tr>' +
+                            '<td>' +
+                            '<div style="display: inline-block;">' +
+                            '<div class="valign-wrapper"><img class="coinImage" src="coins/' + wazirx[key].base_unit.toUpperCase() + '.svg">&nbsp;' + wazirx[key].base_unit.toUpperCase() + '</div>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td><span id="coinPrice">' + wazirx[key].last + '</span></td>' +
+                            '</tr>';
+                        $("#wazirxTable").append(wazirxHtml);
+                    }
+
+                } else {
+                    console.log('skip !inr');
+                }
+
+            });
+            $(".wazirxloader").fadeOut();
+            $('img').attr("alt", "crypto icon");
+        });
     }
 
     document.getElementById('fbShare').onclick = function() {
