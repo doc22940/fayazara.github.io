@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <meta name="theme-color" content="#5cdb95">
     <meta name="author" content="@fayazara">
     <link rel="apple-touch-icon" sizes="57x57" href="assets/cryptin/apple-icon-57x57.png">
@@ -29,20 +30,20 @@
     <link rel="manifest" href="assets/cryptin/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="assets/cryptin/ms-icon-144x144.png">
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Cryptin - All india crypto price tracker">
     <meta property="og:site_name" content="Cryptin">
-    <meta property="og:image" content="assets/images/cryptin.png" />
+    <meta property="og:image" content="https://fayazara.github.io/assets/images/cryptin.png" />
     <meta property="og:url" content="https://fayazara.github.io/cryptin">
     <meta property="article:published_time" content="2018-08-26">
     <meta property="article:author" content="https://www.facebook.com/fayaz.aralikatti">
     <meta property="og:description" content="CryptIn tracks live prices of BitBNS, Koinex, Coinome and Zebpay at one place, watch all live current price of Bitcoin, Ethereum, Ripple at one place" />
-    <meta property="fb:app_id" content="260581197883454" />
+    <meta property="fb:app_id" content="849761111895056" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@fayazara">
     <meta name="twitter:title" content="Cryptin">
     <meta name="twitter:description" content="CryptIn tracks live prices of BitBNS, Koinex, Coinome and Zebpay at one place, watch all live current price of Bitcoin, Ethereum, Ripple at one place">
-    <meta name="twitter:image" content="assets/images/cryptin.png">
+    <meta name="twitter:image" content="https://fayazara.github.io/assets/images/cryptin.png">
     <meta name="twitter:image:alt" content="Cryptin Logo">
 </head>
 
@@ -137,6 +138,16 @@
 
     .dNone {
         display: none;
+    }
+
+    .page-footer {
+        padding-top: 20px;
+        color: #05386b !important;
+        background-color: #5cdb95;
+    }
+
+    .shareIc {
+        font-size: 35px;
     }
     </style>
     <header>
@@ -277,10 +288,59 @@
             </div>
         </div>
     </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l8 s12">
+                    <h5 class="">CryptIn Live prices | All Indian cryptocurrency exchange prices</h5>
+                    <p class="text-lighten-4">CryptIn tracks live prices of BitBNS, Koinex, Coinome and Zebpay at one place, watch all live current price of Bitcoin, Ethereum, Ripple at one place<a class="grey-text text-lighten-4" href="https://fayazara.github.io"> Made by Fayaz</a></p>
+                    <p>Disclaimers</p>
+                    <p>These prices are being pulled from the official APIs provided by their respective exchanges, I am just displaying them.</p>
+                    <p>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
+                    <p>Crypto currency icons provided by <a href="https://github.com/atomiclabs/cryptocurrency-icons">Atomic Labs</a></p>
+                </div>
+                <div class="col l4 s12">
+                    <h5>Share</h5>
+                    <span><a href="https://api.whatsapp.com/send?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin&source=&data="><i class="fab fa-whatsapp shareIc"></i></a>&nbsp;</span>
+                    <span><a href="https://telegram.me/share/url?url=https://fayazara.github.io/cryptin&text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker"><i class="fab fa-telegram shareIc"></i>&nbsp;</a></span>
+                    <span><a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20cryptocurrency%20price%20tracker%20-%20https%3a%2f%2ffayazara.github.io%2fcryptin"><i class="fab fa-twitter shareIc"></i>&nbsp;</a></span>
+                    <span><i class="fab fa-facebook shareIc" id="fbShare"></i>&nbsp;</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <a class="grey-text text-lighten-4 right" href="https://fayazara.github.io">Fayaz Ahmed</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '849761111895056',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v3.1'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
     <script type="text/javascript">
     var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml;
     $(document).ready(function() {
         M.AutoInit();
+        $('.tabs').tabs({
+            swipeable: true,
+            responsiveThreshold: 1920
+        });
         getBitbns();
         getKoinex();
         getCoinome();
@@ -348,7 +408,7 @@
                         '<td><span id="coinPrice">' + bitbns[key].last_traded_price + '</span></td>' +
                         '</tr>';
                     $("#bitbnsTable").append(bitbnsHtml);
-                }  else if (key == "TST") {
+                } else if (key == "TST") {
                     console.log("TST not available");
                 } else {
                     bitbnsHtml =
@@ -473,6 +533,14 @@
             });
         });
 
+    }
+
+    document.getElementById('fbShare').onclick = function() {
+        FB.ui({
+            method: 'share',
+            mobile_iframe: true,
+            href: 'https://fayazara.github.io/cryptin?rel=fbShare',
+        }, function(response) {});
     }
     </script>
 </body>
