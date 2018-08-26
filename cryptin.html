@@ -86,11 +86,11 @@
     }
 
     .ht185 {
-        height: 135px;
+        height: 250px;
     }
 
     .top75 {
-        top: -55px;
+        top: -175px;
     }
 
     .headtitle {
@@ -152,6 +152,22 @@
     .alinkc {
         color: #05386b;
     }
+
+    .card .card-content {
+        padding: 24px 24px 0px 24px;
+    }
+
+    .p20 {
+        padding-bottom: 20px;
+    }
+
+    header {
+        clip-path: polygon( 0 0, /* left top */
+        100% 0, /* right top */
+        100% 100%, /* right bottom */
+        0 60%/* left bottom */
+        );
+    }
     </style>
     <header>
         <div class="col s12">
@@ -205,6 +221,9 @@
                             <tbody id="bitbnsTable">
                             </tbody>
                         </table>
+                        <div class="row p20">
+                            <p>Open <a target="_blank" href="https://bitbns.com">Bitbns</a></p>
+                        </div>
                     </div>
                     <div id="koinexTab">
                         <div class="center-align koinexloader dNone">
@@ -232,6 +251,9 @@
                             <tbody id="koinexTable">
                             </tbody>
                         </table>
+                        <div class="row p20">
+                            <p>Open <a target="_blank" href="https://koinex.in">Koinex</a></p>
+                        </div>
                     </div>
                     <div id="coinomeTab">
                         <div class="center-align coinomeloader dNone">
@@ -259,6 +281,9 @@
                             <tbody id="coinomeTable">
                             </tbody>
                         </table>
+                        <div class="row p20">
+                            <p>Open <a target="_blank" href="https://coinome.com">Coinome</a></p>
+                        </div>
                     </div>
                     <div id="zebpayTab">
                         <div class="center-align zebpayloader dNone">
@@ -286,6 +311,9 @@
                             <tbody id="zebpayTable">
                             </tbody>
                         </table>
+                        <div class="row p20">
+                            <p>Open <a target="_blank" href="https://zebpay.com">Zebpay</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,12 +323,12 @@
         <div class="container">
             <div class="row">
                 <div class="col l8 s12">
-                    <h5 class="">CryptIn Live prices | All Indian cryptocurrency exchange prices</h5>
+                    <h3 class="">CryptIn Live prices | All Indian cryptocurrency exchange prices</h3>
                     <p class="text-lighten-4">CryptIn tracks live prices of BitBNS, Koinex, Coinome and Zebpay at one place, watch all live current price of Bitcoin, Ethereum, Ripple at one place<a class="grey-text text-lighten-4" href="https://fayazara.github.io"> Made by Fayaz</a></p>
                     <p>Disclaimers</p>
                     <p>These prices are being pulled from the official APIs provided by their respective exchanges, I am just displaying them.</p>
-                    <p>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>
-                    <p>Crypto currency icons provided by <a href="https://github.com/atomiclabs/cryptocurrency-icons">Atomic Labs</a></p>
+                    <p>Icons made by <a target="_blank" href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a target="_blank" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a></p>
+                    <p>Crypto currency icons provided by <a target="_blank" href="https://github.com/atomiclabs/cryptocurrency-icons">Atomic Labs</a></p>
                 </div>
                 <div class="col l4 s12">
                     <h5>Share</h5>
@@ -340,10 +368,6 @@
     var bitbns, bitbnsHtml, koinex, koinexHtml, coinome, coinomeHtml, zebpay, zebpayHtml;
     $(document).ready(function() {
         M.AutoInit();
-        // $('.tabs').tabs({
-        //     swipeable: true,
-        //     responsiveThreshold: 1920
-        // });
         getBitbns();
         getKoinex();
         getCoinome();
