@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="mat.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="mat.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Product+Sans:100,300,400,500,700,900" rel="stylesheet">
+</head>
+
+<body>
+    <style type="text/css">
+    * {
+        padding-top: 0;
+        margin: 0;
+        font-family: Product sans;
+    }
+
+    .mainlogo {
+        height: 50px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    nav {
+        background-color: #fff;
+        color: #000;
+    }
+
+    nav ul a {
+        color: #000;
+    }
+
+    .tabs .tab a:hover,
+    .tabs .tab a.active {
+        background-color: transparent;
+        color: #6263cd;
+    }
+
+    .tabs .tab a {
+        color: #6263cdb3;
+    }
+
+    .tabs .indicator {
+        background-color: #6263cd;
+    }
+
+    .tabs .tab a:focus,
+    .tabs .tab a:focus.active {
+        background-color: #6263cd33;
+    }
+
+
+    @media screen and (min-width: 320px) {
+        .mainlogo {
+            height: 40px;
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .mainlogo {
+            height: 50px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    }
+
+
+    .sideBars {
+        color: #000;
+    }
+
+    .font15 {
+        font-size: 15px;
+    }
+
+    .collapsible-header {
+        font-size: 18px;
+    }
+
+    .collapsible-header {
+        display: block;
+    }
+
+    .chip {
+        display: inline-block;
+        height: 26px;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.6);
+        line-height: 26px;
+        padding: 0 12px;
+        border-radius: 16px;
+        background-color: #e4e4e4;
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    </style>
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo"><img class="mainlogo" src="newl.svg"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="sideBars fas fa-bars"></i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Timeline</a></li>
+                <li><a href="badges.html">Telegram</a></li>
+                <li><a href="collapsible.html">Twitter</a></li>
+            </ul>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs">
+                <li class="tab"><a class="active" href="#tab1"><i class="font15 far fa-newspaper"></i>&nbsp;<span>News</span></a></li>
+                <li class="tab"><a href="#tab2"><i class="font15 fas fa-retweet"></i>&nbsp;<span>Markets</span></a></li>
+                <li class="tab"><a href="#tab3"><i class="font15 fas fa-mail-bulk"></i>&nbsp;<span>Newsletter</span></a></li>
+                <li class="tab"><a href="#tab4"><i class="font15 far fa-calendar-alt"></i>&nbsp;<span>Meetups</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html">Timeline</a></li>
+        <li><a href="badges.html">Telegram</a></li>
+        <li><a href="collapsible.html">Twitter</a></li>
+    </ul>
+    <main class="container">
+        <div id="tab1" class="col s12">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <p style="margin-bottom: 10px;">Bitcoin Price Weekly Analysis: BTC/USD Decline Could Extend to $5,950</p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <div class="chip">Bitcoin</div>
+                                <div class="chip">Money</div>
+                                <div class="chip">Test</div>
+                            </div>
+                            <div class="chip" style="background-color: transparent;">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body"><span>Russia Developing Own Mining Pools</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <p style="margin-bottom: 10px;">Ethereum (ETH) 2.0 Roadmap Revealed  Here's What's Coming Next</p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <div class="chip">Bitcoin</div>
+                                <div class="chip">Money</div>
+                                <div class="chip">Test</div>
+                            </div>
+                            <div class="chip" style="background-color: transparent;">1 day ago</div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body"><span>Russia Developing Own Mining Pools</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <p style="margin-bottom: 10px;">Countries Such as North Korea Use Cryptocurrency to Bypass Sanctions, Experts Warn</p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>
+                                <div class="chip">Bitcoin</div>
+                                <div class="chip">Money</div>
+                                <div class="chip">Test</div>
+                            </div>
+                            <div class="chip" style="background-color: transparent;">15 mins ago</div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body"><span>Russia Developing Own Mining Pools</span></div>
+                </li>
+            </ul>
+        </div>
+        <div id="tab2" class="col s12">tab 2</div>
+        <div id="tab3" class="col s12">tab 3</div>
+        <div id="tab4" class="col s12">tab 4</div>
+    </main>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        M.AutoInit();
+
+    });
+    </script>
+</body>
+
+</html>
